@@ -1,0 +1,43 @@
+---
+import { site } from '../data/site';
+---
+
+<div class="mobile-bar" data-mobilebar>
+  <a href={site.phoneHref}>Anrufen · rund um die Uhr</a>
+</div>
+
+<style>
+  .mobile-bar {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 50;
+    display: none;
+    background: var(--bg-dark);
+    padding: 10px 14px calc(10px + env(safe-area-inset-bottom));
+  }
+  /* Von JS gesetzt, wenn mobil und Hero-CTA aus dem Viewport gescrollt ist. */
+  .mobile-bar.visible {
+    display: block;
+  }
+  /* Desktop: nie anzeigen. */
+  @media (min-width: 1000px) {
+    .mobile-bar.visible {
+      display: none;
+    }
+  }
+
+  .mobile-bar a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: var(--accent);
+    color: var(--btn-text);
+    border-radius: 999px;
+    min-height: 54px;
+    font-size: 17px;
+    font-weight: 600;
+  }
+</style>

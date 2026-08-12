@@ -1,0 +1,139 @@
+/* =====================================================================
+   Memoria – Globale Styles & Design-Tokens
+   Alle Werte exakt aus dem Design-Export (siehe CLAUDE.md §2).
+   ===================================================================== */
+
+:root {
+  /* Hintergründe */
+  --bg-page: #f3f8e5;
+  --bg-hero: #1c2413;
+  --bg-dark: #2b3a1e;
+  --bg-contact: #141a0e;
+  --bg-card: #e6eecd;
+
+  /* Akzent */
+  --accent: #cfe36b;
+  --accent-hover: #dcec84;
+  --btn-text: #1b2610;
+
+  /* Text */
+  --text: #1f2d16;
+  --text-link-hover: #0f1a08;
+  --heading-dark: #16260c;
+  --text-light: #eef3e0;
+  --text-lightest: #f7f9ee;
+  --about-lead: #22331a;
+  --muted-1: #3d4a30;
+  --muted-2: #4a5940;
+  --muted-3: #5c6b4c;
+
+  /* Linien & Icons */
+  --icon-stroke: #3f5325;
+  --chevron: #9bb06a;
+  --rule-price: #d5deba;
+
+  /* Fonts */
+  --font-serif: 'Fraunces', Georgia, serif;
+  --font-sans: 'Figtree', 'Helvetica Neue', Arial, sans-serif;
+
+  /* Layout */
+  --maxw: 1240px;
+
+  /* Verläufe */
+  --hero-overlay: linear-gradient(
+    180deg,
+    rgba(20, 26, 14, 0.5) 0%,
+    rgba(20, 26, 14, 0.3) 45%,
+    rgba(20, 26, 14, 0.6) 100%
+  );
+  --contact-overlay: linear-gradient(
+    180deg,
+    rgba(16, 21, 11, 0.82) 0%,
+    rgba(16, 21, 11, 0.7) 50%,
+    rgba(16, 21, 11, 0.86) 100%
+  );
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg-page);
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--text);
+  overflow-x: hidden;
+}
+
+section[id] {
+  scroll-margin-top: 20px;
+}
+
+a {
+  color: var(--text);
+  text-decoration: none;
+}
+a:hover {
+  color: var(--text-link-hover);
+}
+
+img {
+  max-width: 100%;
+}
+
+/* Reveal-on-Scroll ---------------------------------------------------- */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 1.1s ease, transform 1.1s ease;
+}
+[data-reveal].om-in {
+  opacity: 1;
+  transform: none;
+}
+html.om-nojs [data-reveal] {
+  opacity: 1;
+  transform: none;
+}
+
+/* Ken-Burns Hero ------------------------------------------------------ */
+@keyframes kenburns {
+  from {
+    transform: scale(1.02);
+  }
+  to {
+    transform: scale(1.12) translate3d(0, -1.5%, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none;
+  }
+  img {
+    animation: none !important;
+  }
+}
+
+/* Utility: zentrierter Inhaltscontainer */
+.container {
+  max-width: var(--maxw);
+  margin: 0 auto;
+}

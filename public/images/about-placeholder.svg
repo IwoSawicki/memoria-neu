@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" role="img" aria-label="Platzhalter – Über-uns-Bild folgt">
+  <rect width="800" height="1000" fill="#e6eecd"/>
+  <g fill="none" stroke="#9bb06a" stroke-width="3" opacity="0.65" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="400" cy="430" r="70"/>
+    <path d="M330 560c0-45 30-70 70-70s70 25 70 70"/>
+    <circle cx="300" cy="360" r="26"/>
+    <circle cx="500" cy="360" r="26"/>
+    <circle cx="262" cy="470" r="22"/>
+    <circle cx="538" cy="470" r="22"/>
+  </g>
+  <text x="400" y="700" text-anchor="middle" font-family="Georgia, serif" font-size="34" fill="#5c6b4c">Über-uns-Bild folgt</text>
+  <text x="400" y="748" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" fill="#7a8a63">Platzhalter · Seitenverhältnis 4:5</text>
+</svg>

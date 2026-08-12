@@ -1,0 +1,161 @@
+---
+import { site } from '../data/site';
+---
+
+<section id="kontakt" class="kontakt">
+  <!-- TODO: Platzhalter durch Original-Hintergrundbild ersetzen. -->
+  <img
+    class="bg"
+    data-parallax
+    src="/images/contact-placeholder.svg"
+    alt=""
+    aria-hidden="true"
+  />
+  <div class="overlay"></div>
+
+  <div class="inner" data-reveal>
+    <div class="intro">
+      <p class="eyebrow">Kontakt</p>
+      <h2>Schreiben Sie uns in Ruhe</h2>
+      <p class="lead">
+        Wenn Ihnen ein Anruf gerade zu viel ist, hinterlassen Sie uns eine
+        Nachricht. Wir melden uns zurück, so schnell es geht.
+      </p>
+      <p class="direct">
+        Lieber direkt sprechen?
+        <a href={site.phoneHref}>{site.phoneDisplay}</a>
+      </p>
+    </div>
+
+    <form class="form" data-contactform>
+      <input type="text" name="name" placeholder="Ihr Name" />
+      <input type="email" name="email" placeholder="E-Mail-Adresse" />
+      <input type="tel" name="phone" placeholder="Telefonnummer (optional)" />
+      <textarea name="message" rows="4" placeholder="Worum geht es?"></textarea>
+      <button type="submit">Nachricht senden</button>
+      <p class="note" data-formnote>
+        Wir antworten so schnell wie möglich, meist innerhalb weniger Stunden.
+      </p>
+    </form>
+  </div>
+</section>
+
+<style>
+  .kontakt {
+    position: relative;
+    overflow: hidden;
+    background: var(--bg-contact);
+    color: var(--text-light);
+  }
+
+  .bg {
+    position: absolute;
+    left: 0;
+    top: -14%;
+    width: 100%;
+    height: 128%;
+    object-fit: cover;
+    will-change: transform;
+  }
+
+  .overlay {
+    position: absolute;
+    inset: 0;
+    background: var(--contact-overlay);
+  }
+
+  .inner {
+    position: relative;
+    max-width: var(--maxw);
+    margin: 0 auto;
+    padding: clamp(76px, 10vw, 150px) clamp(20px, 4vw, 42px);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: clamp(36px, 5vw, 80px);
+    align-items: center;
+  }
+
+  .eyebrow {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0 22px;
+  }
+
+  h2 {
+    font-family: var(--font-serif);
+    font-weight: 300;
+    font-size: clamp(34px, 4.6vw, 60px);
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+    color: #ffffff;
+    margin: 0 0 20px;
+    max-width: 15ch;
+  }
+
+  .lead {
+    margin: 0 0 30px;
+    color: rgba(255, 255, 255, 0.82);
+    font-size: 17px;
+    line-height: 1.7;
+    max-width: 44ch;
+  }
+
+  .direct {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 16px;
+  }
+  .direct a {
+    color: var(--accent);
+    font-variant-numeric: tabular-nums;
+  }
+  .direct a:hover {
+    color: var(--accent-hover);
+  }
+
+  .form {
+    display: grid;
+    gap: 14px;
+  }
+  .form input,
+  .form textarea {
+    width: 100%;
+    background: #ffffff;
+    border: none;
+    border-radius: 10px;
+    padding: 18px 20px;
+    font-family: inherit;
+    font-size: 16px;
+    color: var(--heading-dark);
+  }
+  .form input {
+    min-height: 58px;
+  }
+  .form textarea {
+    resize: vertical;
+  }
+  .form button {
+    justify-self: start;
+    background: var(--accent);
+    color: var(--btn-text);
+    border: none;
+    border-radius: 999px;
+    padding: 18px 36px;
+    font-family: inherit;
+    font-size: 17px;
+    font-weight: 600;
+    min-height: 58px;
+    cursor: pointer;
+  }
+  .form button:hover {
+    background: var(--accent-hover);
+  }
+  .form .note {
+    margin: 0;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.6);
+  }
+</style>

@@ -1,0 +1,125 @@
+---
+import { site } from '../data/site';
+---
+
+<section id="ueber-uns" class="ueber-uns">
+  <div class="inner" data-reveal>
+    <div class="image">
+      <!-- TODO: Platzhalter durch Originalbild ersetzen (Kind streichelt liegenden Hund im Wald). -->
+      <img
+        src="/images/about-placeholder.svg"
+        alt="Kind streichelt einen liegenden Hund im Wald"
+        width="800"
+        height="1000"
+      />
+    </div>
+    <div class="text">
+      <h2>
+        Ein Abschied, den man <span class="italic">in guter Erinnerung</span> behält.
+      </h2>
+      <p class="lead">
+        „Als kleines Familienunternehmen liegt uns die persönliche Betreuung,
+        Beratung und Durchführung sehr am Herzen.“
+      </p>
+      <p class="body">
+        {site.owners[0]} und {site.owners[1]} führen Memoria gemeinsam. Sie nehmen
+        Ihren Anruf entgegen, kommen selbst zu Ihnen und begleiten jeden Abschied
+        persönlich – auch nachts und am Wochenende.
+      </p>
+      <p class="quote">
+        „Mit Tieren aufgewachsen und nie mehr von losgekommen. Für diese
+        Bereicherung und schönen Momente bin ich dankbar und hoffe, mit unserem
+        Dienst etwas zurückgeben zu können.“ — {site.owners[0]}
+      </p>
+      <a class="btn" href="#kontakt">Lernen Sie uns kennen</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .ueber-uns {
+    background: var(--bg-page);
+  }
+
+  .inner {
+    max-width: var(--maxw);
+    margin: 0 auto;
+    padding: 0 clamp(20px, 4vw, 42px) clamp(72px, 10vw, 140px);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: clamp(32px, 5vw, 80px);
+    align-items: center;
+  }
+
+  .image {
+    border-radius: 22px;
+    overflow: hidden;
+    background: var(--bg-card);
+    aspect-ratio: 4 / 5;
+  }
+  .image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  h2 {
+    font-family: var(--font-serif);
+    font-weight: 300;
+    font-size: clamp(30px, 3.9vw, 50px);
+    line-height: 1.12;
+    letter-spacing: -0.02em;
+    color: var(--heading-dark);
+    margin: 0 0 clamp(18px, 2.2vw, 26px);
+    text-wrap: pretty;
+  }
+  h2 .italic {
+    font-style: italic;
+  }
+
+  .lead {
+    font-family: var(--font-serif);
+    font-size: clamp(19px, 1.8vw, 23px);
+    line-height: 1.5;
+    color: var(--about-lead);
+    margin: 0 0 24px;
+    max-width: 42ch;
+    text-wrap: pretty;
+  }
+
+  .body {
+    font-size: 16px;
+    line-height: 1.75;
+    color: var(--muted-2);
+    margin: 0 0 20px;
+    max-width: 52ch;
+  }
+
+  .quote {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 17px;
+    line-height: 1.7;
+    color: var(--muted-2);
+    margin: 0 0 clamp(28px, 3vw, 36px);
+    max-width: 48ch;
+    text-wrap: pretty;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    border: 1.5px solid var(--heading-dark);
+    border-radius: 999px;
+    padding: 15px 30px;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--heading-dark);
+    min-height: 52px;
+  }
+  .btn:hover {
+    background: var(--bg-card);
+    color: var(--heading-dark);
+  }
+</style>

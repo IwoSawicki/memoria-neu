@@ -1,0 +1,167 @@
+---
+import { site, footerNav } from '../data/site';
+---
+
+<footer class="site-footer">
+  <div class="footer-main">
+    <p class="eyebrow">Rund um die Uhr erreichbar</p>
+    <h2 class="headline">Sie erreichen uns jederzeit</h2>
+    <a class="phone" href={site.phoneHref}>{site.phoneDisplay}</a>
+    <p class="email">
+      <a href={site.emailHref}>{site.email}</a>
+    </p>
+
+    <div class="cols">
+      <div>
+        <p class="brand">{site.name}</p>
+        <p class="owners">
+          {site.owners[0]}<br />{site.owners[1]}
+        </p>
+      </div>
+      <nav class="footer-nav" aria-label="Footer-Navigation">
+        {footerNav.map((item) => <a href={item.href}>{item.label}</a>)}
+      </nav>
+      <div class="addr">
+        <p>{site.address}</p>
+        <p class="addr-pickup">{site.pickupAddress}</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <span>Tierbestattung Memoria · Abholung 365 Tage im Jahr</span>
+    <span>
+      <a href="/impressum">Impressum</a> · <a href="/datenschutz">Datenschutz</a>
+    </span>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background: var(--bg-dark);
+    color: var(--text-light);
+  }
+
+  .footer-main {
+    max-width: var(--maxw);
+    margin: 0 auto;
+    padding: clamp(72px, 10vw, 140px) clamp(20px, 4vw, 42px) clamp(40px, 5vw, 60px);
+  }
+
+  .eyebrow {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: rgba(207, 227, 107, 0.85);
+    margin: 0 0 clamp(28px, 3.4vw, 40px);
+  }
+
+  .headline {
+    font-family: var(--font-serif);
+    font-weight: 300;
+    font-size: clamp(38px, 7vw, 104px);
+    line-height: 1;
+    letter-spacing: -0.025em;
+    color: var(--text-lightest);
+    margin: 0 0 clamp(30px, 4vw, 50px);
+    max-width: 14ch;
+    text-wrap: balance;
+  }
+
+  .phone {
+    display: inline-flex;
+    align-items: baseline;
+    font-family: var(--font-serif);
+    font-weight: 300;
+    font-size: clamp(34px, 6vw, 84px);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    color: var(--accent);
+    font-variant-numeric: tabular-nums;
+    border-bottom: 1px solid rgba(207, 227, 107, 0.4);
+    padding-bottom: 10px;
+  }
+  .phone:hover {
+    color: var(--accent-hover);
+    border-bottom-color: var(--accent-hover);
+  }
+
+  .email {
+    margin: clamp(24px, 3vw, 34px) 0 0;
+    font-size: clamp(17px, 1.6vw, 22px);
+  }
+  .email a {
+    color: var(--text-light);
+    border-bottom: 1px solid rgba(238, 243, 224, 0.35);
+    padding-bottom: 3px;
+  }
+  .email a:hover {
+    color: #ffffff;
+  }
+
+  .cols {
+    margin-top: clamp(56px, 7vw, 100px);
+    padding-top: clamp(30px, 3.4vw, 44px);
+    border-top: 1px solid rgba(238, 243, 224, 0.2);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: clamp(28px, 4vw, 48px);
+    align-items: start;
+  }
+
+  .brand {
+    font-family: var(--font-serif);
+    font-size: 30px;
+    margin: 0 0 12px;
+    color: var(--text-lightest);
+  }
+  .owners {
+    margin: 0;
+    font-size: 16px;
+    color: rgba(238, 243, 224, 0.72);
+  }
+
+  .footer-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 16px;
+  }
+  .footer-nav a {
+    color: rgba(238, 243, 224, 0.72);
+  }
+  .footer-nav a:hover {
+    color: #ffffff;
+  }
+
+  .addr {
+    font-size: 14px;
+    color: rgba(238, 243, 224, 0.5);
+    line-height: 1.7;
+  }
+  .addr p {
+    margin: 0 0 8px;
+  }
+  .addr .addr-pickup {
+    margin: 0;
+  }
+
+  .footer-bottom {
+    max-width: var(--maxw);
+    margin: 0 auto;
+    padding: 0 clamp(20px, 4vw, 42px) clamp(110px, 13vw, 60px);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 24px;
+    justify-content: space-between;
+    font-size: 14px;
+    color: rgba(238, 243, 224, 0.45);
+  }
+  .footer-bottom a {
+    color: rgba(238, 243, 224, 0.45);
+  }
+  .footer-bottom a:hover {
+    color: #ffffff;
+  }
+</style>

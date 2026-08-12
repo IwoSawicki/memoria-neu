@@ -1,0 +1,19 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import Leistungen from '../components/Leistungen.astro';
+import UeberUns from '../components/UeberUns.astro';
+import Ablauf from '../components/Ablauf.astro';
+import Preise from '../components/Preise.astro';
+import Kontakt from '../components/Kontakt.astro';
+import { site } from '../data/site';
+---
+
+<BaseLayout>
+  <Hero />
+  <Leistungen />
+  <UeberUns />
+  <Ablauf />
+  {site.showPrices && <Preise />}
+  <Kontakt />
+</BaseLayout>

@@ -1,0 +1,154 @@
+---
+import { site, nav } from '../data/site';
+
+interface Props {
+  /** overlay = transparent über dem Hero (Startseite), solid = dunkler Balken (Unterseiten) */
+  variant?: 'overlay' | 'solid';
+}
+const { variant = 'overlay' } = Astro.props;
+// Auf Unterseiten (solid) zeigt das Logo zur Startseite, sonst zum Seitenanfang.
+const logoHref = variant === 'solid' ? '/' : '#top';
+---
+
+<div class:list={['site-header', variant]}>
+  <header>
+    <a class="logo" href={logoHref}>{site.name}</a>
+
+    <nav class="desktop-nav" aria-label="Hauptnavigation">
+      {
+        nav.map((item) => (
+          <a class="nav-link" href={item.href}>
+            {item.label}
+          </a>
+        ))
+      }
+      <a class="phone-btn" href={site.phoneHref}>{site.phoneDisplay}</a>
+    </nav>
+
+    <button
+      class="menu-btn"
+      data-menubtn
+      type="button"
+      aria-label="Menü"
+      aria-expanded="false"
+    >
+      <span></span>
+      <span></span>
+    </button>
+  </header>
+
+  <div class="menu-panel" data-menupanel>
+    {
+      nav.map((item) => (
+        <a href={item.href}>{item.label}</a>
+      ))
+    }
+  </div>
+</div>
+
+<style>
+  .site-header {
+    position: relative;
+    z-index: 3;
+  }
+  .site-header.solid {
+    background: var(--bg-dark);
+  }
+
+  header {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: clamp(18px, 2.2vw, 30px) clamp(20px, 3vw, 42px);
+    max-width: none;
+  }
+
+  .logo {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: clamp(26px, 2.4vw, 34px);
+    line-height: 1;
+    color: var(--text-lightest);
+  }
+  .logo:hover {
+    color: var(--text-lightest);
+  }
+
+  .desktop-nav {
+    display: flex;
+    align-items: center;
+    gap: clamp(16px, 2vw, 30px);
+  }
+  .nav-link {
+    font-size: 15px;
+    font-weight: 500;
+    color: rgba(247, 249, 238, 0.88);
+  }
+  .nav-link:hover {
+    color: #ffffff;
+  }
+
+  .phone-btn {
+    background: var(--accent);
+    color: var(--btn-text);
+    border-radius: 999px;
+    padding: 11px 22px;
+    font-size: 15px;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+  .phone-btn:hover {
+    background: var(--accent-hover);
+    color: var(--btn-text);
+  }
+
+  .menu-btn {
+    display: none;
+    flex-direction: column;
+    gap: 7px;
+    background: none;
+    border: none;
+    padding: 12px 2px;
+    min-height: 44px;
+    cursor: pointer;
+  }
+  .menu-btn span {
+    display: block;
+    width: 30px;
+    height: 2px;
+    background: var(--text-lightest);
+  }
+
+  .menu-panel {
+    display: none;
+    position: relative;
+    padding: 4px clamp(20px, 3vw, 42px) 16px;
+  }
+  .menu-panel a {
+    display: block;
+    padding: 13px 0;
+    font-family: var(--font-serif);
+    font-size: 26px;
+    color: var(--text-lightest);
+    border-top: 1px solid rgba(247, 249, 238, 0.22);
+  }
+  .menu-panel a:last-child {
+    border-bottom: 1px solid rgba(247, 249, 238, 0.22);
+  }
+
+  /* Mobil: Desktop-Nav ausblenden, Hamburger einblenden. */
+  @media (max-width: 999px) {
+    .desktop-nav {
+      display: none;
+    }
+    .menu-btn {
+      display: flex;
+    }
+    .menu-panel.open {
+      display: block;
+    }
+  }
+</style>

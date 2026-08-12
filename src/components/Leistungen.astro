@@ -1,0 +1,164 @@
+---
+import { leistungen } from '../data/site';
+---
+
+<section id="leistungen" class="leistungen">
+  <div class="chevron">
+    <svg width="26" height="14" viewBox="0 0 26 14" fill="none" aria-hidden="true">
+      <path d="M2 2l11 10L24 2" stroke="#9bb06a" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+    </svg>
+  </div>
+
+  <div class="inner" data-reveal>
+    <h2>
+      Sie müssen jetzt nichts allein regeln. Wir übernehmen den{' '}
+      <span class="underline-wrap">ganzen Weg.<svg
+          viewBox="0 0 300 20"
+          preserveAspectRatio="none"
+          aria-hidden="true"
+          class="scribble"
+        >
+          <path d="M4 8c60-5 132-7 186-6 40 1 74 3 106 7" stroke="#cfe36b" stroke-width="3.4" fill="none" stroke-linecap="round" />
+          <path d="M18 15c56-6 118-8 172-7 32 1 62 3 92 6" stroke="#cfe36b" stroke-width="3" fill="none" stroke-linecap="round" />
+          <path d="M52 18c48-4 96-6 140-5" stroke="#cfe36b" stroke-width="2.4" fill="none" stroke-linecap="round" />
+        </svg></span>
+    </h2>
+
+    <p class="intro">
+      Ein Anruf genügt. Wir holen Ihr Tier ab, kremieren es so, wie Sie es sich
+      wünschen, und bringen Ihnen die Asche in einer Urne zurück. Alles Weitere
+      besprechen wir in Ruhe mit Ihnen.
+    </p>
+
+    <div class="cards">
+      {
+        leistungen.map((item) => (
+          <div class="card">
+            <div class="icon">
+              {item.icon === 'certificate' && (
+                <svg width="42" height="42" viewBox="0 0 42 42" fill="none" aria-hidden="true">
+                  <rect x="9" y="6" width="24" height="30" rx="3" stroke="#3f5325" stroke-width="1.5" />
+                  <path d="M15 14h12M15 19h12M15 24h7" stroke="#3f5325" stroke-width="1.5" stroke-linecap="round" />
+                  <circle cx="26" cy="28" r="4.5" stroke="#3f5325" stroke-width="1.5" />
+                </svg>
+              )}
+              {item.icon === 'heart' && (
+                <svg width="42" height="42" viewBox="0 0 42 42" fill="none" aria-hidden="true">
+                  <path d="M21 35s-12-7.4-12-16.2A7 7 0 0 1 21 14a7 7 0 0 1 12 4.8C33 27.6 21 35 21 35z" stroke="#3f5325" stroke-width="1.5" stroke-linejoin="round" />
+                </svg>
+              )}
+              {item.icon === 'urn' && (
+                <svg width="42" height="42" viewBox="0 0 42 42" fill="none" aria-hidden="true">
+                  <path d="M14 16h14l-2 20h-10l-2-20z" stroke="#3f5325" stroke-width="1.5" stroke-linejoin="round" />
+                  <path d="M17 16v-5a4 4 0 0 1 8 0v5" stroke="#3f5325" stroke-width="1.5" stroke-linecap="round" />
+                  <path d="M16 24h10" stroke="#3f5325" stroke-width="1.5" stroke-linecap="round" />
+                </svg>
+              )}
+            </div>
+            <h3>{item.title}</h3>
+            <p>{item.text}</p>
+          </div>
+        ))
+      }
+    </div>
+
+    <p class="note">
+      Auch Pferde und große Tiere · Abholung zu Hause oder in der Tierklinik
+    </p>
+  </div>
+</section>
+
+<style>
+  .leistungen {
+    position: relative;
+    z-index: 2;
+    background: var(--bg-page);
+    border-radius: clamp(20px, 2.6vw, 34px) clamp(20px, 2.6vw, 34px) 0 0;
+    margin-top: clamp(-34px, -2.6vw, -20px);
+  }
+
+  .chevron {
+    display: flex;
+    justify-content: center;
+    padding-top: clamp(16px, 1.6vw, 22px);
+  }
+
+  .inner {
+    max-width: var(--maxw);
+    margin: 0 auto;
+    padding: clamp(48px, 6vw, 90px) clamp(20px, 4vw, 42px) clamp(64px, 9vw, 120px);
+    text-align: center;
+  }
+
+  h2 {
+    font-family: var(--font-serif);
+    font-weight: 300;
+    font-size: clamp(34px, 5vw, 64px);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--heading-dark);
+    margin: 0 auto clamp(28px, 3.2vw, 40px);
+    max-width: 19ch;
+    text-wrap: balance;
+  }
+
+  .underline-wrap {
+    position: relative;
+    display: inline-block;
+    white-space: nowrap;
+  }
+  .scribble {
+    position: absolute;
+    left: -2%;
+    width: 104%;
+    bottom: -0.2em;
+    height: 0.34em;
+    overflow: visible;
+  }
+
+  .intro {
+    font-size: clamp(16px, 1.3vw, 18px);
+    line-height: 1.75;
+    color: var(--muted-1);
+    max-width: 58ch;
+    margin: 0 auto clamp(44px, 5.5vw, 70px);
+    text-wrap: pretty;
+  }
+
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: clamp(16px, 1.8vw, 26px);
+    text-align: left;
+  }
+
+  .card {
+    background: var(--bg-card);
+    border-radius: 18px;
+    padding: clamp(28px, 2.8vw, 38px);
+  }
+  .card .icon {
+    margin-bottom: clamp(48px, 6vw, 86px);
+    line-height: 0;
+  }
+  .card h3 {
+    font-size: 19px;
+    font-weight: 600;
+    margin: 0 0 12px;
+    color: var(--heading-dark);
+  }
+  .card p {
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.65;
+    color: var(--muted-2);
+  }
+
+  .note {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 15px;
+    color: var(--muted-3);
+    margin: clamp(32px, 3.6vw, 46px) 0 0;
+  }
+</style>

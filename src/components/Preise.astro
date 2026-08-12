@@ -1,0 +1,131 @@
+---
+import { priceTables } from '../data/site';
+---
+
+<section id="preise" class="preise">
+  <div class="inner" data-reveal>
+    <h2>Transparent und ohne Zusätze</h2>
+    <p class="sub">
+      Alle Preise inkl. Urkunde, Überführung, Energie-, CO₂-Zuschlag und 19 %
+      MwSt.
+    </p>
+
+    <div class="tables">
+      {
+        priceTables.map((table) => (
+          <div class="table">
+            <div class="table-head">
+              <h3>{table.title}</h3>
+              <span class="badge">{table.badge}</span>
+            </div>
+            <dl>
+              {table.rows.map((row) => (
+                <>
+                  <dt>{row.label}</dt>
+                  <dd>{row.price}</dd>
+                </>
+              ))}
+            </dl>
+          </div>
+        ))
+      }
+    </div>
+
+    <p class="foot">
+      Preise für die Pferdekremierung nennen wir Ihnen gern persönlich am
+      Telefon.
+    </p>
+  </div>
+</section>
+
+<style>
+  .preise {
+    background: var(--bg-page);
+  }
+
+  .inner {
+    max-width: var(--maxw);
+    margin: 0 auto;
+    padding: clamp(72px, 10vw, 140px) clamp(20px, 4vw, 42px) clamp(68px, 9vw, 120px);
+  }
+
+  h2 {
+    font-family: var(--font-serif);
+    font-weight: 300;
+    font-size: clamp(32px, 4.6vw, 58px);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--heading-dark);
+    margin: 0 0 14px;
+  }
+
+  .sub {
+    margin: 0 0 clamp(40px, 5vw, 64px);
+    color: var(--muted-3);
+    font-size: 16px;
+  }
+
+  .tables {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: clamp(16px, 1.8vw, 26px);
+  }
+
+  .table {
+    background: var(--bg-card);
+    border-radius: 18px;
+    padding: clamp(28px, 3vw, 40px);
+  }
+
+  .table-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 6px 14px;
+    margin: 0 0 22px;
+  }
+  .table-head h3 {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: 25px;
+    line-height: 1.2;
+    margin: 0;
+    color: var(--heading-dark);
+  }
+  .badge {
+    font-size: 15px;
+    color: var(--muted-3);
+    white-space: nowrap;
+  }
+
+  dl {
+    margin: 0;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    font-size: 16px;
+  }
+  dt {
+    padding: 12px 12px 12px 0;
+    color: var(--muted-1);
+    border-bottom: 1px solid var(--rule-price);
+  }
+  dd {
+    margin: 0;
+    padding: 12px 0;
+    text-align: right;
+    color: var(--heading-dark);
+    border-bottom: 1px solid var(--rule-price);
+    font-variant-numeric: tabular-nums;
+  }
+  /* Letzte Zeile ohne Trennlinie (letztes dt + dd). */
+  dt:last-of-type,
+  dd:last-of-type {
+    border-bottom: none;
+  }
+
+  .foot {
+    margin: clamp(30px, 3.4vw, 42px) 0 0;
+    font-size: 16px;
+    color: var(--muted-3);
+  }
+</style>

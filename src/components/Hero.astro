@@ -1,0 +1,161 @@
+---
+import Header from './Header.astro';
+import { site, trustPoints } from '../data/site';
+---
+
+<section id="top" class="hero">
+  <img
+    class="hero-img"
+    src="/images/hero.webp"
+    alt="Frau geht mit ihrem Hund durch einen sonnigen Wald"
+    width="1560"
+    height="1040"
+    fetchpriority="high"
+  />
+  <div class="hero-overlay"></div>
+
+  <Header variant="overlay" />
+
+  <div class="hero-center" data-reveal>
+    <p class="eyebrow">TIERBESTATTUNG MEMORIA</p>
+    <h1>Ein würdevoller Abschied für Ihr Tier</h1>
+    <p class="lead">
+      „Wir können Ihnen nicht die Trauer nehmen, aber wir möchten Ihnen helfen,
+      den Abschied mit einem guten Gefühl zu erleben.“
+    </p>
+    <a class="cta" href={site.phoneHref} data-herocta>
+      Jetzt anrufen · {site.phoneDisplay}
+    </a>
+  </div>
+
+  <div class="trust-row" data-reveal>
+    {
+      trustPoints.map((point) => (
+        <span class="trust-item">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true">
+            <circle cx="11" cy="11" r="9.2" stroke="#cfe36b" stroke-width="1.6" />
+            <path
+              d="M6.8 11.4l2.8 2.8 5.6-6"
+              stroke="#cfe36b"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+          {point}
+        </span>
+      ))
+    }
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    background: var(--bg-hero);
+    min-height: 100svh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .hero-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 50%;
+    animation: kenburns 30s ease-out forwards;
+    will-change: transform;
+  }
+
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: var(--hero-overlay);
+  }
+
+  .hero-center {
+    position: relative;
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: clamp(30px, 5vw, 70px) clamp(20px, 4vw, 42px) clamp(24px, 3vw, 36px);
+  }
+
+  .eyebrow {
+    font-size: clamp(12px, 1.05vw, 14px);
+    font-weight: 600;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0 clamp(20px, 2.6vw, 30px);
+  }
+
+  h1 {
+    font-family: var(--font-serif);
+    font-weight: 300;
+    font-size: clamp(42px, 6.6vw, 92px);
+    line-height: 1.02;
+    letter-spacing: -0.02em;
+    color: #ffffff;
+    margin: 0 0 clamp(24px, 3vw, 36px);
+    max-width: 15ch;
+    text-wrap: balance;
+  }
+
+  .lead {
+    font-size: clamp(16px, 1.35vw, 19px);
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.92);
+    max-width: 46ch;
+    margin: 0 0 clamp(28px, 3.4vw, 40px);
+    text-wrap: pretty;
+  }
+
+  .cta {
+    background: var(--accent);
+    color: var(--btn-text);
+    border-radius: 999px;
+    padding: 19px 38px;
+    font-size: 17px;
+    font-weight: 600;
+    min-height: 58px;
+    display: flex;
+    align-items: center;
+    font-variant-numeric: tabular-nums;
+  }
+  .cta:hover {
+    background: var(--accent-hover);
+    color: var(--btn-text);
+  }
+
+  .trust-row {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 12px clamp(28px, 4vw, 60px);
+    padding: 0 clamp(20px, 4vw, 42px) clamp(38px, 5vw, 58px);
+  }
+
+  .trust-item {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    font-size: 16px;
+    color: #ffffff;
+  }
+
+  /* Mobil: Trust-Row als Spalte. */
+  @media (max-width: 999px) {
+    .trust-row {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+</style>

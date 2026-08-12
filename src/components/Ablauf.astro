@@ -1,0 +1,88 @@
+---
+import { ablaufSteps } from '../data/site';
+import TestimonialSlider from './TestimonialSlider.astro';
+---
+
+<section id="ablauf" class="ablauf">
+  <div class="steps-wrap" data-reveal>
+    <h2>Was nach Ihrem Anruf geschieht</h2>
+    <div class="steps">
+      {
+        ablaufSteps.map((step) => (
+          <div class="step">
+            <p class="num">{step.num}</p>
+            <h3>{step.title}</h3>
+            <p class="text">{step.text}</p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+
+  <div class="testimonials-wrap">
+    <TestimonialSlider />
+  </div>
+</section>
+
+<style>
+  .ablauf {
+    background: var(--bg-dark);
+    color: var(--text-light);
+    border-radius: clamp(20px, 2.6vw, 34px);
+  }
+
+  .steps-wrap {
+    max-width: var(--maxw);
+    margin: 0 auto;
+    padding: clamp(68px, 9vw, 130px) clamp(20px, 4vw, 42px);
+  }
+
+  h2 {
+    font-family: var(--font-serif);
+    font-weight: 300;
+    font-size: clamp(32px, 4.6vw, 58px);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--text-lightest);
+    margin: 0 0 clamp(46px, 6vw, 78px);
+    max-width: 16ch;
+    text-wrap: balance;
+  }
+
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: clamp(28px, 3vw, 44px);
+  }
+
+  .step {
+    border-top: 1px solid rgba(238, 243, 224, 0.28);
+    padding-top: 22px;
+  }
+  .num {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--accent);
+    margin: 0 0 14px;
+    font-variant-numeric: tabular-nums;
+  }
+  .step h3 {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: 25px;
+    margin: 0 0 10px;
+    color: var(--text-lightest);
+  }
+  .step .text {
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.65;
+    color: rgba(238, 243, 224, 0.74);
+  }
+
+  .testimonials-wrap {
+    max-width: var(--maxw);
+    margin: 0 auto;
+    padding: 0 clamp(20px, 4vw, 42px) clamp(76px, 10vw, 140px);
+  }
+</style>
