@@ -18,10 +18,15 @@ Wahrheit**, diese Datei die Referenz.
 - **Sprache:** Deutsch (`lang="de"`).
 
 ### Getroffene Entscheidungen (mit dem Kunden abgestimmt)
-1. **Bilder:** Hero-Bild ist eingebettet und liegt als `public/images/hero.webp`
-   vor. Die beiden anderen Bilder (Über uns, Kontakt-Parallax) fehlen und werden
-   **vorerst durch Platzhalter** mit gleichem Ausschnitt/Seitenverhältnis
-   ersetzt. Späterer Austausch 1:1.
+1. **Bilder:**
+   - **Hero:** `public/images/hero.webp` (aus dem vom Kunden hochgeladenen
+     `memoria-herobild.png` optimiert, 1553×1013).
+   - **Über uns:** `public/images/about.webp` (aus `pasted-1785311187667-0.png`
+     optimiert, 994×1240, ~4:5). ✅ eingebunden.
+   - **Kontakt-Parallax:** Bild **fehlt noch** → aktuell Platzhalter
+     `public/images/contact-placeholder.svg`. Später 1:1 austauschen.
+   - Die hochgeladenen Original-PNGs bleiben im Repo; ausgeliefert werden die
+     optimierten WebP-Dateien.
 2. **Styling:** Umsetzung über **zentrale Design-Tokens** (CSS-Variablen) und
    saubere Komponenten – **exakt dieselben Werte** wie im Export, nur wartbar.
 3. **Kontaktformular:** vorerst **nur visuelle Bestätigung** (kein echter
