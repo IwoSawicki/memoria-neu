@@ -27,19 +27,19 @@ import { site } from '../data/site';
       </p>
     </div>
 
-    <form class="form" data-contactform>
-      <!-- Web3Forms: öffentlicher Access Key + Metadaten -->
-      <input type="hidden" name="access_key" value={site.web3formsKey} />
+    <form class="form" data-contactform data-target={site.formsubmitTarget}>
+      <!-- FormSubmit.co: Metadaten -->
       <input
         type="hidden"
-        name="subject"
+        name="_subject"
         value="Neue Kontaktanfrage – Tierbestattung Memoria"
       />
-      <input type="hidden" name="from_name" value="Website Tierbestattung Memoria" />
-      <!-- Honeypot gegen Spam (für Menschen unsichtbar) -->
+      <input type="hidden" name="_template" value="table" />
+      <input type="hidden" name="_captcha" value="false" />
+      <!-- Honeypot gegen Spam (FormSubmit nutzt _honey; für Menschen unsichtbar) -->
       <input
-        type="checkbox"
-        name="botcheck"
+        type="text"
+        name="_honey"
         class="hp"
         tabindex="-1"
         autocomplete="off"

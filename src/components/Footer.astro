@@ -49,6 +49,16 @@ const year = new Date().getFullYear();
     <span>© <span data-year>{year}</span> {site.legalName} · Abholung 365 Tage im Jahr</span>
     <span>
       <a href="/impressum">Impressum</a> · <a href="/datenschutz">Datenschutz</a>
+      {
+        site.googleAnalyticsId && (
+          <>
+            {' '}·{' '}
+            <button type="button" class="cookie-link" data-cookie-settings>
+              Cookie-Einstellungen
+            </button>
+          </>
+        )
+      }
     </span>
   </div>
 </footer>
@@ -191,6 +201,17 @@ const year = new Date().getFullYear();
     color: rgba(238, 243, 224, 0.45);
   }
   .footer-bottom a:hover {
+    color: #ffffff;
+  }
+  .cookie-link {
+    background: none;
+    border: none;
+    padding: 0;
+    font: inherit;
+    color: rgba(238, 243, 224, 0.45);
+    cursor: pointer;
+  }
+  .cookie-link:hover {
     color: #ffffff;
   }
 </style>

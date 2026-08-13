@@ -14,11 +14,16 @@ export const site = {
   owners: ['Sarina Göck-König', 'Dr. Klaus Göck'],
   address: 'Konrad-Zuse-Str. 3, 69514 Laudenbach',
   pickupAddress: 'Abholadresse: Carl-Benz-Str. 1, 64683 Einhausen',
-  // Web3Forms: öffentlicher Access Key (aus dem Web3Forms-Dashboard mit
-  // info@tierbestattung-memoria.de anlegen und hier eintragen).
-  // TODO: echten Key eintragen – solange der Platzhalter steht, wird der
-  // Versand blockiert und ein Hinweis angezeigt.
-  web3formsKey: 'DEIN_WEB3FORMS_ACCESS_KEY',
+  // FormSubmit.co: Ziel für das Kontaktformular. Kein Key nötig – beim ersten
+  // Absenden schickt FormSubmit eine Aktivierungs-Mail, die einmalig bestätigt
+  // werden muss. Zum Schutz vor Spam kann hier später der von FormSubmit
+  // erzeugte Hash-Endpoint statt der Klartext-Adresse eingetragen werden
+  // (z. B. 'abc123def456').
+  formsubmitTarget: 'info@tierbestattung-memoria.de',
+  // Google Analytics 4 Mess-ID (z. B. 'G-XXXXXXXXXX'). Leer lassen = kein
+  // Analytics und kein Cookie-Banner. Sobald eine ID eingetragen ist, erscheint
+  // der Cookie-Hinweis und GA wird NUR nach Einwilligung geladen.
+  googleAnalyticsId: '',
   seo: {
     title:
       'Tierbestattung Memoria – Einzelkremierung mit Ascherückgabe in Laudenbach',

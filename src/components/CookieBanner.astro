@@ -1,0 +1,141 @@
+---
+import { site } from '../data/site';
+// Wird nur gerendert, wenn eine GA-ID gesetzt ist (siehe BaseLayout).
+const gaId = site.googleAnalyticsId;
+---
+
+<div class="cookie" data-cookiebanner data-ga={gaId} role="dialog" aria-live="polite" aria-label="Cookie-Hinweis">
+  <p class="text">
+    Wir verwenden – nur mit Ihrer Einwilligung – Cookies zur Reichweitenmessung
+    (Google Analytics), um unsere Website zu verbessern. Details in der
+    <a href="/datenschutz">Datenschutzerklärung</a>.
+  </p>
+  <div class="actions">
+    <button type="button" class="decline" data-decline>Ablehnen</button>
+    <button type="button" class="accept" data-accept>Akzeptieren</button>
+  </div>
+</div>
+
+<style>
+  .cookie {
+    position: fixed;
+    left: clamp(12px, 3vw, 22px);
+    bottom: clamp(12px, 3vw, 22px);
+    z-index: 60;
+    width: min(400px, calc(100vw - 24px));
+    background: var(--bg-dark);
+    color: var(--text-light);
+    border: 1px solid rgba(238, 243, 224, 0.14);
+    border-radius: 16px;
+    padding: 18px 20px;
+    box-shadow: 0 20px 50px rgba(16, 26, 8, 0.4);
+    /* versteckt bis JS über den Zustand entscheidet */
+    display: none;
+    transform: translateY(12px);
+    opacity: 0;
+    transition: transform 0.35s ease, opacity 0.35s ease;
+  }
+  .cookie.show {
+    display: block;
+    transform: none;
+    opacity: 1;
+  }
+
+  .text {
+    margin: 0 0 14px;
+    font-size: 14px;
+    line-height: 1.6;
+    color: rgba(238, 243, 224, 0.82);
+  }
+  .text a {
+    color: var(--accent);
+    text-decoration: underline;
+  }
+  .text a:hover {
+    color: var(--accent-hover);
+  }
+
+  .actions {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+  }
+
+  button {
+    border-radius: 999px;
+    padding: 10px 20px;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    min-height: 42px;
+  }
+  .accept {
+    background: var(--accent);
+    color: var(--btn-text);
+    border: none;
+  }
+  .accept:hover {
+    background: var(--accent-hover);
+  }
+  .decline {
+    background: none;
+    color: var(--text-light);
+    border: 1px solid rgba(238, 243, 224, 0.35);
+  }
+  .decline:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+</style>
+
+<script>
+  const KEY = 'memoria-cookie-consent';
+  const banner = document.querySelector<HTMLElement>('[data-cookiebanner]');
+
+  if (banner) {
+    const gaId = banner.dataset.ga || '';
+
+    const loadGA = (id: string) => {
+      if (!id || (window as any).__gaLoaded) return;
+      (window as any).__gaLoaded = true;
+      const s = document.createElement('script');
+      s.async = true;
+      s.src = 'https://www.googletagmanager.com/gtag/js?id=' + id;
+      document.head.appendChild(s);
+      const w = window as any;
+      w.dataLayer = w.dataLayer || [];
+      function gtag(...args: unknown[]) {
+        w.dataLayer.push(args);
+      }
+      w.gtag = gtag;
+      gtag('js', new Date());
+      gtag('config', id, { anonymize_ip: true });
+    };
+
+    const show = () => banner.classList.add('show');
+    const hide = () => banner.classList.remove('show');
+
+    const stored = localStorage.getItem(KEY);
+    if (stored === 'granted') loadGA(gaId);
+    else if (stored !== 'denied') show();
+
+    banner.querySelector('[data-accept]')?.addEventListener('click', () => {
+      localStorage.setItem(KEY, 'granted');
+      loadGA(gaId);
+      hide();
+    });
+    banner.querySelector('[data-decline]')?.addEventListener('click', () => {
+      localStorage.setItem(KEY, 'denied');
+      hide();
+    });
+
+    // Über den Footer-Link erneut öffnen ("Cookie-Einstellungen").
+    document.querySelectorAll('[data-cookie-settings]').forEach((el) =>
+      el.addEventListener('click', (e) => {
+        e.preventDefault();
+        show();
+      }),
+    );
+  }
+</script>

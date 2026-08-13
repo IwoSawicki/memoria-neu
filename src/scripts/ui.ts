@@ -160,22 +160,22 @@ function setupStickyBar() {
   return update;
 }
 
-/* --- Kontaktformular (Web3Forms) ------------------------------------- */
+/* --- Kontaktformular (FormSubmit.co) --------------------------------- */
 function setupForm() {
   const form = document.querySelector<HTMLFormElement>('[data-contactform]');
   const note = document.querySelector<HTMLElement>('[data-formnote]');
   const submit = form?.querySelector<HTMLButtonElement>('button[type="submit"]');
   if (!form || !note) return;
 
+  // Ziel (E-Mail oder FormSubmit-Hash) steht als data-Attribut am Formular.
+  const target = form.dataset.target || '';
+
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    const data = Object.fromEntries(new FormData(form).entries());
-
-    // Solange kein echter Web3Forms-Key hinterlegt ist: nur Hinweis zeigen.
-    if (!data.access_key || String(data.access_key).startsWith('DEIN_')) {
+    if (!target) {
       note.textContent =
-        'Der Formularversand ist noch nicht aktiviert. Bitte rufen Sie uns an: 06201 7303041.';
+        'Der Formularversand ist noch nicht eingerichtet. Bitte rufen Sie uns an: 06201 7303041.';
       return;
     }
 
@@ -183,16 +183,20 @@ function setupForm() {
     note.textContent = 'Wird gesendet …';
 
     try {
-      const res = await fetch('https://api.web3forms.com/submit', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Accept: 'application/json',
+      const res = await fetch(
+        'https://formsubmit.co/ajax/' + encodeURIComponent(target),
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Accept: 'application/json',
+          },
+          body: JSON.stringify(Object.fromEntries(new FormData(form).entries())),
         },
-        body: JSON.stringify(data),
-      });
+      );
       const json = await res.json();
-      if (json.success) {
+      // FormSubmit liefert success als String "true" oder Boolean true.
+      if (json.success === true || json.success === 'true') {
         form.reset();
         note.textContent =
           'Danke – wir melden uns so schnell wie möglich bei Ihnen.';

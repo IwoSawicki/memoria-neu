@@ -29,9 +29,9 @@ Wahrheit**, diese Datei die Referenz.
      optimierten WebP-Dateien.
 2. **Styling:** Umsetzung über **zentrale Design-Tokens** (CSS-Variablen) und
    saubere Komponenten – **exakt dieselben Werte** wie im Export, nur wartbar.
-3. **Kontaktformular:** Versand über **Web3Forms** (AJAX, Bestätigung inline).
-   Access Key in `src/data/site.ts` (`web3formsKey`) eintragen – bis dahin
-   blockiert der Versand mit Hinweis. Honeypot gegen Spam aktiv.
+3. **Kontaktformular:** Versand über **FormSubmit.co** (AJAX, Bestätigung inline).
+   Ziel in `src/data/site.ts` (`formsubmitTarget`) – kein Key nötig, nur einmalige
+   Aktivierungs-Mail bestätigen. Honeypot (`_honey`) gegen Spam aktiv.
 4. **Unterseiten:** `impressum` und `datenschutz` werden als **eigene
    Astro-Seiten mit Header/Footer angelegt** (Struktur jetzt, Inhalt später).
 
