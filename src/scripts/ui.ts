@@ -50,15 +50,18 @@ function setupMenu() {
   const btn = document.querySelector<HTMLButtonElement>('[data-menubtn]');
   const panel = document.querySelector<HTMLElement>('[data-menupanel]');
   if (!btn || !panel) return;
+  const header = btn.closest<HTMLElement>('.site-header');
 
   const close = () => {
     panel.classList.remove('open');
     btn.classList.remove('open');
+    header?.classList.remove('header-open');
     btn.setAttribute('aria-expanded', 'false');
   };
   const toggle = () => {
     const open = panel.classList.toggle('open');
     btn.classList.toggle('open', open);
+    header?.classList.toggle('header-open', open);
     btn.setAttribute('aria-expanded', open ? 'true' : 'false');
   };
 

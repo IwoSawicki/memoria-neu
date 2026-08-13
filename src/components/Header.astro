@@ -57,6 +57,18 @@ const logoHref = variant === 'solid' ? '/' : '#top';
     top: 0;
     left: 0;
     right: 0;
+    transition: background 0.3s ease;
+  }
+  /* Beim Aufklappen des Mobil-Menüs verschmilzt die Leiste mit dem weißen Sheet. */
+  .site-header.overlay.header-open {
+    background: #ffffff;
+  }
+  .site-header.overlay.header-open .logo,
+  .site-header.overlay.header-open .logo:hover {
+    color: var(--heading-dark);
+  }
+  .site-header.overlay.header-open .menu-btn span {
+    background: var(--heading-dark);
   }
   /* Solid (Unterseiten): weißer Balken mit dunkler Schrift. */
   .site-header.solid {
@@ -94,6 +106,7 @@ const logoHref = variant === 'solid' ? '/' : '#top';
     font-size: clamp(26px, 2.4vw, 34px);
     line-height: 1;
     color: var(--text-lightest);
+    transition: color 0.3s ease;
   }
   .logo:hover {
     color: var(--text-lightest);
@@ -143,7 +156,7 @@ const logoHref = variant === 'solid' ? '/' : '#top';
     width: 30px;
     height: 2px;
     background: var(--text-lightest);
-    transition: transform 0.3s ease, opacity 0.3s ease;
+    transition: transform 0.3s ease, opacity 0.3s ease, background 0.3s ease;
     transform-origin: center;
   }
   /* Burger -> X wenn Menü offen */

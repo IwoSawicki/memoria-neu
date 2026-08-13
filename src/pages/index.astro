@@ -7,6 +7,54 @@ import Ablauf from '../components/Ablauf.astro';
 import Preise from '../components/Preise.astro';
 import Kontakt from '../components/Kontakt.astro';
 import { site } from '../data/site';
+
+// Absolute URLs für strukturierte Daten.
+const base = Astro.site ?? new URL('https://tierbestattung-memoria.de');
+const url = new URL('/', base).href;
+const image = new URL('/images/og.jpg', base).href;
+
+// Schema.org – LocalBusiness (lokale SEO).
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  '@id': `${url}#business`,
+  name: site.fullName,
+  legalName: site.legalName,
+  url,
+  image,
+  logo: new URL('/favicon.svg', base).href,
+  telephone: '+4962017303041',
+  email: site.email,
+  priceRange: '€€',
+  description: site.seo.description,
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: 'Konrad-Zuse-Str. 3',
+    postalCode: '69514',
+    addressLocality: 'Laudenbach',
+    addressRegion: 'Baden-Württemberg',
+    addressCountry: 'DE',
+  },
+  founder: site.owners.map((name) => ({ '@type': 'Person', name })),
+  areaServed: 'Laudenbach, Einhausen und Umgebung',
+  sameAs: [site.instagram],
+  openingHoursSpecification: [
+    {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: [
+        'Monday',
+        'Tuesday',
+        'Wednesday',
+        'Thursday',
+        'Friday',
+        'Saturday',
+        'Sunday',
+      ],
+      opens: '00:00',
+      closes: '23:59',
+    },
+  ],
+};
 ---
 
 <BaseLayout>
@@ -16,4 +64,10 @@ import { site } from '../data/site';
   <Ablauf />
   {site.showPrices && <Preise />}
   <Kontakt />
+
+  <script
+    type="application/ld+json"
+    is:inline
+    set:html={JSON.stringify(schema)}
+  />
 </BaseLayout>

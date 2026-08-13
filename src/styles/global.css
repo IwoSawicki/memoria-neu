@@ -32,9 +32,9 @@
   --chevron: #9bb06a;
   --rule-price: #d5deba;
 
-  /* Fonts */
-  --font-serif: 'Fraunces', Georgia, serif;
-  --font-sans: 'Figtree', 'Helvetica Neue', Arial, sans-serif;
+  /* Fonts (selbst gehostet, Variable Fonts) */
+  --font-serif: 'Fraunces Variable', Georgia, serif;
+  --font-sans: 'Figtree Variable', 'Helvetica Neue', Arial, sans-serif;
 
   /* Layout */
   --maxw: 1240px;

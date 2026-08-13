@@ -54,6 +54,10 @@ import { site } from '../data/site';
       <p class="note" data-formnote>
         Wir antworten so schnell wie möglich, meist innerhalb weniger Stunden.
       </p>
+      <p class="privacy">
+        Mit dem Absenden stimmen Sie der Verarbeitung Ihrer Angaben gemäß unserer
+        <a href="/datenschutz">Datenschutzerklärung</a> zu.
+      </p>
     </form>
   </div>
 </section>
@@ -179,5 +183,18 @@ import { site } from '../data/site';
     margin: 0;
     font-size: 14px;
     color: rgba(255, 255, 255, 0.6);
+  }
+  .form .privacy {
+    margin: 2px 0 0;
+    font-size: 13px;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.55);
+  }
+  .form .privacy a {
+    color: var(--accent);
+    text-decoration: underline;
+  }
+  .form .privacy a:hover {
+    color: var(--accent-hover);
   }
 </style>

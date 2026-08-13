@@ -1,0 +1,99 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { site } from '../data/site';
+---
+
+<BaseLayout
+  title="Seite nicht gefunden – Tierbestattung Memoria"
+  description="Diese Seite existiert leider nicht. Zurück zur Startseite der Tierbestattung Memoria."
+  solidHeader={true}
+>
+  <main class="notfound">
+    <p class="eyebrow">Fehler 404</p>
+    <h1>Diese Seite konnten wir nicht finden.</h1>
+    <p class="lead">
+      Vielleicht wurde die Adresse geändert oder es hat sich ein Tippfehler
+      eingeschlichen. Kehren Sie gern zur Startseite zurück – oder rufen Sie uns
+      einfach an, wir sind rund um die Uhr für Sie da.
+    </p>
+    <div class="actions">
+      <a class="btn-primary" href="/">Zur Startseite</a>
+      <a class="btn-outline" href={site.phoneHref}>
+        Anrufen · {site.phoneDisplay}
+      </a>
+    </div>
+  </main>
+</BaseLayout>
+
+<style>
+  .notfound {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: clamp(64px, 10vw, 140px) clamp(20px, 4vw, 42px) clamp(80px, 12vw, 160px);
+    text-align: center;
+  }
+  .eyebrow {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--muted-3);
+    margin: 0 0 18px;
+  }
+  h1 {
+    font-family: var(--font-serif);
+    font-weight: 300;
+    font-size: clamp(34px, 5vw, 64px);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--heading-dark);
+    margin: 0 auto 22px;
+    max-width: 16ch;
+    text-wrap: balance;
+  }
+  .lead {
+    font-size: clamp(16px, 1.3vw, 18px);
+    line-height: 1.75;
+    color: var(--muted-1);
+    max-width: 52ch;
+    margin: 0 auto clamp(32px, 4vw, 44px);
+    text-wrap: pretty;
+  }
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    justify-content: center;
+  }
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    background: var(--accent);
+    color: var(--btn-text);
+    border-radius: 999px;
+    padding: 16px 32px;
+    font-size: 16px;
+    font-weight: 600;
+    min-height: 54px;
+  }
+  .btn-primary:hover {
+    background: var(--accent-hover);
+    color: var(--btn-text);
+  }
+  .btn-outline {
+    display: inline-flex;
+    align-items: center;
+    border: 1.5px solid var(--heading-dark);
+    border-radius: 999px;
+    padding: 16px 32px;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--heading-dark);
+    min-height: 54px;
+    font-variant-numeric: tabular-nums;
+  }
+  .btn-outline:hover {
+    background: var(--bg-card);
+    color: var(--heading-dark);
+  }
+</style>

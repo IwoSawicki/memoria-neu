@@ -1,64 +1,65 @@
 # Go-Live-Checkliste – Tierbestattung Memoria
 
-Stand der Website: One-Pager + Impressum + Datenschutz sind gebaut, alle Bilder
-eingebunden, Kontaktformular auf Web3Forms vorbereitet, Docker/nginx für Dokploy
-(Port 80) vorhanden.
+Website-Stand: One-Pager + Impressum + Datenschutz + 404, alle Bilder
+eingebunden, Kontaktformular über Web3Forms, Fonts selbst gehostet, SEO
+(Sitemap/robots/OG/Schema.org), Docker/nginx für Dokploy (Port 80).
+
+**Domains:** Entwicklung `memoria.stolz-marketing.de` · Live später
+`tierbestattung-memoria.de`.
 
 ---
 
 ## 🔴 Muss vor Go-Live
 
-- [ ] **Web3Forms Access Key eintragen.** Auf <https://web3forms.com> mit
-  `info@tierbestattung-memoria.de` einen kostenlosen Access Key erzeugen und in
-  `src/data/site.ts` bei `web3formsKey` einsetzen. Ohne echten Key wird der
-  Versand blockiert und ein Hinweis angezeigt. Danach eine Testnachricht senden.
-- [ ] **Domain + HTTPS in Dokploy.** Echte Domain eintragen; Traefik/Let's
-  Encrypt stellt das Zertifikat automatisch aus.
-- [ ] **`site`-URL setzen.** In `astro.config.mjs` `site` auf die finale Domain
-  ändern (aktuell Platzhalter `https://www.tierbestattung-memoria.de`) – wichtig
-  für Canonical-URLs und spätere Sitemap.
-- [ ] **Deploy-Branch prüfen.** Dokploy auf den richtigen Branch zeigen lassen
-  (`claude/memoria-website-astro-s4tyzy`) oder vorher nach `main` mergen.
-- [ ] **Google Fonts selbst hosten (DSGVO).** Aktuell werden Fraunces + Figtree
-  von `fonts.googleapis.com` geladen → IP-Übertragung an Google (USA). Für
-  Rechtssicherheit + Tempo lokal einbinden (z. B. `@fontsource-variable/fraunces`
-  und `@fontsource-variable/figtree`). Danach kann der Google-Fonts-Abschnitt und
-  der USA-Hinweis in der Datenschutzerklärung entfallen.
-- [ ] **Einwilligungs-Checkbox im Kontaktformular (DSGVO).** Checkbox „Ich habe
-  die Datenschutzerklärung gelesen und stimme der Verarbeitung meiner Daten zu"
-  mit Link auf `/datenschutz` ergänzen (bewusst noch nicht im 1:1-Design – bitte
-  freigeben, dann baue ich sie ein).
-- [ ] **Datenschutz: Web3Forms als Auftragsverarbeiter präzisieren.**
-  Anbieter-Adresse + AVV ergänzen; Rechtstexte insgesamt anwaltlich prüfen lassen.
+- [ ] **Web3Forms Access Key eintragen.** Auf <https://web3forms.com> die
+  E-Mail `info@tierbestattung-memoria.de` eingeben → Key kommt per Mail → in
+  `src/data/site.ts` bei `web3formsKey` einsetzen. Danach Testnachricht senden.
+- [ ] **Domain + HTTPS in Dokploy.** Für die Live-Domain
+  `tierbestattung-memoria.de` eintragen; Traefik/Let's Encrypt macht das
+  Zertifikat automatisch.
+- [ ] **www vs. ohne www festlegen.** Aktuell ist die Live-Domain **ohne www**
+  gesetzt (`tierbestattung-memoria.de`). Eine Variante als Hauptdomain wählen und
+  die andere per Redirect darauf weiterleiten (in Dokploy/DNS). Die alte Seite
+  lief auf `www.` – bitte final entscheiden.
 - [ ] **E-Mail-Adresse vereinheitlichen.** Impressum nennt
   `info@tierbestattung-memoria.de`, die „verantwortliche Stelle" in der
   Datenschutzerklärung nennt `memoria.tierbestattung@gmail.com` (aus der alten
-  Seite übernommen). Bitte final festlegen.
+  Seite). Bitte final festlegen.
+- [ ] **Rechtstexte prüfen (lassen).** Impressum/AGB/Datenschutz inhaltlich
+  gegenlesen; Web3Forms als Auftragsverarbeiter ggf. mit Anbieteradresse/AVV
+  präzisieren.
 
-## 🟡 Sollte / empfohlen
+## 🟢 Erledigt
 
-- [ ] **404-Seite** (`src/pages/404.astro`) im Markendesign gestalten.
-- [ ] **Sitemap + robots.txt** für SEO (`@astrojs/sitemap`, braucht `site`).
-- [ ] **Open-Graph-Bild** (`og:image`) für schöne Vorschau beim Teilen.
-- [ ] **Strukturierte Daten** (Schema.org `LocalBusiness`) für lokale SEO
-  (Name, Adresse, Telefon, Öffnungszeiten/„24 h").
-- [ ] **Favicon final** – aktuell schlichtes „M" auf Dunkelgrün.
-- [ ] **Lighthouse/Performance-Check** nach dem ersten Deploy.
+- [x] **Google Fonts selbst hosten** (Fraunces + Figtree via `@fontsource-variable`,
+  keine Verbindung zu Google mehr; Datenschutzerklärung entsprechend angepasst).
+- [x] **Datenschutz-Hinweis am Kontaktformular** (mit Link statt harter Checkbox –
+  auf Wunsch in 1 Zeile auf Pflicht-Checkbox umstellbar).
+- [x] **404-Seite** im Markendesign (`src/pages/404.astro`, nginx `error_page`).
+- [x] **Sitemap + robots.txt** (`@astrojs/sitemap`, `/`, `/impressum/`,
+  `/datenschutz/`).
+- [x] **Open-Graph-Bild** (Frau + Hund, 1200×630, `public/images/og.jpg`) inkl.
+  OG-/Twitter-Meta-Tags.
+- [x] **Schema.org LocalBusiness** (JSON-LD auf der Startseite: Adresse, Telefon,
+  Öffnungszeiten 24/7, Inhaber, Instagram).
+- [x] **`site`-URL gesetzt** (Live-Domain als Standard; Dev-Domain per
+  `SITE_URL`-Env in Dokploy überschreibbar).
 
-## 🟢 Optional / später
+## 🟡 Optional / später
 
-- [ ] **Unbenutzte Original-PNGs entfernen.** `memoria-herobild.png`,
-  `pasted-1785311187667-0.png`, `Memoria-Kontaktbild.png` liegen als Quelle in
-  `public/images/`, ausgeliefert werden nur die optimierten `.webp`. Können raus,
-  um den Deploy schlank zu halten (auf Wunsch mache ich das).
-- [ ] **Weitere Unterseiten** (Leistungen, Preise, Tierurnen, Pferdekremierung)
-  als eigene SEO-Seiten – wie in der alten Navigation.
+- [ ] **Dev-Domain nicht indexieren.** Für `memoria.stolz-marketing.de` in Dokploy
+  optional Basic-Auth aktivieren oder `SITE_URL=https://memoria.stolz-marketing.de`
+  setzen (dann zeigen Canonicals auf die Dev-Domain). Standard: Canonicals zeigen
+  auf die Live-Domain – Suchmaschinen konsolidieren dorthin.
+- [ ] **Unbenutzte Original-PNGs entfernen** (`memoria-herobild.png`,
+  `pasted-1785311187667-0.png`, `Memoria-Kontaktbild.png`) – ausgeliefert werden
+  nur die `.webp`.
+- [ ] **Weitere SEO-Unterseiten** (Leistungen, Preise, Tierurnen, Pferdekremierung).
 - [ ] **Analytics** (falls gewünscht, DSGVO-konform, z. B. Plausible).
-- [ ] **Echte Testimonials/Bewertungen** ergänzen.
+- [ ] **Favicon final** abstimmen · **Lighthouse-Check** nach dem Deploy.
 
 ---
 
-### Schnell startklar
-Das absolute Minimum für einen sinnvollen Live-Gang: **Web3Forms-Key**, **Domain
-+ HTTPS**, **`site`-URL** und die **DSGVO-Punkte (Fonts selbst hosten +
-Einwilligungs-Checkbox)**. Der Rest kann iterativ folgen.
+### Kürzester Weg live
+Nur noch: **Web3Forms-Key** + **Live-Domain in Dokploy** (mit HTTPS) + **www-Frage
++ E-Mail final** + **Rechtstext-Gegenlesen**. Der Rest ist optional.

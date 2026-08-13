@@ -1,4 +1,9 @@
 ---
+// Selbst gehostete Schriften (kein Google-Server-Aufruf, DSGVO-freundlich).
+// Fraunces mit opsz+wght (normal & kursiv), Figtree mit wght.
+import '@fontsource-variable/fraunces/opsz.css';
+import '@fontsource-variable/fraunces/opsz-italic.css';
+import '@fontsource-variable/figtree/wght.css';
 import '../styles/global.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
@@ -17,6 +22,10 @@ const {
   description = site.seo.description,
   solidHeader = false,
 } = Astro.props;
+
+// Absolute URLs für Canonical & Open Graph (Basis = `site` aus astro.config).
+const canonical = new URL(Astro.url.pathname, Astro.site).href;
+const ogImage = new URL('/images/og.jpg', Astro.site).href;
 ---
 
 <!doctype html>
@@ -27,21 +36,28 @@ const {
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="canonical" href={canonical} />
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={site.fullName} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
     <meta property="og:locale" content="de_DE" />
-    <link rel="canonical" href={Astro.url.href} />
-
-    <!-- Fonts: Fraunces + Figtree (exakt wie im Design) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..500;1,9..144,300..500&family=Figtree:wght@400;500;600&display=swap"
-      rel="stylesheet"
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="Frau geht mit ihrem Hund durch einen sonnigen Wald"
     />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
   </head>
   <body>
     {solidHeader && <Header variant="solid" />}

@@ -84,8 +84,11 @@ Wahrheit**, diese Datei die Referenz.
   Kursiv verwendet. Fallback: `Georgia, serif`.
 - **Figtree** (Sans) – Fließtext. Gewichte **400/500/600**.
   Fallback: `'Helvetica Neue', Arial, sans-serif`.
-- Google-Fonts-URL (exakt, mit `preconnect`):
-  `https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..500;1,9..144,300..500&family=Figtree:wght@400;500;600&display=swap`
+- **Selbst gehostet** (DSGVO): Variable Fonts via `@fontsource-variable/fraunces`
+  (`opsz` + `opsz-italic`) und `@fontsource-variable/figtree` (`wght`), importiert
+  im `BaseLayout`. Family-Namen: `'Fraunces Variable'` / `'Figtree Variable'`.
+  Kein Aufruf von Google-Servern mehr. (Ursprung: Google-Fonts-Export
+  `Fraunces:ital,opsz,wght@0,9..144,300..500;1,…` + `Figtree:wght@400;500;600`.)
 - **Basis:** `font-size:16px`, `line-height:1.7`, `color:#1f2d16`,
   Font-Familie Body = Figtree-Stack. `-webkit-font-smoothing:antialiased`.
 
