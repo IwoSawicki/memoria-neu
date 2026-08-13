@@ -151,8 +151,11 @@ import { site, trustPoints } from '../data/site';
     color: #ffffff;
   }
 
-  /* Mobil: Trust-Row als Spalte. */
+  /* Mobil: Trust-Row als Spalte, Bild rechtsbündig (Frau + Hund sichtbar). */
   @media (max-width: 999px) {
+    .hero-img {
+      object-position: 80% 50%;
+    }
     .trust-row {
       flex-direction: column;
       align-items: center;

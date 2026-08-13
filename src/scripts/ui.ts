@@ -53,10 +53,12 @@ function setupMenu() {
 
   const close = () => {
     panel.classList.remove('open');
+    btn.classList.remove('open');
     btn.setAttribute('aria-expanded', 'false');
   };
   const toggle = () => {
     const open = panel.classList.toggle('open');
+    btn.classList.toggle('open', open);
     btn.setAttribute('aria-expanded', open ? 'true' : 'false');
   };
 
@@ -155,16 +157,61 @@ function setupStickyBar() {
   return update;
 }
 
-/* --- Kontaktformular ------------------------------------------------- */
+/* --- Kontaktformular (Web3Forms) ------------------------------------- */
 function setupForm() {
   const form = document.querySelector<HTMLFormElement>('[data-contactform]');
   const note = document.querySelector<HTMLElement>('[data-formnote]');
+  const submit = form?.querySelector<HTMLButtonElement>('button[type="submit"]');
   if (!form || !note) return;
-  form.addEventListener('submit', (e) => {
+
+  form.addEventListener('submit', async (e) => {
     e.preventDefault();
-    note.textContent =
-      'Danke – wir melden uns so schnell wie möglich bei Ihnen.';
+
+    const data = Object.fromEntries(new FormData(form).entries());
+
+    // Solange kein echter Web3Forms-Key hinterlegt ist: nur Hinweis zeigen.
+    if (!data.access_key || String(data.access_key).startsWith('DEIN_')) {
+      note.textContent =
+        'Der Formularversand ist noch nicht aktiviert. Bitte rufen Sie uns an: 06201 7303041.';
+      return;
+    }
+
+    if (submit) submit.disabled = true;
+    note.textContent = 'Wird gesendet …';
+
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+      const json = await res.json();
+      if (json.success) {
+        form.reset();
+        note.textContent =
+          'Danke – wir melden uns so schnell wie möglich bei Ihnen.';
+      } else {
+        note.textContent =
+          'Es gab ein Problem beim Senden. Bitte rufen Sie uns an: 06201 7303041.';
+      }
+    } catch {
+      note.textContent =
+        'Es gab ein Problem beim Senden. Bitte rufen Sie uns an: 06201 7303041.';
+    } finally {
+      if (submit) submit.disabled = false;
+    }
   });
+}
+
+/* --- Copyright-Jahr automatisch --------------------------------------- */
+function setupYear() {
+  const y = String(new Date().getFullYear());
+  document
+    .querySelectorAll<HTMLElement>('[data-year]')
+    .forEach((el) => (el.textContent = y));
 }
 
 /* --- Init ------------------------------------------------------------ */
@@ -173,6 +220,7 @@ ready(() => {
   setupMenu();
   setupQuotes();
   setupForm();
+  setupYear();
 
   const parallax = setupParallax();
   const stickyBar = setupStickyBar();

@@ -3,13 +3,13 @@ import { site } from '../data/site';
 ---
 
 <section id="kontakt" class="kontakt">
-  <!-- TODO: Platzhalter durch Original-Hintergrundbild ersetzen. -->
   <img
     class="bg"
     data-parallax
-    src="/images/contact-placeholder.svg"
+    src="/images/contact.webp"
     alt=""
     aria-hidden="true"
+    loading="lazy"
   />
   <div class="overlay"></div>
 
@@ -28,10 +28,28 @@ import { site } from '../data/site';
     </div>
 
     <form class="form" data-contactform>
-      <input type="text" name="name" placeholder="Ihr Name" />
-      <input type="email" name="email" placeholder="E-Mail-Adresse" />
+      <!-- Web3Forms: öffentlicher Access Key + Metadaten -->
+      <input type="hidden" name="access_key" value={site.web3formsKey} />
+      <input
+        type="hidden"
+        name="subject"
+        value="Neue Kontaktanfrage – Tierbestattung Memoria"
+      />
+      <input type="hidden" name="from_name" value="Website Tierbestattung Memoria" />
+      <!-- Honeypot gegen Spam (für Menschen unsichtbar) -->
+      <input
+        type="checkbox"
+        name="botcheck"
+        class="hp"
+        tabindex="-1"
+        autocomplete="off"
+        aria-hidden="true"
+      />
+
+      <input type="text" name="name" placeholder="Ihr Name" required />
+      <input type="email" name="email" placeholder="E-Mail-Adresse" required />
       <input type="tel" name="phone" placeholder="Telefonnummer (optional)" />
-      <textarea name="message" rows="4" placeholder="Worum geht es?"></textarea>
+      <textarea name="message" rows="4" placeholder="Worum geht es?" required></textarea>
       <button type="submit">Nachricht senden</button>
       <p class="note" data-formnote>
         Wir antworten so schnell wie möglich, meist innerhalb weniger Stunden.
@@ -119,6 +137,10 @@ import { site } from '../data/site';
   .form {
     display: grid;
     gap: 14px;
+  }
+  /* Honeypot: unsichtbar für Menschen, nur Bots füllen es aus. */
+  .form .hp {
+    display: none;
   }
   .form input,
   .form textarea {

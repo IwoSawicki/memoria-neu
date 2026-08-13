@@ -23,14 +23,15 @@ Wahrheit**, diese Datei die Referenz.
      `memoria-herobild.png` optimiert, 1553×1013).
    - **Über uns:** `public/images/about.webp` (aus `pasted-1785311187667-0.png`
      optimiert, 994×1240, ~4:5). ✅ eingebunden.
-   - **Kontakt-Parallax:** Bild **fehlt noch** → aktuell Platzhalter
-     `public/images/contact-placeholder.svg`. Später 1:1 austauschen.
+   - **Kontakt-Parallax:** `public/images/contact.webp` (aus dem hochgeladenen
+     `Memoria-Kontaktbild.png` optimiert, Waldpanorama). ✅ eingebunden.
    - Die hochgeladenen Original-PNGs bleiben im Repo; ausgeliefert werden die
      optimierten WebP-Dateien.
 2. **Styling:** Umsetzung über **zentrale Design-Tokens** (CSS-Variablen) und
    saubere Komponenten – **exakt dieselben Werte** wie im Export, nur wartbar.
-3. **Kontaktformular:** vorerst **nur visuelle Bestätigung** (kein echter
-   Versand). Echter Mailversand später.
+3. **Kontaktformular:** Versand über **Web3Forms** (AJAX, Bestätigung inline).
+   Access Key in `src/data/site.ts` (`web3formsKey`) eintragen – bis dahin
+   blockiert der Versand mit Hinweis. Honeypot gegen Spam aktiv.
 4. **Unterseiten:** `impressum` und `datenschutz` werden als **eigene
    Astro-Seiten mit Header/Footer angelegt** (Struktur jetzt, Inhalt später).
 
@@ -248,7 +249,10 @@ Nav-Reihenfolge (Anker): Ablauf · Leistungen · Über uns · Kontakt · Preise.
 - **Header/Footer/Mobile-Bar** als wiederverwendbare Komponenten in einem
   `BaseLayout`, damit sie auf **allen Seiten identisch** sind.
 - Header unterstützt zwei Varianten: `overlay` (transparent über Hero, helle
-  Schrift – Startseite) und `solid` (dunkler Balken – Unterseiten).
+  Schrift, **absolut positioniert** – Startseite) und `solid` (**weißer Balken**,
+  dunkle Schrift – Unterseiten).
+- **Mobiles Menü:** weißes Sheet mit Slide-Animation (max-height/opacity),
+  Burger animiert zu X. Hero-Bild mobil rechtsbündig (`object-position:80% 50%`).
 - Design-Tokens als CSS-Variablen in `src/styles/global.css`.
 - Inhalte (Kontaktdaten, Nav, Preise, Zitate) zentral in `src/data/site.ts`.
 - **Werte niemals „ungefähr" – immer die exakten `clamp()`/px/Farb-Werte oben.**

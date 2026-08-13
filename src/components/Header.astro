@@ -48,11 +48,34 @@ const logoHref = variant === 'solid' ? '/' : '#top';
 
 <style>
   .site-header {
-    position: relative;
-    z-index: 3;
+    z-index: 20;
   }
+  /* Overlay: transparent über dem Hero, absolut positioniert – so ändert das
+     Aufklappen des Menüs die Hero-Höhe nicht. */
+  .site-header.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+  }
+  /* Solid (Unterseiten): weißer Balken mit dunkler Schrift. */
   .site-header.solid {
-    background: var(--bg-dark);
+    position: relative;
+    background: #ffffff;
+    border-bottom: 1px solid rgba(31, 45, 22, 0.1);
+  }
+  .site-header.solid .logo,
+  .site-header.solid .logo:hover {
+    color: var(--heading-dark);
+  }
+  .site-header.solid .nav-link {
+    color: var(--text);
+  }
+  .site-header.solid .nav-link:hover {
+    color: var(--text-link-hover);
+  }
+  .site-header.solid .menu-btn span {
+    background: var(--heading-dark);
   }
 
   header {
@@ -120,23 +143,48 @@ const logoHref = variant === 'solid' ? '/' : '#top';
     width: 30px;
     height: 2px;
     background: var(--text-lightest);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    transform-origin: center;
+  }
+  /* Burger -> X wenn Menü offen */
+  .menu-btn.open span:nth-child(1) {
+    transform: translateY(4.5px) rotate(45deg);
+  }
+  .menu-btn.open span:nth-child(2) {
+    transform: translateY(-4.5px) rotate(-45deg);
   }
 
+  /* Mobiles Menü: weißes Sheet, animiert per max-height/opacity. */
   .menu-panel {
     display: none;
-    position: relative;
-    padding: 4px clamp(20px, 3vw, 42px) 16px;
+    background: #ffffff;
+    padding: 0 clamp(20px, 3vw, 42px);
+    box-shadow: 0 20px 44px rgba(16, 26, 8, 0.22);
+    border-radius: 0 0 18px 18px;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, opacity 0.3s ease, padding 0.4s ease;
+  }
+  .menu-panel.open {
+    max-height: 70vh;
+    opacity: 1;
+    padding-top: 4px;
+    padding-bottom: 14px;
   }
   .menu-panel a {
     display: block;
-    padding: 13px 0;
+    padding: 15px 2px;
     font-family: var(--font-serif);
-    font-size: 26px;
-    color: var(--text-lightest);
-    border-top: 1px solid rgba(247, 249, 238, 0.22);
+    font-size: 24px;
+    color: var(--heading-dark);
+    border-top: 1px solid rgba(31, 45, 22, 0.12);
   }
-  .menu-panel a:last-child {
-    border-bottom: 1px solid rgba(247, 249, 238, 0.22);
+  .menu-panel a:first-child {
+    border-top: none;
+  }
+  .menu-panel a:hover {
+    color: var(--text-link-hover);
   }
 
   /* Mobil: Desktop-Nav ausblenden, Hamburger einblenden. */
@@ -147,7 +195,7 @@ const logoHref = variant === 'solid' ? '/' : '#top';
     .menu-btn {
       display: flex;
     }
-    .menu-panel.open {
+    .menu-panel {
       display: block;
     }
   }
