@@ -6,6 +6,7 @@ dist
 .vscode
 .idea
 docs
+assets
 *.log
 npm-debug.log*
 .DS_Store

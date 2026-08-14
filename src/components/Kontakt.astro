@@ -46,10 +46,35 @@ import { site } from '../data/site';
         aria-hidden="true"
       />
 
-      <input type="text" name="name" placeholder="Ihr Name" required />
-      <input type="email" name="email" placeholder="E-Mail-Adresse" required />
-      <input type="tel" name="phone" placeholder="Telefonnummer (optional)" />
-      <textarea name="message" rows="4" placeholder="Worum geht es?" required></textarea>
+      <input
+        type="text"
+        name="name"
+        placeholder="Ihr Name"
+        aria-label="Ihr Name"
+        autocomplete="name"
+        required
+      />
+      <input
+        type="email"
+        name="email"
+        placeholder="E-Mail-Adresse"
+        aria-label="E-Mail-Adresse"
+        autocomplete="email"
+        required
+      />
+      <input
+        type="tel"
+        name="phone"
+        placeholder="Telefonnummer (optional)"
+        aria-label="Telefonnummer (optional)"
+        autocomplete="tel"
+      />
+      <textarea
+        name="message"
+        rows="4"
+        placeholder="Worum geht es?"
+        aria-label="Ihre Nachricht"
+        required></textarea>
       <button type="submit">Nachricht senden</button>
       <p class="note" data-formnote>
         Wir antworten so schnell wie möglich, meist innerhalb weniger Stunden.

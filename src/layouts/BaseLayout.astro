@@ -16,12 +16,15 @@ interface Props {
   description?: string;
   /** true = dunkler Header-Balken (Unterseiten). Auf der Startseite bringt der Hero seinen eigenen Overlay-Header mit. */
   solidHeader?: boolean;
+  /** Hero-Bild vorladen (nur Startseite – verbessert den LCP). */
+  preloadHero?: boolean;
 }
 
 const {
   title = site.seo.title,
   description = site.seo.description,
   solidHeader = false,
+  preloadHero = false,
 } = Astro.props;
 
 // Absolute URLs für Canonical & Open Graph (Basis = `site` aus astro.config).
@@ -38,6 +41,18 @@ const ogImage = new URL('/images/og.jpg', Astro.site).href;
     <meta name="description" content={description} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="canonical" href={canonical} />
+    <meta name="theme-color" content="#2b3a1e" />
+    {
+      preloadHero && (
+        <link
+          rel="preload"
+          as="image"
+          href="/images/hero.webp"
+          type="image/webp"
+          fetchpriority="high"
+        />
+      )
+    }
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
@@ -59,6 +74,18 @@ const ogImage = new URL('/images/og.jpg', Astro.site).href;
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
+
+    {/* Umami: cookielose, datenschutzfreundliche Reichweitenmessung */}
+    {
+      site.umamiSrc && site.umamiWebsiteId && (
+        <script
+          is:inline
+          defer
+          src={site.umamiSrc}
+          data-website-id={site.umamiWebsiteId}
+        />
+      )
+    }
   </head>
   <body>
     {solidHeader && <Header variant="solid" />}

@@ -40,6 +40,12 @@ const gaId = site.googleAnalyticsId;
     transform: none;
     opacity: 1;
   }
+  /* Mobil: über der fixen Anruf-Leiste platzieren, damit nichts überlappt. */
+  @media (max-width: 999px) {
+    .cookie {
+      bottom: calc(84px + env(safe-area-inset-bottom));
+    }
+  }
 
   .text {
     margin: 0 0 14px;

@@ -20,6 +20,9 @@ export const site = {
   // erzeugte Hash-Endpoint statt der Klartext-Adresse eingetragen werden
   // (z. B. 'abc123def456').
   formsubmitTarget: 'info@tierbestattung-memoria.de',
+  // Umami (selbst gehostet, cookielos) – lädt immer, kein Cookie-Banner nötig.
+  umamiSrc: 'https://analytics.stolz-marketing.de/script.js',
+  umamiWebsiteId: '45e11098-414d-4c9a-9d4b-897494163617',
   // Google Analytics 4 Mess-ID (z. B. 'G-XXXXXXXXXX'). Leer lassen = kein
   // Analytics und kein Cookie-Banner. Sobald eine ID eingetragen ist, erscheint
   // der Cookie-Hinweis und GA wird NUR nach Einwilligung geladen.

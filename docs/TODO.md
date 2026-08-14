@@ -1,62 +1,101 @@
 # Go-Live-Checkliste – Tierbestattung Memoria
 
-Website-Stand: One-Pager + Impressum + Datenschutz + 404, alle Bilder
-eingebunden, Kontaktformular über FormSubmit.co, Fonts selbst gehostet,
-Cookie-Banner + Google-Analytics-Vorbereitung, SEO (Sitemap/robots/OG/Schema.org),
-Docker/nginx für Dokploy (Port 80).
+**Stand:** Website ist fertig gebaut und getestet. One-Pager + Impressum +
+Datenschutz + 404, alle Bilder eingebunden, Kontaktformular über FormSubmit.co,
+Fonts selbst gehostet, Umami-Analytics aktiv, 301-Weiterleitungen der alten URLs,
+SEO (Sitemap/robots/OG/Schema.org), Docker/nginx für Dokploy (Port 80).
 
-**Domains:** Entwicklung `memoria.stolz-marketing.de` · Live `tierbestattung-memoria.de`
-(ohne www; www als Backup per Redirect).
+**Domains:** Entwicklung `memoria.stolz-marketing.de` · Live
+`tierbestattung-memoria.de` (ohne www; www als Backup per Redirect).
 
 ---
 
-## 🔴 Was DU noch tun musst (bis live)
+## 🔴 Was DU noch machen musst
 
-- [ ] **Kontaktformular aktivieren (FormSubmit).** Einmalig eine Testnachricht
-  über das Formular senden → FormSubmit schickt eine **Aktivierungs-Mail** an
-  `info@tierbestattung-memoria.de` → Link darin bestätigen. Fertig, kein Key.
-  (Optional gegen Spam: den von FormSubmit erzeugten **Hash** statt der
-  Klartext-Adresse in `src/data/site.ts` → `formsubmitTarget` eintragen.)
-- [ ] **Google Analytics aktivieren (optional).** GA4-Mess-ID (`G-XXXXXXXXXX`) in
-  `src/data/site.ts` → `googleAnalyticsId` eintragen. Erst dann erscheinen
-  Cookie-Banner + Analytics (Analytics lädt nur nach „Akzeptieren").
-- [ ] **Live-Domain + HTTPS in Dokploy** eintragen (`tierbestattung-memoria.de`);
-  www-Domain als Redirect auf die Hauptdomain.
-- [ ] **E-Mail final bestätigen.** Ich habe überall auf
-  `info@tierbestattung-memoria.de` vereinheitlicht – bitte beim Kunden gegenprüfen.
-- [ ] **Rechtstexte final freigeben** (siehe Prüf-Notizen unten), idealerweise
-  anwaltlich gegenlesen.
+### 1. Kontaktformular aktivieren (5 Min)
+Nach dem Deploy **einmal das Formular auf der Website abschicken**.
+FormSubmit sendet daraufhin eine **Aktivierungs-Mail** an
+`info@tierbestattung-memoria.de` → **Link darin anklicken**. Fertig, kein Key.
+- Danach nochmal testen: Kommt die Mail an? Auch Spam-Ordner prüfen.
+- *Optional gegen Spam:* FormSubmit erzeugt einen **Hash** für deine Adresse.
+  Diesen statt der Klartext-Adresse in `src/data/site.ts` → `formsubmitTarget`
+  eintragen (dann steht die E-Mail nicht im Quelltext).
 
-## 📋 Rechtstext-Prüfung (Notizen)
+### 2. Domain live schalten
+- Live-Domain `tierbestattung-memoria.de` in Dokploy eintragen, HTTPS aktivieren
+  (Traefik/Let's Encrypt macht das Zertifikat automatisch).
+- `www.tierbestattung-memoria.de` anlegen und **per Redirect** auf die
+  Hauptdomain ohne www zeigen lassen.
+- DNS umstellen. **Vorher ein Backup der alten Seite ziehen.**
 
-- **Impressum:** vollständig für § 5 DDG (Firma, GF, Anschrift, Kontakt,
-  Registergericht/HRB, USt-IdNr, Zulassungsnummer). Ergänzt:
-  Verbraucherstreitbeilegungs-Hinweis.
-  - Hinweis: „Inhaltlich Verantwortlicher gemäß **MDStV**" ist eine veraltete
-    Rechtsnorm (heute § 18 Abs. 2 **MStV**) und nur für journalistische Inhalte
-    nötig – kann modernisiert oder entfernt werden. Bitte entscheiden.
-  - Die **EU-OS-Plattform** (Online-Streitbeilegung) wurde 2025 eingestellt –
-    daher **kein** Link darauf mehr (bewusst weggelassen).
-- **Datenschutz:** an die neue Seite angepasst (Hetzner-Hosting, FormSubmit,
-  Google Analytics einwilligungsbasiert, Fonts lokal, KI-Telefonassistent).
-  - Offen: **FormSubmit** und **Google Analytics** als Auftragsverarbeiter ggf.
-    mit Anbieter-Anschrift / AVV präzisieren (juristisch prüfen).
-- **AGB:** bewusst knapp (§1–§4 wie geliefert) – inhaltlich Sache des Kunden.
+### 3. Nach dem Livegang prüfen (10 Min)
+- [ ] Weiterleitungen testen: `/leistungen`, `/preise`, `/tierurnen-andenken`,
+      `/pferdekremierung`, `/kontakt` → Startseite · `/anfahrt` → `/impressum`
+      (alle als 301 eingerichtet und lokal getestet).
+- [ ] Formular abschicken und Mail-Zustellung prüfen.
+- [ ] Telefon-Links auf dem Handy testen (`tel:`-Links).
+- [ ] Umami-Dashboard: Kommen Zugriffe an?
 
-## 🟢 Erledigt
+### 4. Google Search Console
+- [ ] Property für `tierbestattung-memoria.de` anlegen (falls noch nicht da).
+- [ ] **Sitemap einreichen:** `https://tierbestattung-memoria.de/sitemap-index.xml`
+- [ ] Startseite zur neuen Indexierung einreichen.
+- [ ] In den Folgewochen auf 404-Fehler schauen (falls alte URLs fehlen, die wir
+      nicht kennen – dann melde sie mir, ich ergänze die Weiterleitung).
 
-- [x] Kontaktformular auf **FormSubmit.co** umgestellt (AJAX, Bestätigung inline,
-  Honeypot).
-- [x] **Cookie-Banner** (dezent, unten links) + **Google-Analytics-Einbindung**
-  nur nach Einwilligung; Widerruf über „Cookie-Einstellungen" im Footer.
-- [x] **E-Mail** überall auf `info@` vereinheitlicht.
-- [x] Google Fonts selbst gehostet · 404-Seite · Sitemap/robots · OG-Bild ·
-  Schema.org LocalBusiness · `site`-URL (Live-Domain, Dev per `SITE_URL`-Env).
+### 5. Inhaltliche Entscheidungen
+- [ ] **E-Mail bestätigen:** Ich habe überall auf `info@tierbestattung-memoria.de`
+      vereinheitlicht (vorher stand in der alten Datenschutzerklärung
+      `memoria.tierbestattung@gmail.com`). Bitte beim Kunden gegenprüfen.
+- [ ] **Impressum – „MDStV":** veraltete Rechtsnorm (heute § 18 Abs. 2 MStV) und
+      nur für journalistische Inhalte nötig. Soll ich das modernisieren oder
+      streichen? Sag Bescheid, ist in 1 Minute geändert.
+- [ ] **Rechtstexte anwaltlich gegenlesen lassen** (Impressum/AGB/Datenschutz).
+- [ ] **Tierurnen-Unterseite:** aktuell Weiterleitung zur Startseite. Wenn du
+      eine echte Unterseite willst, **schick mir den Text der alten Seite**
+      (ich konnte sie technisch nicht abrufen) – dann baue ich sie im Design und
+      entferne die Weiterleitung.
 
-## 🟡 Optional / später
+---
 
-- [ ] Dev-Domain nicht indexieren (Basic-Auth in Dokploy oder
-  `SITE_URL=https://memoria.stolz-marketing.de` setzen).
-- [ ] Unbenutzte Original-PNGs entfernen (nur die `.webp` werden ausgeliefert).
-- [ ] Weitere SEO-Unterseiten (Leistungen, Preise, Tierurnen, Pferdekremierung).
-- [ ] Favicon final · Lighthouse-Check nach Deploy.
+## 🟢 Bereits erledigt (von mir)
+
+**Inhalt & Funktion**
+- [x] Komplette Startseite 1:1 nach Design (Hero, Leistungen, Über uns, Ablauf +
+      Zitat-Slider, Preise, Kontakt, Footer, Mobile-Anrufleiste)
+- [x] Impressum & Datenschutz mit echten Inhalten · 404-Seite im Markendesign
+- [x] Kontaktformular über **FormSubmit.co** (AJAX, Bestätigung inline, Honeypot)
+- [x] **Umami**-Analytics eingebunden (cookielos → **kein Cookie-Banner nötig**)
+- [x] Cookie-Banner liegt bereit, falls du später Google Analytics willst
+      (erscheint automatisch, sobald `googleAnalyticsId` gesetzt ist; GA lädt nur
+      nach Einwilligung)
+- [x] Instagram im Footer · Copyright mit automatischer Jahreszahl
+
+**SEO**
+- [x] **301-Weiterleitungen** aller alten URLs (real mit nginx getestet)
+- [x] Sitemap + robots.txt · OG-Bild (Frau + Hund) + Twitter-Cards
+- [x] Schema.org LocalBusiness (Adresse, Telefon, 24/7, Inhaber, Instagram)
+- [x] Canonical-URLs · Meta-Description · saubere Überschriften-Struktur (1× h1)
+
+**Technik & Qualität**
+- [x] Google Fonts **selbst gehostet** (DSGVO – keine Verbindung zu Google)
+- [x] Mobile-Fixes: weißes Menü mit Animation, Header wird beim Öffnen weiß,
+      Hero rechtsbündig, kein horizontaler Überlauf
+- [x] Weißer Header auf Unterseiten
+- [x] Sicherheits-Header in nginx (nosniff, Frame-Options, Referrer-Policy)
+- [x] Auslieferungsgröße von 6,2 MB auf **1,1 MB** reduziert (Original-PNGs nach
+      `assets/originals/` verschoben, nur optimierte WebP werden ausgeliefert)
+- [x] Hero-Bild-Preload für schnelleren Bildaufbau (LCP)
+- [x] Barrierefreiheit: Alt-Texte, Bildmaße, aria-Labels im Formular
+
+---
+
+## 🟡 Später / optional
+
+- [ ] Weitere SEO-Unterseiten (Leistungen, Preise, Pferdekremierung als eigene
+      Seiten – aktuell alles auf der Startseite + Weiterleitungen).
+- [ ] Dev-Domain `memoria.stolz-marketing.de` vor Indexierung schützen
+      (Basic-Auth in Dokploy) – die Canonicals zeigen ohnehin auf die Live-Domain.
+- [ ] Echte Kundenbewertungen ergänzen (aktuell die 3 Zitate aus dem Design).
+- [ ] Favicon final abstimmen (aktuell schlichtes „M" auf Dunkelgrün).
+- [ ] Lighthouse-Check nach dem Deploy.
