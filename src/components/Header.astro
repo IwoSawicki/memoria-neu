@@ -7,7 +7,14 @@ interface Props {
 }
 const { variant = 'overlay' } = Astro.props;
 // Auf Unterseiten (solid) zeigt das Logo zur Startseite, sonst zum Seitenanfang.
-const logoHref = variant === 'solid' ? '/' : '#top';
+const isSub = variant === 'solid';
+const logoHref = isSub ? '/' : '#top';
+// Anker (#ablauf …) funktionieren nur auf der Startseite – auf Unterseiten
+// müssen sie auf "/#ablauf" zeigen. Echte Seitenpfade bleiben unverändert.
+const navItems = nav.map((item) => ({
+  ...item,
+  href: isSub && item.href.startsWith('#') ? `/${item.href}` : item.href,
+}));
 ---
 
 <div class:list={['site-header', variant]}>
@@ -16,7 +23,7 @@ const logoHref = variant === 'solid' ? '/' : '#top';
 
     <nav class="desktop-nav" aria-label="Hauptnavigation">
       {
-        nav.map((item) => (
+        navItems.map((item) => (
           <a class="nav-link" href={item.href}>
             {item.label}
           </a>
@@ -39,7 +46,7 @@ const logoHref = variant === 'solid' ? '/' : '#top';
 
   <div class="menu-panel" data-menupanel>
     {
-      nav.map((item) => (
+      navItems.map((item) => (
         <a href={item.href}>{item.label}</a>
       ))
     }

@@ -57,6 +57,11 @@ import { leistungen } from '../data/site';
             </div>
             <h3>{item.title}</h3>
             <p>{item.text}</p>
+            {item.href && (
+              <a class="card-link" href={item.href}>
+                {item.linkText} →
+              </a>
+            )}
           </div>
         ))
       }
@@ -152,6 +157,17 @@ import { leistungen } from '../data/site';
     font-size: 16px;
     line-height: 1.65;
     color: var(--muted-2);
+  }
+  .card-link {
+    display: inline-block;
+    margin-top: 16px;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--heading-dark);
+    text-decoration: underline;
+  }
+  .card-link:hover {
+    color: var(--text-link-hover);
   }
 
   .note {

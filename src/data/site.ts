@@ -20,6 +20,13 @@ export const site = {
   // erzeugte Hash-Endpoint statt der Klartext-Adresse eingetragen werden
   // (z. B. 'abc123def456').
   formsubmitTarget: 'info@tierbestattung-memoria.de',
+  // Katalog (PDF) – liegt in public/downloads/ und kann dort jederzeit
+  // ausgetauscht werden, ohne dass am Code etwas geändert werden muss.
+  katalogPdf: '/downloads/tierurnen-katalog.pdf',
+  // Online-Terminbuchung (Acuity Scheduling)
+  bookingUrl: 'https://app.acuityscheduling.com/schedule.php?owner=35292506',
+  // Partner für personalisierte Edelsteine aus Asche oder Haaren
+  mevistoUrl: 'https://www.mevisto.com/de/mevisto-personalisiert/',
   // Umami (selbst gehostet, cookielos) – lädt immer, kein Cookie-Banner nötig.
   umamiSrc: 'https://analytics.stolz-marketing.de/script.js',
   umamiWebsiteId: '45e11098-414d-4c9a-9d4b-897494163617',
@@ -49,10 +56,11 @@ export const nav = [
 
 // Footer-Navigation.
 export const footerNav = [
-  { label: 'Leistungen', href: '#leistungen' },
-  { label: 'Ablauf', href: '#ablauf' },
-  { label: 'Über uns', href: '#ueber-uns' },
-  { label: 'Preise', href: '#preise' },
+  { label: 'Leistungen', href: '/#leistungen' },
+  { label: 'Ablauf', href: '/#ablauf' },
+  { label: 'Über uns', href: '/#ueber-uns' },
+  { label: 'Preise', href: '/#preise' },
+  { label: 'Tierurnen & Andenken', href: '/tierurnen-andenken' },
 ];
 
 // Trust-Punkte in der Hero-Sektion.
@@ -78,6 +86,8 @@ export const leistungen = [
     icon: 'urn',
     title: 'Tierurnen und Andenken',
     text: 'Urnen aus Holz, Stein und Keramik, dazu kleine Andenken zum Aufbewahren. Wir beraten Sie persönlich.',
+    href: '/tierurnen-andenken',
+    linkText: 'Katalog ansehen',
   },
 ];
 

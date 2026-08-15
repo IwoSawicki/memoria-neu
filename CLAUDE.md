@@ -32,8 +32,14 @@ Wahrheit**, diese Datei die Referenz.
 3. **Kontaktformular:** Versand über **FormSubmit.co** (AJAX, Bestätigung inline).
    Ziel in `src/data/site.ts` (`formsubmitTarget`) – kein Key nötig, nur einmalige
    Aktivierungs-Mail bestätigen. Honeypot (`_honey`) gegen Spam aktiv.
-4. **Unterseiten:** `impressum` und `datenschutz` werden als **eigene
-   Astro-Seiten mit Header/Footer angelegt** (Struktur jetzt, Inhalt später).
+4. **Unterseiten:** `impressum`, `datenschutz`, `404` und
+   `tierurnen-andenken` als eigene Astro-Seiten mit Header (`solid`) und Footer.
+   Die Tierurnen-Seite bindet den Katalog als PDF aus
+   `public/downloads/tierurnen-katalog.pdf` ein (vom Kunden austauschbar, Pfad
+   zentral in `src/data/site.ts` → `katalogPdf`).
+5. **Alte URLs:** `/leistungen`, `/preise`, `/pferdekremierung`, `/kontakt`
+   → 301 auf die Startseite; `/anfahrt` → `/impressum` (in `nginx.conf`).
+   `/tierurnen-andenken` bleibt als echte Seite erhalten.
 
 ---
 

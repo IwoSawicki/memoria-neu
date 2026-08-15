@@ -1,0 +1,405 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { site } from '../data/site';
+---
+
+<BaseLayout
+  title="Tierurnen & Andenken – Tierbestattung Memoria"
+  description="Tierurnen aus Holz, Stein und Keramik, Andenkenschmuck und individuelle Beschriftung. Katalog als PDF ansehen. Tierbestattung Memoria in Laudenbach."
+  solidHeader={true}
+>
+  <main>
+    <!-- Kopfbereich -->
+    <section class="intro">
+      <div class="inner">
+        <p class="eyebrow">Tierurnen &amp; Andenken</p>
+        <h1>Eine Urne, die zu Ihrem Tier passt.</h1>
+        <p class="lead">
+          Unsere Auswahl an Tierurnen, Andenkenschmuck und Individualprodukten
+          finden Sie in unserem Katalog. Gern beraten wir Sie auch persönlich –
+          in Ruhe und ohne Eile.
+        </p>
+
+        <div class="note">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true">
+            <circle cx="11" cy="11" r="9.2" stroke="currentColor" stroke-width="1.6"></circle>
+            <path d="M11 6.6v5.2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path>
+            <circle cx="11" cy="15.2" r="1" fill="currentColor"></circle>
+          </svg>
+          <p>
+            <strong>Wichtig:</strong> Falls ein Pfotenabdruck oder das Sichern von
+            Haaren gewünscht ist, benötigen wir diese Angabe
+            <strong>direkt beim Empfang des Tieres</strong>.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Katalog -->
+    <section class="katalog">
+      <div class="inner">
+        <h2>Unser Katalog</h2>
+        <p class="katalog-lead">
+          Im Katalog finden Sie das gesamte Sortiment mit Größen, Materialien und
+          Preisen.
+        </p>
+
+        <div class="katalog-actions">
+          <a class="btn-primary" href={site.katalogPdf} target="_blank" rel="noopener">
+            Katalog öffnen (PDF)
+          </a>
+          <a class="btn-outline" href={site.katalogPdf} download>
+            Katalog herunterladen
+          </a>
+        </div>
+
+        <!-- Eingebettete Vorschau (auf kleinen Bildschirmen ausgeblendet) -->
+        <div class="pdf-frame">
+          <object data={site.katalogPdf} type="application/pdf" aria-label="Katalog Tierurnen und Andenken">
+            <p class="pdf-fallback">
+              Ihr Browser kann die PDF-Vorschau nicht anzeigen.
+              <a href={site.katalogPdf} target="_blank" rel="noopener">
+                Katalog in neuem Tab öffnen
+              </a>.
+            </p>
+          </object>
+        </div>
+
+        <ul class="hinweise">
+          <li>
+            Die benötigte <strong>Größe</strong> entnehmen Sie bitte der Tabelle auf
+            der ersten Seite. Selbstverständlich kann die Urne größer sein, sollte
+            jedoch vom Fassungsvolumen nicht kleiner sein.
+          </li>
+          <li>Das Sortiment haben wir nach <strong>Materialien</strong> gegliedert.</li>
+          <li>Die erhältlichen <strong>Größen</strong> sind jeweils darüber notiert.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Individualisierung -->
+    <section class="individuell">
+      <div class="inner">
+        <div class="cards">
+          <div class="card">
+            <h3>Persönliche Beschriftung</h3>
+            <p>
+              Die meisten Urnen können wir durch eine Folienbeschriftung in der
+              passenden Farbe individualisieren – damit Sie Ihrem Tier die letzte
+              Ehre erweisen können.
+            </p>
+          </div>
+          <div class="card">
+            <h3>Edelsteine aus Asche oder Haaren</h3>
+            <p>
+              Über unseren Partner Mevisto bieten wir die Herstellung
+              personalisierter Edelsteine aus Asche oder Haaren an.
+            </p>
+            <a class="link" href={site.mevistoUrl} target="_blank" rel="noopener">
+              Mehr über Mevisto erfahren →
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Terminbuchung & Kontakt -->
+    <section class="termin">
+      <div class="inner">
+        <p class="eyebrow-dark">Online-Terminbuchung</p>
+        <h2>Lieber in Ruhe einen Termin wählen?</h2>
+        <p class="termin-lead">
+          Damit Sie nicht warten müssen, können Sie online einen passenden
+          Zeitpunkt für ein Gespräch oder ein Treffen mit uns auswählen.
+        </p>
+        <div class="termin-actions">
+          <a class="btn-accent" href={site.bookingUrl} target="_blank" rel="noopener">
+            Termin online buchen
+          </a>
+          <a class="btn-ghost" href={site.phoneHref}>
+            Oder anrufen · {site.phoneDisplay}
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+</BaseLayout>
+
+<style>
+  .inner {
+    max-width: var(--maxw);
+    margin: 0 auto;
+    padding-left: clamp(20px, 4vw, 42px);
+    padding-right: clamp(20px, 4vw, 42px);
+  }
+
+  /* --- Intro --- */
+  .intro {
+    background: var(--bg-page);
+  }
+  .intro .inner {
+    padding-top: clamp(48px, 7vw, 96px);
+    padding-bottom: clamp(40px, 5vw, 64px);
+  }
+  .eyebrow {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--muted-3);
+    margin: 0 0 18px;
+  }
+  h1 {
+    font-family: var(--font-serif);
+    font-weight: 300;
+    font-size: clamp(34px, 5vw, 64px);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--heading-dark);
+    margin: 0 0 22px;
+    max-width: 18ch;
+    text-wrap: balance;
+  }
+  .lead {
+    font-size: clamp(16px, 1.3vw, 18px);
+    line-height: 1.75;
+    color: var(--muted-1);
+    max-width: 60ch;
+    margin: 0 0 clamp(28px, 3.4vw, 40px);
+    text-wrap: pretty;
+  }
+
+  .note {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    background: var(--bg-card);
+    border-radius: 18px;
+    padding: clamp(20px, 2.4vw, 28px);
+    max-width: 66ch;
+    color: var(--icon-stroke);
+  }
+  .note p {
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.65;
+    color: var(--muted-2);
+  }
+  .note strong {
+    color: var(--heading-dark);
+  }
+  .note svg {
+    flex: 0 0 auto;
+    margin-top: 2px;
+  }
+
+  /* --- Katalog --- */
+  .katalog {
+    background: var(--bg-page);
+  }
+  .katalog .inner {
+    padding-bottom: clamp(56px, 7vw, 96px);
+  }
+  h2 {
+    font-family: var(--font-serif);
+    font-weight: 300;
+    font-size: clamp(30px, 3.9vw, 50px);
+    line-height: 1.12;
+    letter-spacing: -0.02em;
+    color: var(--heading-dark);
+    margin: 0 0 14px;
+  }
+  .katalog-lead {
+    font-size: 16px;
+    line-height: 1.75;
+    color: var(--muted-1);
+    max-width: 56ch;
+    margin: 0 0 26px;
+  }
+
+  .katalog-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: clamp(28px, 3.4vw, 40px);
+  }
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    background: var(--accent);
+    color: var(--btn-text);
+    border-radius: 999px;
+    padding: 15px 30px;
+    font-size: 16px;
+    font-weight: 600;
+    min-height: 52px;
+  }
+  .btn-primary:hover {
+    background: var(--accent-hover);
+    color: var(--btn-text);
+  }
+  .btn-outline {
+    display: inline-flex;
+    align-items: center;
+    border: 1.5px solid var(--heading-dark);
+    border-radius: 999px;
+    padding: 15px 30px;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--heading-dark);
+    min-height: 52px;
+  }
+  .btn-outline:hover {
+    background: var(--bg-card);
+    color: var(--heading-dark);
+  }
+
+  .pdf-frame {
+    border-radius: 18px;
+    overflow: hidden;
+    background: var(--bg-card);
+    height: min(80vh, 900px);
+    margin-bottom: clamp(28px, 3.4vw, 40px);
+  }
+  .pdf-frame object {
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: block;
+  }
+  .pdf-fallback {
+    margin: 0;
+    padding: 28px;
+    color: var(--muted-2);
+  }
+  .pdf-fallback a {
+    color: var(--heading-dark);
+    text-decoration: underline;
+  }
+  /* Mobil zeigen Browser PDFs im Objekt oft nicht an – dort nur die Buttons. */
+  @media (max-width: 767px) {
+    .pdf-frame {
+      display: none;
+    }
+  }
+
+  .hinweise {
+    margin: 0;
+    padding-left: 22px;
+    max-width: 64ch;
+    color: var(--muted-2);
+    font-size: 16px;
+    line-height: 1.75;
+  }
+  .hinweise li {
+    margin-bottom: 10px;
+  }
+  .hinweise strong {
+    color: var(--heading-dark);
+  }
+
+  /* --- Individualisierung --- */
+  .individuell {
+    background: var(--bg-page);
+  }
+  .individuell .inner {
+    padding-bottom: clamp(64px, 9vw, 120px);
+  }
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: clamp(16px, 1.8vw, 26px);
+  }
+  .card {
+    background: var(--bg-card);
+    border-radius: 18px;
+    padding: clamp(28px, 2.8vw, 38px);
+  }
+  .card h3 {
+    font-size: 19px;
+    font-weight: 600;
+    margin: 0 0 12px;
+    color: var(--heading-dark);
+  }
+  .card p {
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.65;
+    color: var(--muted-2);
+  }
+  .link {
+    display: inline-block;
+    margin-top: 16px;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--heading-dark);
+    text-decoration: underline;
+  }
+
+  /* --- Termin --- */
+  .termin {
+    background: var(--bg-dark);
+    color: var(--text-light);
+    border-radius: clamp(20px, 2.6vw, 34px);
+  }
+  .termin .inner {
+    padding-top: clamp(56px, 7vw, 100px);
+    padding-bottom: clamp(56px, 7vw, 100px);
+  }
+  .eyebrow-dark {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: rgba(207, 227, 107, 0.85);
+    margin: 0 0 22px;
+  }
+  .termin h2 {
+    color: var(--text-lightest);
+    max-width: 18ch;
+    margin-bottom: 18px;
+  }
+  .termin-lead {
+    font-size: 16px;
+    line-height: 1.75;
+    color: rgba(238, 243, 224, 0.74);
+    max-width: 54ch;
+    margin: 0 0 clamp(28px, 3.4vw, 38px);
+  }
+  .termin-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .btn-accent {
+    display: inline-flex;
+    align-items: center;
+    background: var(--accent);
+    color: var(--btn-text);
+    border-radius: 999px;
+    padding: 16px 32px;
+    font-size: 16px;
+    font-weight: 600;
+    min-height: 54px;
+  }
+  .btn-accent:hover {
+    background: var(--accent-hover);
+    color: var(--btn-text);
+  }
+  .btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    border: 1px solid rgba(238, 243, 224, 0.35);
+    border-radius: 999px;
+    padding: 16px 32px;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-light);
+    min-height: 54px;
+    font-variant-numeric: tabular-nums;
+  }
+  .btn-ghost:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+</style>

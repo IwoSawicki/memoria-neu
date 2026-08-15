@@ -12,6 +12,14 @@ SEO (Sitemap/robots/OG/Schema.org), Docker/nginx für Dokploy (Port 80).
 
 ## 🔴 Was DU noch machen musst
 
+### 0. Katalog-PDF austauschen (2 Min) ⚠️
+Auf der neuen Seite **Tierurnen & Andenken** ist aktuell nur eine
+**Platzhalter-PDF** hinterlegt. Ersetze die Datei durch den echten Katalog:
+
+- Datei: `public/downloads/tierurnen-katalog.pdf` (Name genau so lassen!)
+- Einfach überschreiben, committen, pushen – **keine Code-Änderung nötig**.
+- Anleitung liegt auch in `public/downloads/README.md`.
+
 ### 1. Kontaktformular aktivieren (5 Min)
 Nach dem Deploy **einmal das Formular auf der Website abschicken**.
 FormSubmit sendet daraufhin eine **Aktivierungs-Mail** an
@@ -29,9 +37,11 @@ FormSubmit sendet daraufhin eine **Aktivierungs-Mail** an
 - DNS umstellen. **Vorher ein Backup der alten Seite ziehen.**
 
 ### 3. Nach dem Livegang prüfen (10 Min)
-- [ ] Weiterleitungen testen: `/leistungen`, `/preise`, `/tierurnen-andenken`,
-      `/pferdekremierung`, `/kontakt` → Startseite · `/anfahrt` → `/impressum`
-      (alle als 301 eingerichtet und lokal getestet).
+- [ ] Weiterleitungen testen: `/leistungen`, `/preise`, `/pferdekremierung`,
+      `/kontakt` → Startseite · `/anfahrt` → `/impressum` (als 301 eingerichtet
+      und lokal getestet). **`/tierurnen-andenken` ist jetzt eine echte
+      Unterseite** und bleibt unter derselben URL wie bisher erhalten.
+- [ ] Katalog-PDF öffnen und Anzeige prüfen (Desktop + Handy).
 - [ ] Formular abschicken und Mail-Zustellung prüfen.
 - [ ] Telefon-Links auf dem Handy testen (`tel:`-Links).
 - [ ] Umami-Dashboard: Kommen Zugriffe an?
@@ -51,10 +61,10 @@ FormSubmit sendet daraufhin eine **Aktivierungs-Mail** an
       nur für journalistische Inhalte nötig. Soll ich das modernisieren oder
       streichen? Sag Bescheid, ist in 1 Minute geändert.
 - [ ] **Rechtstexte anwaltlich gegenlesen lassen** (Impressum/AGB/Datenschutz).
-- [ ] **Tierurnen-Unterseite:** aktuell Weiterleitung zur Startseite. Wenn du
-      eine echte Unterseite willst, **schick mir den Text der alten Seite**
-      (ich konnte sie technisch nicht abrufen) – dann baue ich sie im Design und
-      entferne die Weiterleitung.
+- [ ] **Tierurnen-Seite gegenlesen:** Inhalte wurden von der alten Seite
+      übernommen (Katalog-Hinweise, Pfotenabdruck-Hinweis, Folienbeschriftung,
+      Mevisto-Partner, Online-Terminbuchung). Bitte prüfen, ob alles noch aktuell
+      ist – besonders der Mevisto-Link und die Terminbuchung.
 
 ---
 
