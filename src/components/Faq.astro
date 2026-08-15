@@ -1,0 +1,126 @@
+---
+import { faq } from '../data/site';
+---
+
+<section id="faq" class="faq">
+  <div class="inner" data-reveal>
+    <p class="eyebrow">Häufige Fragen</p>
+    <h2>Was Tierhalter uns oft fragen</h2>
+    <p class="lead">
+      Wenn Ihre Frage nicht dabei ist, rufen Sie uns einfach an – wir nehmen uns
+      Zeit für Sie.
+    </p>
+
+    <div class="items">
+      {
+        faq.map((item, i) => (
+          <details class="item" name="faq" open={i === 0}>
+            <summary>
+              <span>{item.q}</span>
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                <path d="M10 4.5v11M4.5 10h11" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+              </svg>
+            </summary>
+            <div class="answer">
+              <p>{item.a}</p>
+            </div>
+          </details>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .faq {
+    background: var(--bg-page);
+  }
+  .inner {
+    max-width: var(--maxw);
+    margin: 0 auto;
+    padding: clamp(64px, 9vw, 120px) clamp(20px, 4vw, 42px);
+  }
+
+  .eyebrow {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--muted-3);
+    margin: 0 0 18px;
+  }
+  h2 {
+    font-family: var(--font-serif);
+    font-weight: 300;
+    font-size: clamp(32px, 4.6vw, 58px);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--heading-dark);
+    margin: 0 0 16px;
+    max-width: 20ch;
+    text-wrap: balance;
+  }
+  .lead {
+    font-size: clamp(16px, 1.3vw, 18px);
+    line-height: 1.75;
+    color: var(--muted-1);
+    max-width: 54ch;
+    margin: 0 0 clamp(32px, 4vw, 48px);
+    text-wrap: pretty;
+  }
+
+  .items {
+    border-top: 1px solid var(--rule-price);
+  }
+  .item {
+    border-bottom: 1px solid var(--rule-price);
+  }
+
+  summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: clamp(20px, 2.2vw, 26px) 0;
+    cursor: pointer;
+    list-style: none;
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: clamp(19px, 1.9vw, 25px);
+    line-height: 1.35;
+    color: var(--heading-dark);
+    text-wrap: pretty;
+  }
+  summary::-webkit-details-marker {
+    display: none;
+  }
+  summary:hover {
+    color: var(--text-link-hover);
+  }
+  summary svg {
+    flex: 0 0 auto;
+    color: var(--icon-stroke);
+    transition: transform 0.3s ease;
+  }
+  .item[open] summary svg {
+    transform: rotate(45deg);
+  }
+
+  .answer {
+    padding: 0 0 clamp(20px, 2.2vw, 26px);
+    max-width: 74ch;
+  }
+  .answer p {
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.75;
+    color: var(--muted-2);
+    text-wrap: pretty;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    summary svg {
+      transition: none;
+    }
+  }
+</style>

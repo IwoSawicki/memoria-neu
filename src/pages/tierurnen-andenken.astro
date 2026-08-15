@@ -35,7 +35,7 @@ import {
 
         <div class="intro-collage" aria-hidden="true">
           <img src={urnenGalerie[0].img} alt="" width="560" height="640" loading="eager" />
-          <img src={urnenGalerie[3].img} alt="" width="560" height="640" loading="eager" />
+          <img src={urnenGalerie[2].img} alt="" width="560" height="640" loading="eager" />
           <img src={urnenGalerie[1].img} alt="" width="560" height="640" loading="lazy" />
         </div>
       </div>
@@ -445,10 +445,27 @@ import {
   .galerie .inner {
     padding-bottom: clamp(56px, 7vw, 96px);
   }
+  /* Desktop: 4 nebeneinander · Mobil: 2×2 */
   .cards-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-    gap: clamp(16px, 1.8vw, 26px);
+    grid-template-columns: repeat(4, 1fr);
+    gap: clamp(12px, 1.8vw, 26px);
+  }
+  @media (max-width: 900px) {
+    .cards-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (max-width: 480px) {
+    .urne {
+      padding: 14px 12px 16px;
+    }
+    .urne-name {
+      font-size: 17px;
+    }
+    .urne-material {
+      font-size: 13px;
+    }
   }
   .urne {
     margin: 0;
@@ -457,6 +474,8 @@ import {
     padding: 18px 18px 20px;
     text-align: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
   }
   .urne:hover {
     transform: translateY(-4px);
@@ -480,6 +499,7 @@ import {
     display: flex;
     flex-direction: column;
     gap: 3px;
+    margin-top: auto;
   }
   .urne-name {
     font-family: var(--font-serif);

@@ -6,7 +6,8 @@ import UeberUns from '../components/UeberUns.astro';
 import Ablauf from '../components/Ablauf.astro';
 import Preise from '../components/Preise.astro';
 import Kontakt from '../components/Kontakt.astro';
-import { site } from '../data/site';
+import Faq from '../components/Faq.astro';
+import { site, faq } from '../data/site';
 
 // Absolute URLs für strukturierte Daten.
 const base = Astro.site ?? new URL('https://tierbestattung-memoria.de');
@@ -55,6 +56,17 @@ const schema = {
     },
   ],
 };
+
+// Schema.org – FAQPage (kann als Rich Result in der Google-Suche erscheinen).
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faq.map((item) => ({
+    '@type': 'Question',
+    name: item.q,
+    acceptedAnswer: { '@type': 'Answer', text: item.a },
+  })),
+};
 ---
 
 <BaseLayout preloadHero={true}>
@@ -63,11 +75,17 @@ const schema = {
   <UeberUns />
   <Ablauf />
   {site.showPrices && <Preise />}
+  <Faq />
   <Kontakt />
 
   <script
     type="application/ld+json"
     is:inline
     set:html={JSON.stringify(schema)}
+  />
+  <script
+    type="application/ld+json"
+    is:inline
+    set:html={JSON.stringify(faqSchema)}
   />
 </BaseLayout>

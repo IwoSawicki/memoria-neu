@@ -33,7 +33,7 @@ export const site = {
   // Google Analytics 4 Mess-ID (z. B. 'G-XXXXXXXXXX'). Leer lassen = kein
   // Analytics und kein Cookie-Banner. Sobald eine ID eingetragen ist, erscheint
   // der Cookie-Hinweis und GA wird NUR nach Einwilligung geladen.
-  googleAnalyticsId: '',
+  googleAnalyticsId: 'G-08LQ8WK59V',
   seo: {
     title:
       'Tierbestattung Memoria – Einzelkremierung mit Ascherückgabe in Laudenbach',
@@ -45,13 +45,14 @@ export const site = {
   showStickyBar: true,
 };
 
-// Navigation im Header (Anker auf der Startseite).
+// Navigation im Header. „Ablauf" ist bewusst nicht enthalten, damit die Leiste
+// schlank bleibt – der Abschnitt ist weiterhin über den Footer erreichbar.
 export const nav = [
-  { label: 'Ablauf', href: '#ablauf' },
   { label: 'Leistungen', href: '#leistungen' },
+  { label: 'Preise', href: '#preise' },
+  { label: 'Tierurnen', href: '/tierurnen-andenken' },
   { label: 'Über uns', href: '#ueber-uns' },
   { label: 'Kontakt', href: '#kontakt' },
-  { label: 'Preise', href: '#preise' },
 ];
 
 // Footer-Navigation.
@@ -131,14 +132,12 @@ export const quotes = [
   },
 ];
 
-// Urnen-Galerie (Fotos aus dem Katalog).
+// Urnen-Galerie (Fotos aus dem Katalog) – 4 Modelle als kleiner Einblick.
 export const urnenGalerie = [
   { img: '/images/urnen/verona-weiss.webp', name: 'Verona Weiß', material: 'Keramik samtiert' },
   { img: '/images/urnen/verona-schwarz.webp', name: 'Verona Schwarz', material: 'Keramik samtiert' },
-  { img: '/images/urnen/crystal-weiss.webp', name: 'Crystal Weiß', material: 'Pfote aus Swarovski-Steinen' },
   { img: '/images/urnen/mondschein.webp', name: 'Mondschein', material: 'Motivurne' },
   { img: '/images/urnen/tatzenspuren.webp', name: 'Tatzenspuren im Sand', material: 'Motivurne' },
-  { img: '/images/urnen/himmelband.webp', name: 'Velour Himmelband', material: 'Motivurne' },
 ];
 
 // Größentabelle aus dem Katalog (Mindestvolumen nach Tiergewicht).
@@ -161,6 +160,42 @@ export const urnenMaterialien = [
   'Natursteinurnen Alabaster',
   'Kupfermotivurnen',
   'Messing-Herz & Messing-Rainbow',
+];
+
+// FAQ (Startseite) – dient auch als strukturierte Daten für Google.
+export const faq = [
+  {
+    q: 'Wie schnell können Sie mein Tier abholen?',
+    a: 'Wir sind rund um die Uhr erreichbar und holen an 365 Tagen im Jahr ab – auch nachts und am Wochenende. Ein Anruf unter 06201 7303041 genügt, alles Weitere besprechen wir in Ruhe mit Ihnen.',
+  },
+  {
+    q: 'Was ist der Unterschied zwischen Einzel- und Gemeinschaftskremierung?',
+    a: 'Bei der Einzelkremierung wird Ihr Tier allein kremiert. Sie erhalten seine Asche in einer Urne Ihrer Wahl zurück, dazu eine Urkunde. Bei der Gemeinschaftskremierung erfolgt die Beisetzung gemeinschaftlich, eine Ascherückgabe ist dabei nicht möglich.',
+  },
+  {
+    q: 'Was kostet eine Tierkremierung?',
+    a: 'Die Einzelkremierung mit Ascherückgabe beginnt bei 115 € für Vögel und Kleintiere, die Gemeinschaftskremierung bei 60 €. Der Preis richtet sich nach dem Gewicht des Tieres. Alle Preise verstehen sich inklusive Urkunde, Überführung, Energie- und CO₂-Zuschlag sowie 19 % MwSt.',
+  },
+  {
+    q: 'Holen Sie mein Tier auch in der Tierklinik ab?',
+    a: 'Ja. Wir kommen zu Ihnen nach Hause oder in die Tierarztpraxis bzw. Tierklinik und überführen Ihr Tier behutsam.',
+  },
+  {
+    q: 'Kremieren Sie auch Pferde und große Tiere?',
+    a: 'Ja, auch Pferde und große Tiere werden bei uns kremiert. Die Preise für die Pferdekremierung nennen wir Ihnen gern persönlich am Telefon.',
+  },
+  {
+    q: 'Welche Urnengröße brauche ich?',
+    a: 'Die passende Größe richtet sich nach dem Gewicht Ihres Tieres – bis 10 kg genügen zum Beispiel 0,5 Liter, bis 20 kg 1 Liter. Die Urne darf gern größer sein, sollte vom Fassungsvolumen aber nicht kleiner ausfallen. Die vollständige Tabelle und unsere gesamte Auswahl finden Sie auf der Seite Tierurnen & Andenken.',
+  },
+  {
+    q: 'Kann ich einen Pfotenabdruck oder eine Locke bekommen?',
+    a: 'Ja, auf Wunsch nehmen wir einen Pfotenabdruck ab oder sichern eine Locke. Wichtig: Bitte sagen Sie uns das direkt beim Empfang des Tieres, damit wir es rechtzeitig berücksichtigen können.',
+  },
+  {
+    q: 'Wer steht hinter Memoria?',
+    a: 'Memoria ist ein kleines Familienunternehmen aus Laudenbach. Sarina Göck-König und Dr. Klaus Göck führen es gemeinsam, nehmen Ihren Anruf persönlich entgegen und begleiten jeden Abschied selbst.',
+  },
 ];
 
 // Preistabellen.
