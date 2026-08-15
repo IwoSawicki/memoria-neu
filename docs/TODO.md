@@ -12,19 +12,21 @@ SEO (Sitemap/robots/OG/Schema.org), Docker/nginx für Dokploy (Port 80).
 
 ## 🔴 Was DU noch machen musst
 
-### 0. Katalog-PDF austauschen (2 Min) ⚠️
-Auf der neuen Seite **Tierurnen & Andenken** ist aktuell nur eine
-**Platzhalter-PDF** hinterlegt. Ersetze die Datei durch den echten Katalog:
+### 1. Kontaktformular aktivieren (5 Min) ⚠️ WICHTIG
+Das Formular meldete zuletzt einen Fehler – Ursache: **FormSubmit muss einmalig
+aktiviert werden**, und die Aktivierungs-Mail wird nur beim *klassischen*
+Versand verschickt (nicht über den AJAX-Weg). Ich habe das Formular deshalb so
+umgebaut, dass es bei einem Fehler automatisch klassisch absendet.
 
-- Datei: `public/downloads/tierurnen-katalog.pdf` (Name genau so lassen!)
-- Einfach überschreiben, committen, pushen – **keine Code-Änderung nötig**.
-- Anleitung liegt auch in `public/downloads/README.md`.
+**So aktivierst du es:**
+1. Auf der Website das Formular ausfüllen und absenden.
+2. Du landest kurz auf einer FormSubmit-Seite → dort wird die Aktivierung
+   angestoßen.
+3. In `info@tierbestattung-memoria.de` die **Aktivierungs-Mail** öffnen und den
+   Link anklicken (auch Spam-Ordner prüfen!).
+4. Danach noch einmal testen – ab jetzt läuft der Versand direkt auf der Seite,
+   ohne Weiterleitung.
 
-### 1. Kontaktformular aktivieren (5 Min)
-Nach dem Deploy **einmal das Formular auf der Website abschicken**.
-FormSubmit sendet daraufhin eine **Aktivierungs-Mail** an
-`info@tierbestattung-memoria.de` → **Link darin anklicken**. Fertig, kein Key.
-- Danach nochmal testen: Kommt die Mail an? Auch Spam-Ordner prüfen.
 - *Optional gegen Spam:* FormSubmit erzeugt einen **Hash** für deine Adresse.
   Diesen statt der Klartext-Adresse in `src/data/site.ts` → `formsubmitTarget`
   eintragen (dann steht die E-Mail nicht im Quelltext).

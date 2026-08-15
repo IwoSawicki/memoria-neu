@@ -170,6 +170,18 @@ function setupForm() {
   // Ziel (E-Mail oder FormSubmit-Hash) steht als data-Attribut am Formular.
   const target = form.dataset.target || '';
 
+  // Rücksprungziel für den klassischen Versand auf die aktuelle Domain setzen
+  // (funktioniert so auf Entwicklungs- und Live-Domain gleichermaßen).
+  const nextField = form.querySelector<HTMLInputElement>('[data-next]');
+  if (nextField && !nextField.value) {
+    nextField.value = `${window.location.origin}/?gesendet=1#kontakt`;
+  }
+
+  // Bestätigung anzeigen, wenn wir nach klassischem Versand zurückkommen.
+  if (new URLSearchParams(window.location.search).get('gesendet') === '1') {
+    note.textContent = 'Danke – wir melden uns so schnell wie möglich bei Ihnen.';
+  }
+
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
@@ -181,6 +193,15 @@ function setupForm() {
 
     if (submit) submit.disabled = true;
     note.textContent = 'Wird gesendet …';
+
+    // Fällt der AJAX-Weg aus (z. B. weil die Adresse bei FormSubmit noch nicht
+    // aktiviert ist), senden wir klassisch ab. Dabei zeigt FormSubmit die
+    // Aktivierungsseite an bzw. verschickt die Aktivierungs-Mail.
+    const fallbackSubmit = (reason: unknown) => {
+      console.warn('[Kontaktformular] AJAX-Versand fehlgeschlagen:', reason);
+      note.textContent = 'Wird gesendet …';
+      form.submit(); // nativer Submit – löst diesen Handler nicht erneut aus
+    };
 
     try {
       const res = await fetch(
@@ -194,21 +215,18 @@ function setupForm() {
           body: JSON.stringify(Object.fromEntries(new FormData(form).entries())),
         },
       );
-      const json = await res.json();
+      const json = await res.json().catch(() => null);
       // FormSubmit liefert success als String "true" oder Boolean true.
-      if (json.success === true || json.success === 'true') {
+      if (json && (json.success === true || json.success === 'true')) {
         form.reset();
         note.textContent =
           'Danke – wir melden uns so schnell wie möglich bei Ihnen.';
+        if (submit) submit.disabled = false;
       } else {
-        note.textContent =
-          'Es gab ein Problem beim Senden. Bitte rufen Sie uns an: 06201 7303041.';
+        fallbackSubmit(json?.message || `HTTP ${res.status}`);
       }
-    } catch {
-      note.textContent =
-        'Es gab ein Problem beim Senden. Bitte rufen Sie uns an: 06201 7303041.';
-    } finally {
-      if (submit) submit.disabled = false;
+    } catch (err) {
+      fallbackSubmit(err);
     }
   });
 }

@@ -27,7 +27,20 @@ import { site } from '../data/site';
       </p>
     </div>
 
-    <form class="form" data-contactform data-target={site.formsubmitTarget}>
+    <!--
+      action/method sorgen dafür, dass das Formular auch ohne JavaScript
+      funktioniert – und dienen als Fallback, wenn der AJAX-Versand scheitert
+      (z. B. solange die FormSubmit-Adresse noch nicht aktiviert ist).
+    -->
+    <form
+      class="form"
+      data-contactform
+      data-target={site.formsubmitTarget}
+      action={`https://formsubmit.co/${site.formsubmitTarget}`}
+      method="POST"
+    >
+      {/* Rücksprungziel nach klassischem Versand – wird per JS gesetzt. */}
+      <input type="hidden" name="_next" value="" data-next />
       <!-- FormSubmit.co: Metadaten -->
       <input
         type="hidden"

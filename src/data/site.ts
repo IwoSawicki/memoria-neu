@@ -131,6 +131,38 @@ export const quotes = [
   },
 ];
 
+// Urnen-Galerie (Fotos aus dem Katalog).
+export const urnenGalerie = [
+  { img: '/images/urnen/verona-weiss.webp', name: 'Verona Weiß', material: 'Keramik samtiert' },
+  { img: '/images/urnen/verona-schwarz.webp', name: 'Verona Schwarz', material: 'Keramik samtiert' },
+  { img: '/images/urnen/crystal-weiss.webp', name: 'Crystal Weiß', material: 'Pfote aus Swarovski-Steinen' },
+  { img: '/images/urnen/mondschein.webp', name: 'Mondschein', material: 'Motivurne' },
+  { img: '/images/urnen/tatzenspuren.webp', name: 'Tatzenspuren im Sand', material: 'Motivurne' },
+  { img: '/images/urnen/himmelband.webp', name: 'Velour Himmelband', material: 'Motivurne' },
+];
+
+// Größentabelle aus dem Katalog (Mindestvolumen nach Tiergewicht).
+export const urnenGroessen = [
+  { gewicht: 'bis 1,5 kg', volumen: '0,25 L' },
+  { gewicht: 'bis 10 kg', volumen: '0,5 L' },
+  { gewicht: 'bis 20 kg', volumen: '1 L' },
+  { gewicht: 'bis 35 kg', volumen: '1,5 L' },
+  { gewicht: 'bis 50 kg', volumen: '2 L' },
+  { gewicht: 'über 50 kg', volumen: '2,5 L' },
+];
+
+// Materialien aus dem Katalog.
+export const urnenMaterialien = [
+  'Keramik samtiert',
+  'Keramik frostsicher',
+  'Keramikherz & Keramikpyramide',
+  'Holzurnen (furniert)',
+  'Holzurnen Einzelstücke',
+  'Natursteinurnen Alabaster',
+  'Kupfermotivurnen',
+  'Messing-Herz & Messing-Rainbow',
+];
+
 // Preistabellen.
 export const priceTables = [
   {

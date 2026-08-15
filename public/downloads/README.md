@@ -18,5 +18,4 @@ verlinkt.
 
 ## Aktueller Stand
 
-⚠️ **Die aktuell hinterlegte Datei ist nur ein Platzhalter.** Bitte vor dem
-Livegang durch den echten Katalog ersetzen.
+✅ Hinterlegt ist der **Urnenkatalog (Stand Juni 2026)**.
