@@ -250,14 +250,20 @@ ready(() => {
   const parallax = setupParallax();
   const stickyBar = setupStickyBar();
 
+  // Scroll-Arbeit auf einen Frame bündeln, sonst erzwingen die
+  // getBoundingClientRect-Aufrufe bei jedem Scroll-Event ein Reflow.
+  let ticking = false;
   const onScroll = () => {
-    parallax?.();
-    stickyBar?.();
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(() => {
+      ticking = false;
+      parallax?.();
+      stickyBar?.();
+    });
   };
   parallax?.();
   stickyBar?.();
   window.addEventListener('scroll', onScroll, { passive: true });
-  window.addEventListener('resize', () => {
-    stickyBar?.();
-  });
+  window.addEventListener('resize', onScroll, { passive: true });
 });

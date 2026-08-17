@@ -4,6 +4,10 @@
 import '@fontsource-variable/fraunces/opsz.css';
 import '@fontsource-variable/fraunces/opsz-italic.css';
 import '@fontsource-variable/figtree/wght.css';
+// Die beiden Schriftdateien, die oberhalb der Falz gebraucht werden – als URL
+// importiert, damit der gehashte Dateiname im Preload stimmt.
+import frauncesFont from '@fontsource-variable/fraunces/files/fraunces-latin-opsz-normal.woff2?url';
+import figtreeFont from '@fontsource-variable/figtree/files/figtree-latin-wght-normal.woff2?url';
 import '../styles/global.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
@@ -47,12 +51,30 @@ const ogImage = new URL('/images/og.jpg', Astro.site).href;
         <link
           rel="preload"
           as="image"
-          href="/images/hero.webp"
+          href="/images/hero-1553.webp"
+          imagesrcset="/images/hero-800.webp 800w, /images/hero-1200.webp 1200w, /images/hero-1553.webp 1553w"
+          imagesizes="100vw"
           type="image/webp"
           fetchpriority="high"
         />
       )
     }
+
+    {/* Schriften der ersten Bildschirmseite vorladen – verkürzt die Ladekette. */}
+    <link
+      rel="preload"
+      as="font"
+      type="font/woff2"
+      href={frauncesFont}
+      crossorigin="anonymous"
+    />
+    <link
+      rel="preload"
+      as="font"
+      type="font/woff2"
+      href={figtreeFont}
+      crossorigin="anonymous"
+    />
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
