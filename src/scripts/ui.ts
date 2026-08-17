@@ -14,6 +14,20 @@ function ready(fn: () => void) {
   else document.addEventListener('DOMContentLoaded', fn);
 }
 
+/* --- Seitenanfang beim Laden ----------------------------------------- */
+// Browser stellen beim Neuladen die vorherige Scrollposition wieder her – dann
+// startet die Seite mittendrin und der Header ist nicht sichtbar. Beim normalen
+// Aufruf und beim Neuladen setzen wir deshalb zurück. Vor/Zurück-Navigation
+// behält die Position bewusst bei.
+function resetScrollOnLoad() {
+  if (window.location.hash) return;
+  const nav = performance.getEntriesByType(
+    'navigation',
+  )[0] as PerformanceNavigationTiming | undefined;
+  if (nav && nav.type === 'back_forward') return;
+  window.scrollTo({ top: 0, left: 0, behavior: 'instant' as ScrollBehavior });
+}
+
 /* --- Reveal-on-Scroll ------------------------------------------------ */
 function setupReveal() {
   document.documentElement.classList.remove('om-nojs');
@@ -126,6 +140,27 @@ function setupQuotes() {
   next?.addEventListener('click', () => go(1));
   render();
   restart();
+}
+
+/* --- Parallax (Hero) -------------------------------------------------- */
+function setupHeroParallax() {
+  const media = document.querySelector<HTMLElement>('[data-heroparallax]');
+  const hero = document.getElementById('top');
+  if (!media || !hero || reduceMotion) return;
+
+  let last = -1;
+  const update = () => {
+    const h = hero.offsetHeight;
+    // Nur solange der Hero sichtbar ist – darunter ist nichts zu tun.
+    if (window.scrollY > h) return;
+    // Dezent: max. 7 % der Hero-Höhe, passend zur Reserve im CSS.
+    const y = Math.min(window.scrollY * 0.15, h * 0.07);
+    const rounded = Math.round(y * 10) / 10;
+    if (rounded === last) return;
+    last = rounded;
+    media.style.transform = `translate3d(0, ${rounded}px, 0)`;
+  };
+  return update;
 }
 
 /* --- Parallax (Kontakt-Bild) ---------------------------------------- */
@@ -241,12 +276,14 @@ function setupYear() {
 
 /* --- Init ------------------------------------------------------------ */
 ready(() => {
+  resetScrollOnLoad();
   setupReveal();
   setupMenu();
   setupQuotes();
   setupForm();
   setupYear();
 
+  const heroParallax = setupHeroParallax();
   const parallax = setupParallax();
   const stickyBar = setupStickyBar();
 
@@ -258,10 +295,12 @@ ready(() => {
     ticking = true;
     requestAnimationFrame(() => {
       ticking = false;
+      heroParallax?.();
       parallax?.();
       stickyBar?.();
     });
   };
+  heroParallax?.();
   parallax?.();
   stickyBar?.();
   window.addEventListener('scroll', onScroll, { passive: true });
