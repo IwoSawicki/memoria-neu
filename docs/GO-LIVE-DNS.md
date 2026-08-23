@@ -57,9 +57,9 @@ alles rund um E-Mail bleibt unberührt.
       stattdessen die **Dokploy-IP** eintragen.
 - [ ] **`www`**: den CNAME `cdn3.wixdns.net` entfernen und stattdessen
       `www` ebenfalls auf die **Dokploy-IP** zeigen lassen (A-Eintrag).
-      → In Dokploy ist `www` bereits als Weiterleitung auf die Domain ohne
-      `www` eingerichtet. **Das ist wichtig:** Alle bei Google indexierten
-      URLs laufen auf `www.`.
+      → In Dokploy ist die Weiterleitung eingerichtet: **`www.` ist die Hauptadresse**, ohne
+      `www` leitet dorthin weiter. Grund: Alle bei Google indexierten URLs
+      laufen bereits auf `www.`
 - [ ] **MX-Eintrag `5 smtpin.rzone.de` NICHT anfassen.**
 - [ ] Warten (meist 15–60 Min, laut TTL bis zu 1 Std.)
 
