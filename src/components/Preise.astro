@@ -1,5 +1,5 @@
 ---
-import { priceTables } from '../data/site';
+import { priceTables, priceSurcharges } from '../data/site';
 ---
 
 <section id="preise" class="preise">
@@ -21,7 +21,10 @@ import { priceTables } from '../data/site';
             <dl>
               {table.rows.map((row) => (
                 <>
-                  <dt>{row.label}</dt>
+                  <dt>
+                    {row.label}
+                    {row.note && <span class="note">{row.note}</span>}
+                  </dt>
                   <dd>{row.price}</dd>
                 </>
               ))}
@@ -29,6 +32,20 @@ import { priceTables } from '../data/site';
           </div>
         ))
       }
+    </div>
+
+    <div class="zuschlaege">
+      <h3>Serviceleistungen außerhalb der regulären Zeiten</h3>
+      <dl>
+        {
+          priceSurcharges.map((s) => (
+            <div class="zuschlag-row">
+              <dt>{s.zeit}</dt>
+              <dd>{s.zuschlag}</dd>
+            </div>
+          ))
+        }
+      </dl>
     </div>
 
     <p class="foot">
@@ -121,6 +138,59 @@ import { priceTables } from '../data/site';
   dt:last-of-type,
   dd:last-of-type {
     border-bottom: none;
+  }
+
+  /* Feine Zusatzzeile unter der Bezeichnung (Urnengutschrift) */
+  dt .note {
+    display: block;
+    font-size: 13px;
+    line-height: 1.4;
+    color: var(--muted-3);
+    margin-top: 3px;
+  }
+
+  .zuschlaege {
+    margin: clamp(28px, 3.2vw, 40px) 0 0;
+    background: var(--bg-card);
+    border-radius: 18px;
+    padding: clamp(22px, 2.4vw, 30px) clamp(24px, 3vw, 36px);
+  }
+  .zuschlaege h3 {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--heading-dark);
+    margin: 0 0 12px;
+  }
+  .zuschlaege dl {
+    margin: 0;
+    display: block;
+  }
+  .zuschlag-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 4px 18px;
+    padding: 9px 0;
+    border-bottom: 1px solid var(--rule-price);
+  }
+  .zuschlag-row:last-child {
+    border-bottom: none;
+  }
+  .zuschlag-row dt {
+    padding: 0;
+    border: none;
+    color: var(--muted-1);
+    font-size: 15px;
+  }
+  .zuschlag-row dd {
+    margin: 0;
+    padding: 0;
+    border: none;
+    color: var(--heading-dark);
+    font-size: 15px;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
   }
 
   .foot {

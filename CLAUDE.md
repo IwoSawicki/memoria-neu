@@ -182,13 +182,20 @@ Nav-Reihenfolge (Anker): Ablauf · Leistungen · Über uns · Kontakt · Preise.
   H3 (Fraunces 400, 25px, `#16260c`) + Badge (15px, `#5c6b4c`). `<dl>` Grid `1fr auto`, 16px,
   Zeilen `border-bottom:1px solid #d5deba`, `dt` `#3d4a30`, `dd` `#16260c` tabular-nums rechtsbündig.
 
-  **Einzelkremierung mit Ascherückgabe** *(inkl. Urnengutschrift)*:
-  Vögel & Kleintiere **115 €** · Kaninchen **135 €** · Katzen & Hunde bis 5 kg **195 €** ·
-  5–20 kg **235 €** · 20–40 kg **315 €** · 40–60 kg **370 €** · über 60 kg **430 €**.
+  **Einzelkremierung mit Ascherückgabe** *(inkl. Urnengutschrift)* – Werte 1:1
+  von der alten Seite, Gutschrift je Zeile als feine Unterzeile:
+  Vögel & Kleintiere **115 €** *(inkl. 15 €)* · Kaninchen **135 €** *(15 €)* ·
+  Katzen & Hunde bis 5 kg **195 €** *(15 €)* · Katzen & Hunde 5–20 kg **235 €** *(15 €)* ·
+  Hunde 20–40 kg **315 €** *(25 €)* · Hunde 40–60 kg **370 €** *(30 €)* ·
+  Hunde über 60 kg **430 €** *(30 €)*.
 
   **Gemeinschaftskremierung** *(ohne Ascherückgabe)*:
   Vögel & Kleintiere **60 €** · Kaninchen **70 €** · Katzen & Hunde bis 5 kg **120 €** ·
-  5–20 kg **160 €** · 20–40 kg **210 €** · 40–60 kg **260 €** · über 60 kg **320 €**.
+  Katzen & Hunde 5–20 kg **160 €** · Hunde 20–40 kg **210 €** · Hunde 40–60 kg **260 €** ·
+  Hunde über 60 kg **320 €**.
+- **Zuschlagsblock** (Karte, `#e6eecd`): „Serviceleistungen außerhalb der
+  regulären Zeiten" – Mo–Fr 18:00–20:00 Uhr und Sa 14:00–18:00 Uhr **zzgl. 29 €** ·
+  Mo–Fr nach 20:00 Uhr, Sa nach 18:00 Uhr und sonntags **zzgl. 49 €**.
 - Fußnote (16px, `#5c6b4c`): „Preise für die Pferdekremierung nennen wir Ihnen gern persönlich am Telefon."
 
 ### 3.6 Kontakt `#kontakt`

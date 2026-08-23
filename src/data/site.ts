@@ -174,7 +174,7 @@ export const faq = [
   },
   {
     q: 'Was kostet eine Tierkremierung?',
-    a: 'Die Einzelkremierung mit Ascherückgabe beginnt bei 115 € für Vögel und Kleintiere, die Gemeinschaftskremierung bei 60 €. Der Preis richtet sich nach dem Gewicht des Tieres. Alle Preise verstehen sich inklusive Urkunde, Überführung, Energie- und CO₂-Zuschlag sowie 19 % MwSt.',
+    a: 'Die Einzelkremierung mit Ascherückgabe beginnt bei 115 € für Vögel und Kleintiere, die Gemeinschaftskremierung bei 60 €. Der Preis richtet sich nach dem Gewicht des Tieres. Alle Preise verstehen sich inklusive Urkunde, Überführung, Energie- und CO₂-Zuschlag sowie 19 % MwSt. Für Serviceleistungen außerhalb der regulären Zeiten kommt ein Zuschlag hinzu.',
   },
   {
     q: 'Holen Sie mein Tier auch in der Tierklinik ab?',
@@ -198,19 +198,19 @@ export const faq = [
   },
 ];
 
-// Preistabellen.
+// Preistabellen – Werte und Urnengutschriften 1:1 von der bisherigen Seite.
 export const priceTables = [
   {
     title: 'Einzelkremierung mit Ascherückgabe',
     badge: 'inkl. Urnengutschrift',
     rows: [
-      { label: 'Vögel & Kleintiere', price: '115 €' },
-      { label: 'Kaninchen', price: '135 €' },
-      { label: 'Katzen & Hunde bis 5 kg', price: '195 €' },
-      { label: '5–20 kg', price: '235 €' },
-      { label: '20–40 kg', price: '315 €' },
-      { label: '40–60 kg', price: '370 €' },
-      { label: 'über 60 kg', price: '430 €' },
+      { label: 'Vögel & Kleintiere', note: 'inkl. 15 € Urnengutschrift', price: '115 €' },
+      { label: 'Kaninchen', note: 'inkl. 15 € Urnengutschrift', price: '135 €' },
+      { label: 'Katzen & Hunde bis 5 kg', note: 'inkl. 15 € Urnengutschrift', price: '195 €' },
+      { label: 'Katzen & Hunde 5–20 kg', note: 'inkl. 15 € Urnengutschrift', price: '235 €' },
+      { label: 'Hunde 20–40 kg', note: 'inkl. 25 € Urnengutschrift', price: '315 €' },
+      { label: 'Hunde 40–60 kg', note: 'inkl. 30 € Urnengutschrift', price: '370 €' },
+      { label: 'Hunde über 60 kg', note: 'inkl. 30 € Urnengutschrift', price: '430 €' },
     ],
   },
   {
@@ -220,10 +220,16 @@ export const priceTables = [
       { label: 'Vögel & Kleintiere', price: '60 €' },
       { label: 'Kaninchen', price: '70 €' },
       { label: 'Katzen & Hunde bis 5 kg', price: '120 €' },
-      { label: '5–20 kg', price: '160 €' },
-      { label: '20–40 kg', price: '210 €' },
-      { label: '40–60 kg', price: '260 €' },
-      { label: 'über 60 kg', price: '320 €' },
+      { label: 'Katzen & Hunde 5–20 kg', price: '160 €' },
+      { label: 'Hunde 20–40 kg', price: '210 €' },
+      { label: 'Hunde 40–60 kg', price: '260 €' },
+      { label: 'Hunde über 60 kg', price: '320 €' },
     ],
   },
+];
+
+// Zuschläge für Serviceleistungen außerhalb der regulären Zeiten.
+export const priceSurcharges = [
+  { zeit: 'Mo–Fr 18:00–20:00 Uhr und Sa 14:00–18:00 Uhr', zuschlag: 'zzgl. 29 €' },
+  { zeit: 'Mo–Fr nach 20:00 Uhr, Sa nach 18:00 Uhr und sonntags', zuschlag: 'zzgl. 49 €' },
 ];
