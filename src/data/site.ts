@@ -38,7 +38,7 @@ export const site = {
     title:
       'Tierbestattung Memoria – Einzelkremierung mit Ascherückgabe in Laudenbach',
     description:
-      'Tierbestattung Memoria in Laudenbach: Abholung rund um die Uhr, Einzel- und Gemeinschaftskremierung, Tierurnen. Familienunternehmen. Telefon 06201 7303041.',
+      'Tierbestattung Memoria in Laudenbach: rund um die Uhr erreichbar, Einzel- und Gemeinschaftskremierung, Tierurnen. Familienunternehmen. Telefon 06201 7303041.',
   },
   // Sichtbarkeit optionaler Blöcke (im Original: showPrices / showStickyBar).
   showPrices: true,
@@ -66,7 +66,7 @@ export const footerNav = [
 
 // Trust-Punkte in der Hero-Sektion.
 export const trustPoints = [
-  'Abholung rund um die Uhr',
+  'Rund um die Uhr erreichbar',
   'Einzelkremierung mit Ascherückgabe',
   'Kleines Familienunternehmen',
 ];
@@ -76,7 +76,7 @@ export const leistungen = [
   {
     icon: 'certificate',
     title: 'Einzelkremierung',
-    text: 'Ihr Tier wird allein kremiert. Sie erhalten seine Asche in einer Urne Ihrer Wahl zurück, dazu eine Urkunde.',
+    text: 'Ihr Tier wird einzeln eingeäschert. Sie erhalten seine Asche in einer Urne Ihrer Wahl zurück, dazu eine Urkunde.',
   },
   {
     icon: 'heart',
@@ -166,11 +166,11 @@ export const urnenMaterialien = [
 export const faq = [
   {
     q: 'Wie schnell können Sie mein Tier abholen?',
-    a: 'Wir sind rund um die Uhr erreichbar und holen an 365 Tagen im Jahr ab – auch nachts und am Wochenende. Ein Anruf unter 06201 7303041 genügt, alles Weitere besprechen wir in Ruhe mit Ihnen.',
+    a: 'Wir sind rund um die Uhr für Sie erreichbar und holen an 365 Tagen im Jahr ab – auch am Wochenende. Ein Anruf unter 06201 7303041 genügt, alles Weitere besprechen wir in Ruhe mit Ihnen.',
   },
   {
     q: 'Was ist der Unterschied zwischen Einzel- und Gemeinschaftskremierung?',
-    a: 'Bei der Einzelkremierung wird Ihr Tier allein kremiert. Sie erhalten seine Asche in einer Urne Ihrer Wahl zurück, dazu eine Urkunde. Bei der Gemeinschaftskremierung erfolgt die Beisetzung gemeinschaftlich, eine Ascherückgabe ist dabei nicht möglich.',
+    a: 'Bei der Einzelkremierung wird Ihr Tier einzeln eingeäschert. Sie erhalten seine Asche in einer Urne Ihrer Wahl zurück, dazu eine Urkunde. Bei der Gemeinschaftskremierung erfolgt die Beisetzung gemeinschaftlich, eine Ascherückgabe ist dabei nicht möglich.',
   },
   {
     q: 'Was kostet eine Tierkremierung?',
@@ -190,7 +190,7 @@ export const faq = [
   },
   {
     q: 'Kann ich einen Pfotenabdruck oder eine Locke bekommen?',
-    a: 'Ja, auf Wunsch nehmen wir einen Pfotenabdruck ab oder sichern eine Locke. Wichtig: Bitte sagen Sie uns das direkt beim Empfang des Tieres, damit wir es rechtzeitig berücksichtigen können.',
+    a: 'Ja, auf Wunsch nehmen wir einen Pfotenabdruck ab oder sichern eine Locke. Sagen Sie uns am besten zeitnah nach dem Empfang Ihres Tieres Bescheid, damit wir es rechtzeitig berücksichtigen können.',
   },
   {
     q: 'Wer steht hinter Memoria?',
