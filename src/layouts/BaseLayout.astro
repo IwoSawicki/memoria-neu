@@ -34,6 +34,10 @@ const {
 // Absolute URLs für Canonical & Open Graph (Basis = `site` aus astro.config).
 const canonical = new URL(Astro.url.pathname, Astro.site).href;
 const ogImage = new URL('/images/og.jpg', Astro.site).href;
+
+// Nur die Live-Domain darf indexiert werden. Auf der Dev-Subdomain wird die
+// Seite per noindex gesperrt, damit sie nicht als Dublette bei Google landet.
+const isLive = Astro.site?.hostname === 'www.tierbestattung-memoria.de';
 ---
 
 <!doctype html>
@@ -52,6 +56,7 @@ const ogImage = new URL('/images/og.jpg', Astro.site).href;
     <meta name="description" content={description} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="canonical" href={canonical} />
+    {!isLive && <meta name="robots" content="noindex, nofollow" />}
     <meta name="theme-color" content="#2b3a1e" />
     {
       preloadHero && (
