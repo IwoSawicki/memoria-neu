@@ -40,6 +40,13 @@ const ogImage = new URL('/images/og.jpg', Astro.site).href;
 <html lang="de" class="om-nojs">
   <head>
     <meta charset="utf-8" />
+    <script is:inline>
+      // Muss VOR allem anderen laufen: Browser stellen beim Neuladen die alte
+      // Scrollposition wieder her – die Seite startet dann mittendrin und der
+      // Header ist weg. "manual" schaltet das ab; Sprünge zu #ankern
+      // funktionieren weiterhin.
+      if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />

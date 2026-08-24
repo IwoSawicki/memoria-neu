@@ -76,7 +76,7 @@ export const leistungen = [
   {
     icon: 'certificate',
     title: 'Einzelkremierung',
-    text: 'Ihr Tier wird einzeln eingeäschert. Sie erhalten seine Asche in einer Urne Ihrer Wahl zurück, dazu eine Urkunde.',
+    text: 'Ihr Tier wird einzeln eingeäschert. Sie erhalten die Asche in einer Urne Ihrer Wahl zurück, dazu eine Urkunde.',
   },
   {
     icon: 'heart',
@@ -170,7 +170,7 @@ export const faq = [
   },
   {
     q: 'Was ist der Unterschied zwischen Einzel- und Gemeinschaftskremierung?',
-    a: 'Bei der Einzelkremierung wird Ihr Tier einzeln eingeäschert. Sie erhalten seine Asche in einer Urne Ihrer Wahl zurück, dazu eine Urkunde. Bei der Gemeinschaftskremierung erfolgt die Beisetzung gemeinschaftlich, eine Ascherückgabe ist dabei nicht möglich.',
+    a: 'Bei der Einzelkremierung wird Ihr Tier einzeln eingeäschert. Sie erhalten die Asche in einer Urne Ihrer Wahl zurück, dazu eine Urkunde. Bei der Gemeinschaftskremierung erfolgt die Beisetzung gemeinschaftlich, eine Ascherückgabe ist dabei nicht möglich.',
   },
   {
     q: 'Was kostet eine Tierkremierung?',

@@ -34,7 +34,9 @@ import { site } from '../data/site';
         Bereicherung und schönen Momente bin ich dankbar und hoffe, mit unserem
         Dienst etwas zurückgeben zu können.“ — {site.owners[0]}
       </p>
-      <a class="btn" href="#kontakt">Lernen Sie uns kennen</a>
+      <a class="btn" href={site.phoneHref}>
+        Lernen Sie uns kennen · {site.phoneDisplay}
+      </a>
     </div>
   </div>
 </section>
@@ -112,6 +114,7 @@ import { site } from '../data/site';
 
   .btn {
     display: inline-flex;
+    font-variant-numeric: tabular-nums;
     align-items: center;
     border: 1.5px solid var(--heading-dark);
     border-radius: 999px;
