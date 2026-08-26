@@ -109,6 +109,31 @@ const isLive = Astro.site?.hostname === 'www.tierbestattung-memoria.de';
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
 
+    {/* ####### NUR ZUM TESTEN – ueber site.gaForceLoad abschaltbar #######
+        Google Analytics fest im <head>, bei JEDEM Besucher, OHNE Einwilligung.
+        Original-Snippet von Google, unveraendert. NICHT DSGVO-konform.
+        __gaLoaded verhindert, dass der Cookie-Banner den Tag ein zweites Mal
+        laedt, falls jemand zusaetzlich auf "Akzeptieren" klickt. */}
+    {
+      site.gaForceLoad && site.googleAnalyticsId && (
+        <>
+          <script
+            is:inline
+            async
+            src={`https://www.googletagmanager.com/gtag/js?id=${site.googleAnalyticsId}`}
+          />
+          <script
+            is:inline
+            set:html={`window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', '${site.googleAnalyticsId}');
+window.__gaLoaded = true;`}
+          />
+        </>
+      )
+    }
+
     {/* Umami: cookielose, datenschutzfreundliche Reichweitenmessung */}
     {
       site.umamiSrc && site.umamiWebsiteId && (
