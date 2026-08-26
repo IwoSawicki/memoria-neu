@@ -61,3 +61,19 @@ Beides greift automatisch anhand der Domain – es kann nicht vergessen werden.
 
 Damit landen neue Pull Requests standardmäßig auf `main` und nicht auf dem
 alten Arbeitsbranch.
+
+
+## Nach jedem Deploy prüfen
+
+```bash
+./scripts/check-live.sh
+```
+
+Prüft in einem Durchlauf: Erreichbarkeit aller Seiten, die Weiterleitung von
+ohne-www auf www, die alten URLs, Zertifikate für **beide** Hostnamen und ob
+`robots.txt`/`noindex` versehentlich die Live-Seite sperren.
+
+> **Wichtig:** Beide Domains müssen in Dokploy eingetragen sein – auch die, die
+> nur weiterleitet. Traefik reicht eine Anfrage nur dann an den Container
+> weiter, wenn es für den Hostnamen einen Router kennt. Fehlt der Eintrag,
+> antwortet Traefik mit 404 und die Weiterleitung in nginx wird nie erreicht.
