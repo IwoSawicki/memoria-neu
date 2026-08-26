@@ -111,9 +111,14 @@ const gaId = site.googleAnalyticsId;
       document.head.appendChild(s);
       const w = window as any;
       w.dataLayer = w.dataLayer || [];
-      function gtag(...args: unknown[]) {
-        w.dataLayer.push(args);
-      }
+      // gtag.js wertet einen dataLayer-Eintrag nur dann als Befehl aus, wenn es
+      // ein echtes `arguments`-Objekt ist. Mit Rest-Parametern landet dort ein
+      // normales Array – das wird kommentarlos verworfen und es wird kein
+      // einziger Treffer gesendet. Deshalb hier bewusst `arguments`.
+      const gtag = function () {
+        // eslint-disable-next-line prefer-rest-params
+        w.dataLayer.push(arguments);
+      } as (...args: unknown[]) => void;
       w.gtag = gtag;
       gtag('js', new Date());
       gtag('config', id, { anonymize_ip: true });
