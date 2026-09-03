@@ -34,13 +34,6 @@ export const site = {
   // Analytics und kein Cookie-Banner. Sobald eine ID eingetragen ist, erscheint
   // der Cookie-Hinweis und GA wird NUR nach Einwilligung geladen.
   googleAnalyticsId: 'G-08LQ8WK59V',
-  // ############ NUR ZUM TESTEN – WIEDER AUF false SETZEN ############
-  // true = Google Analytics wird fest im <head> geladen, bei JEDEM Besucher,
-  // OHNE Einwilligung. Damit lässt sich prüfen, ob der Cookie-Banner die
-  // Ursache für fehlende Daten ist. In diesem Zustand ist die Seite NICHT
-  // DSGVO-konform – nach dem Test unbedingt zurück auf false.
-  gaForceLoad: true,
-  // ##################################################################
   seo: {
     title:
       'Tierbestattung Memoria – Einzelkremierung mit Ascherückgabe in Laudenbach',
