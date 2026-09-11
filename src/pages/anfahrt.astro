@@ -1,0 +1,94 @@
+---
+import ContentLayout from '../layouts/ContentLayout.astro';
+import { site } from '../data/site';
+
+// Kartenlinks statt eingebetteter Karte: Ein Google-Maps-iframe würde beim
+// Seitenaufruf Daten an Google senden und wäre damit einwilligungspflichtig –
+// die Datenschutzerklärung deckt das derzeit nicht ab. Ein normaler Link tut es
+// nicht und funktioniert auf dem Handy genauso gut.
+const mapsLaudenbach =
+  'https://www.google.com/maps/search/?api=1&query=Konrad-Zuse-Str.+3%2C+69514+Laudenbach';
+const mapsEinhausen =
+  'https://www.google.com/maps/search/?api=1&query=Carl-Benz-Str.+1%2C+64683+Einhausen';
+---
+
+<ContentLayout
+  title="Anfahrt und Standort – Memoria Tierbestattung"
+  description="So finden Sie uns in Laudenbach. Adresse, Anfahrt und Abholadresse in Einhausen auf einen Blick."
+  eyebrow="Anfahrt"
+  heading="Anfahrt und Standorte"
+  lead="In den meisten Fällen müssen Sie gar nicht zu uns kommen – wir fahren zu Ihnen."
+>
+  <p>
+    Memoria hat zwei Adressen: den Sitz in Laudenbach an der Bergstraße und die
+    Abholadresse in Einhausen. Beide finden Sie unten. Wenn Sie unsicher sind,
+    wohin Sie sich wenden sollen, rufen Sie einfach an – unter
+    <a href={site.phoneHref}>{site.phoneDisplay}</a> sind wir rund um die Uhr
+    erreichbar.
+  </p>
+
+  <h2>Sitz in Laudenbach</h2>
+  <p>
+    <strong>Tierbestattung Memoria</strong><br />
+    Konrad-Zuse-Str. 3<br />
+    69514 Laudenbach
+  </p>
+  <p>
+    Laudenbach liegt an der Bergstraße, zwischen Hemsbach und Heppenheim, direkt
+    an der Landesgrenze zwischen Baden-Württemberg und Hessen.
+  </p>
+  <p>
+    <a href={mapsLaudenbach} rel="noopener">Route nach Laudenbach planen</a>
+  </p>
+
+  <h2>Abholadresse in Einhausen</h2>
+  <p>
+    <strong>Abholadresse</strong><br />
+    Carl-Benz-Str. 1<br />
+    64683 Einhausen
+  </p>
+  <p>
+    Einhausen liegt in Hessen im Kreis Bergstraße, wenige Kilometer nördlich von
+    Laudenbach.
+  </p>
+  <p>
+    <a href={mapsEinhausen} rel="noopener">Route nach Einhausen planen</a>
+  </p>
+  {/* TODO IWO: Wofür genau steht die Abholadresse Einhausen? Ist das der Ort, an
+      dem die Tiere überführt werden, oder können Tierhalter dort auch selbst
+      etwas abgeben bzw. die Urne abholen? Der Text ist bewusst neutral
+      formuliert, bis das geklärt ist. */}
+
+  <h2>Können Sie bei uns vorbeikommen?</h2>
+  <p>
+    Für den Abschied selbst müssen Sie nicht zu uns fahren. Wir holen Ihr Tier
+    bei Ihnen zu Hause, in der Tierarztpraxis oder in der Tierklinik ab und
+    stimmen mit Ihnen ab, wie die Urne später zu Ihnen kommt.
+  </p>
+  <p class="hinweis">
+    Wenn Sie dennoch persönlich vorbeikommen möchten, rufen Sie uns bitte vorher
+    an. Dann sagen wir Ihnen, wann jemand vor Ort ist.
+  </p>
+  {/* TODO IWO: Können Kunden vorbeikommen, oder ist das reine Abholung?
+      Gibt es feste Öffnungszeiten vor Ort? Gibt es Parkplätze direkt am Haus?
+      Sobald das geklärt ist, kann dieser Abschnitt konkret werden. */}
+
+  <h2>Wohin wir fahren</h2>
+  <p>
+    Unser Gebiet reicht von der <a href="/tierbestattung-bergstrasse/">
+      Bergstraße
+    </a> über den <a href="/tierbestattung-odenwald/">Odenwald</a> bis in den
+    Rhein-Neckar-Raum, das südliche Hessen und Rheinhessen – unter anderem nach
+    Weinheim, Bensheim, Heppenheim, Viernheim, Mannheim, Heidelberg, Worms,
+    Ludwigshafen, Darmstadt und Michelstadt. Ob wir auch zu Ihnen kommen, sagen
+    wir Ihnen am Telefon sofort.
+  </p>
+
+  <h2>Was Sie sonst noch brauchen</h2>
+  <p>
+    Was ein Abschied kostet, steht vollständig auf der Seite
+    <a href="/preise/">Preise</a>. Was wir übernehmen, finden Sie unter
+    <a href="/leistungen/">Unsere Leistungen</a>. Alle Kontaktwege auf einen
+    Blick gibt es unter <a href="/kontakt/">Kontakt</a>.
+  </p>
+</ContentLayout>
