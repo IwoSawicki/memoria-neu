@@ -37,9 +37,21 @@ Wahrheit**, diese Datei die Referenz.
    Die Tierurnen-Seite bindet den Katalog als PDF aus
    `public/downloads/tierurnen-katalog.pdf` ein (vom Kunden austauschbar, Pfad
    zentral in `src/data/site.ts` → `katalogPdf`).
-5. **Alte URLs:** `/leistungen`, `/preise`, `/pferdekremierung`, `/kontakt`
-   → 301 auf die Startseite; `/anfahrt` → `/impressum` (in `nginx.conf`).
-   `/tierurnen-andenken` bleibt als echte Seite erhalten.
+5. **Alte URLs (Stand SEO-Monat 1, September 2026):** `/leistungen`,
+   `/preise`, `/kontakt` und `/anfahrt` sind **wieder echte Seiten** – die
+   301-Weiterleitungen wurden entfernt, weil diese URLs bei Google weiterhin
+   ranken (zusammen ~2.500 Einblendungen/Monat). `/pferdekremierung` leitet
+   weiterhin um, jetzt auf `/#faq-grosse-tiere` statt auf den Seitenanfang;
+   eine eigene Seite entsteht erst, wenn der Leistungsumfang geklärt ist.
+   `/tierurnen-andenken` war durchgehend eine echte Seite.
+6. **SEO-Unterseiten (September 2026):** `/tierkrematorium-laudenbach`,
+   `/tierbestattung-bergstrasse`, `/tierbestattung-odenwald`,
+   `/einzel-oder-gemeinschaftskremierung`, `/tier-nachts-gestorben`.
+   Alle nutzen `ContentLayout.astro` und die bestehenden Design-Tokens.
+   **Die Startseite bleibt der One-Pager** – die Unterseiten treten daneben.
+   Interne Links auf Unterseiten immer **mit Schrägstrich am Ende**
+   (`/preise/`), weil Astro Verzeichnis-URLs erzeugt und der Canonical so
+   lautet.
 
 ---
 

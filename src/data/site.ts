@@ -50,18 +50,33 @@ export const site = {
 export const nav = [
   { label: 'Leistungen', href: '#leistungen' },
   { label: 'Preise', href: '#preise' },
-  { label: 'Tierurnen', href: '/tierurnen-andenken' },
+  { label: 'Tierurnen', href: '/tierurnen-andenken/' },
   { label: 'Über uns', href: '#ueber-uns' },
   { label: 'Kontakt', href: '#kontakt' },
 ];
 
-// Footer-Navigation.
+// Footer-Navigation, Spalte 1: die echten Unterseiten. Mit Schrägstrich am
+// Ende, weil Astro die Seiten als Verzeichnisse ausgibt und der Canonical
+// genauso lautet – ohne Schrägstrich wäre jeder Klick ein Umweg.
 export const footerNav = [
-  { label: 'Leistungen', href: '/#leistungen' },
-  { label: 'Ablauf', href: '/#ablauf' },
-  { label: 'Über uns', href: '/#ueber-uns' },
-  { label: 'Preise', href: '/#preise' },
-  { label: 'Tierurnen & Andenken', href: '/tierurnen-andenken' },
+  { label: 'Leistungen', href: '/leistungen/' },
+  { label: 'Preise', href: '/preise/' },
+  { label: 'Tierurnen & Andenken', href: '/tierurnen-andenken/' },
+  { label: 'Kontakt', href: '/kontakt/' },
+  { label: 'Anfahrt', href: '/anfahrt/' },
+];
+
+// Footer-Navigation, Spalte 2: Regionen und Orientierungsseiten. Bewusst nicht
+// im Hauptmenü – die Leiste soll schlank bleiben.
+export const footerRegionNav = [
+  { label: 'Tierkrematorium Laudenbach', href: '/tierkrematorium-laudenbach/' },
+  { label: 'Tierbestattung Bergstraße', href: '/tierbestattung-bergstrasse/' },
+  { label: 'Tierbestattung Odenwald', href: '/tierbestattung-odenwald/' },
+  {
+    label: 'Einzel- oder Gemeinschaftskremierung',
+    href: '/einzel-oder-gemeinschaftskremierung/',
+  },
+  { label: 'Tier nachts gestorben', href: '/tier-nachts-gestorben/' },
 ];
 
 // Trust-Punkte in der Hero-Sektion.
@@ -87,7 +102,7 @@ export const leistungen = [
     icon: 'urn',
     title: 'Tierurnen und Andenken',
     text: 'Urnen aus Holz, Stein und Keramik, dazu kleine Andenken zum Aufbewahren. Wir beraten Sie persönlich.',
-    href: '/tierurnen-andenken',
+    href: '/tierurnen-andenken/',
     linkText: 'Katalog ansehen',
   },
 ];

@@ -58,6 +58,9 @@ import { priceTables, priceSurcharges } from '../data/site';
       Preise für die Pferdekremierung nennen wir Ihnen gern persönlich am
       Telefon.
     </p>
+    <p class="mehr">
+      <a href="/preise/">Was im Preis enthalten ist und was nicht</a>
+    </p>
   </div>
 </section>
 
@@ -213,6 +216,20 @@ import { priceTables, priceSurcharges } from '../data/site';
     font-weight: 600;
     font-variant-numeric: tabular-nums;
     white-space: nowrap;
+  }
+
+  .mehr {
+    margin: 12px 0 0;
+    font-size: 16px;
+  }
+  .mehr a {
+    color: var(--heading-dark);
+    font-weight: 500;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .mehr a:hover {
+    color: var(--text-link-hover);
   }
 
   .foot {

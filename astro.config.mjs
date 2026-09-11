@@ -12,5 +12,12 @@ export default defineConfig({
   // Statische Ausgabe – keine SSR nötig.
   output: 'static',
   site: SITE,
-  integrations: [sitemap()],
+  integrations: [
+    sitemap({
+      // lastmod signalisiert Google, wann zuletzt etwas geaendert wurde.
+      // Build-Zeitpunkt ist hier die ehrlichste verfuegbare Angabe: Ein Deploy
+      // findet nur statt, wenn sich tatsaechlich etwas geaendert hat.
+      serialize: (item) => ({ ...item, lastmod: new Date().toISOString() }),
+    }),
+  ],
 });

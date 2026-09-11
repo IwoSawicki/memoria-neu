@@ -70,6 +70,9 @@ import { leistungen } from '../data/site';
     <p class="note">
       Auch Pferde und große Tiere · Abholung zu Hause oder in der Tierklinik
     </p>
+    <p class="mehr">
+      <a href="/leistungen/">Alle Leistungen im Detail ansehen</a>
+    </p>
   </div>
 </section>
 
@@ -188,6 +191,20 @@ import { leistungen } from '../data/site';
     text-decoration: underline;
   }
   .card-link:hover {
+    color: var(--text-link-hover);
+  }
+
+  .mehr {
+    margin: 14px 0 0;
+    font-size: 16px;
+  }
+  .mehr a {
+    color: var(--heading-dark);
+    font-weight: 500;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .mehr a:hover {
     color: var(--text-link-hover);
   }
 

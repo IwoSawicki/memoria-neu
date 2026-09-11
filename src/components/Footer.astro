@@ -1,5 +1,5 @@
 ---
-import { site, footerNav } from '../data/site';
+import { site, footerNav, footerRegionNav } from '../data/site';
 
 // Baustein-Jahr als Fallback; im Browser aktualisiert ui.ts es auf das echte Jahr.
 const year = new Date().getFullYear();
@@ -35,8 +35,13 @@ const year = new Date().getFullYear();
           <span>Instagram</span>
         </a>
       </div>
-      <nav class="footer-nav" aria-label="Footer-Navigation">
+      <nav class="footer-nav" aria-label="Seiten">
+        <p class="nav-label">Seiten</p>
         {footerNav.map((item) => <a href={item.href}>{item.label}</a>)}
+      </nav>
+      <nav class="footer-nav" aria-label="Regionen und Orientierung">
+        <p class="nav-label">Region &amp; Orientierung</p>
+        {footerRegionNav.map((item) => <a href={item.href}>{item.label}</a>)}
       </nav>
       <div class="addr">
         <p>{site.address}</p>
@@ -132,9 +137,18 @@ const year = new Date().getFullYear();
     padding-top: clamp(30px, 3.4vw, 44px);
     border-top: 1px solid rgba(238, 243, 224, 0.2);
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(165px, 1fr));
     gap: clamp(28px, 4vw, 48px);
     align-items: start;
+  }
+
+  .nav-label {
+    margin: 0 0 4px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(238, 243, 224, 0.58);
   }
 
   .brand {
