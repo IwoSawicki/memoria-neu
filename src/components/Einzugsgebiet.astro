@@ -1,0 +1,110 @@
+---
+// Das Einzugsgebiet stand bisher nirgends auf der Seite. Bewusst als Fließtext
+// und nicht als Städteliste – für Orte ohne eigene Seite wäre eine Linkliste
+// nur eine Sackgasse.
+import { site } from '../data/site';
+---
+
+<section id="einzugsgebiet" class="einzugsgebiet">
+  <div class="inner" data-reveal>
+    <p class="eyebrow">Einzugsgebiet</p>
+    <h2>Wir kommen zu <span class="italic">Ihnen</span>.</h2>
+
+    <div class="cols">
+      <div>
+        <p class="lead">
+          Sie müssen Ihr Tier nirgendwohin bringen. Wir holen es bei Ihnen zu
+          Hause ab, in der Tierarztpraxis oder in der Tierklinik.
+        </p>
+        <p>
+          Unser Sitz ist in Laudenbach, unsere Abholadresse in Einhausen.
+          Gefahren wird von dort aus in die ganze Region: an die
+          <a href="/tierbestattung-bergstrasse/">Bergstraße</a>, in den
+          <a href="/tierbestattung-odenwald/">Odenwald</a>, in den
+          Rhein-Neckar-Raum, das südliche Hessen und nach Rheinhessen.
+        </p>
+      </div>
+      <div>
+        <p>
+          Konkret sind wir unter anderem in Weinheim, Bensheim, Heppenheim,
+          Viernheim und Michelstadt unterwegs, ebenso in Mannheim, Heidelberg,
+          Ludwigshafen, Worms und Darmstadt – und in den vielen kleineren Orten
+          dazwischen.
+        </p>
+        <p>
+          Ob wir auch zu Ihnen fahren, sagen wir Ihnen sofort am Telefon.
+          Rufen Sie an: <a href={site.phoneHref}>{site.phoneDisplay}</a>.
+        </p>
+        {/* TODO IWO: Gibt es einen maximalen Radius oder Fahrtkosten ab einer
+            bestimmten Entfernung? Dann gehört das hier in einen Satz. */}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .einzugsgebiet {
+    background: var(--bg-page);
+  }
+
+  .inner {
+    max-width: var(--maxw);
+    margin: 0 auto;
+    padding: 0 clamp(20px, 4vw, 42px) clamp(72px, 10vw, 140px);
+  }
+
+  .eyebrow {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--muted-3);
+    margin: 0 0 16px;
+  }
+
+  h2 {
+    font-family: var(--font-serif);
+    font-weight: 300;
+    font-size: clamp(32px, 4.6vw, 58px);
+    line-height: 1.12;
+    letter-spacing: -0.02em;
+    color: var(--heading-dark);
+    margin: 0 0 clamp(24px, 3vw, 36px);
+  }
+  h2 .italic {
+    font-style: italic;
+  }
+
+  .cols {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: clamp(24px, 4vw, 64px);
+  }
+
+  .lead {
+    font-family: var(--font-serif);
+    font-size: clamp(19px, 1.8vw, 23px);
+    line-height: 1.5;
+    color: var(--about-lead);
+    margin: 0 0 18px;
+    text-wrap: pretty;
+  }
+
+  p {
+    font-size: 16px;
+    line-height: 1.75;
+    color: var(--muted-2);
+    margin: 0 0 16px;
+  }
+  p:last-child {
+    margin-bottom: 0;
+  }
+
+  a {
+    color: var(--heading-dark);
+    text-decoration: underline;
+  }
+  a:hover {
+    color: var(--text-link-hover);
+  }
+</style>
