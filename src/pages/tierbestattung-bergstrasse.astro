@@ -1,0 +1,81 @@
+---
+import ContentLayout from '../layouts/ContentLayout.astro';
+import { site } from '../data/site';
+---
+
+<ContentLayout
+  title="Tierbestattung Bergstraße – Tierkrematorium vor Ort"
+  description="Unser Tierkrematorium liegt selbst an der Bergstraße. Abholung in Bensheim, Heppenheim, Lorsch und Umgebung – rund um die Uhr, an 365 Tagen im Jahr."
+  eyebrow="Bergstraße"
+  heading="Tierbestattung an der Bergstraße"
+  lead="Beide unserer Adressen liegen an der Bergstraße. Wir fahren hier keine Strecke, die wir nicht ohnehin kennen."
+>
+  <p>
+    Memoria ist kein überregionaler Anbieter, der die Bergstraße mitbedient.
+    Wir sitzen selbst hier: der Betrieb in der Konrad-Zuse-Str. 3 in
+    <strong>69514 Laudenbach</strong>, die Abholadresse in der Carl-Benz-Str. 1
+    in <strong>64683 Einhausen</strong>. Beide Orte liegen an der Bergstraße,
+    nur auf verschiedenen Seiten der Landesgrenze.
+  </p>
+
+  <h2>Wo wir abholen</h2>
+  <p>
+    Wir holen an der gesamten Bergstraße ab – in Bensheim, Heppenheim,
+    Zwingenberg, Lorsch, Einhausen und Viernheim, ebenso in Weinheim, Hemsbach
+    und den umliegenden Gemeinden. Sie müssen Ihr Tier nirgendwohin bringen: Wir
+    kommen zu Ihnen nach Hause, in die Tierarztpraxis oder in die Tierklinik.
+  </p>
+
+  <h2>Einzeln oder gemeinschaftlich</h2>
+  <p>
+    Bei der Einzelkremierung wird Ihr Tier allein eingeäschert. Sie bekommen die
+    Asche in einer Urne Ihrer Wahl zurück, dazu eine Urkunde. Bei der
+    Gemeinschaftskremierung findet die Beisetzung gemeinsam statt, ohne
+    Ascherückgabe.
+  </p>
+  <p>
+    Beide Wege sind in Ordnung, und keiner ist der bessere. Wenn Sie noch
+    unschlüssig sind, hilft Ihnen vielleicht unsere Gegenüberstellung:
+    <a href="/einzel-oder-gemeinschaftskremierung/">
+      Einzel- oder Gemeinschaftskremierung
+    </a>. Die Preise – ab 115 Euro einzeln, ab 60 Euro gemeinschaftlich – stehen
+    vollständig auf der Seite <a href="/preise/">Preise</a>.
+  </p>
+
+  <h2>Wenn es abends oder am Wochenende passiert</h2>
+  <p>
+    Wir fahren auch außerhalb der regulären Zeiten. Was das kostet, sagen wir
+    vorab und nicht erst auf der Rechnung: <strong>29 Euro</strong> zusätzlich
+    montags bis freitags zwischen 18:00 und 20:00 Uhr sowie samstags zwischen
+    14:00 und 18:00 Uhr, <strong>49 Euro</strong> montags bis freitags nach
+    20:00 Uhr, samstags nach 18:00 Uhr und sonntags.
+  </p>
+  <p>
+    Wenn Ihr Tier nachts gestorben ist und Sie gerade nicht wissen, was zu tun
+    ist, haben wir das hier Schritt für Schritt aufgeschrieben:
+    <a href="/tier-nachts-gestorben/">Ihr Tier ist nachts gestorben</a>.
+  </p>
+
+  <h2>Ein Familienunternehmen aus der Region</h2>
+  <p>
+    {site.owners[0]} und {site.owners[1]} führen Memoria gemeinsam. Sie nehmen
+    Ihren Anruf entgegen, kommen selbst zu Ihnen und begleiten den Abschied
+    persönlich. Sie sprechen also nicht mit einer Zentrale, sondern mit den
+    Menschen, die anschließend auch bei Ihnen vor der Tür stehen.
+  </p>
+
+  <h2>Rund um die Uhr erreichbar</h2>
+  <p>
+    Wir sind an 365 Tagen im Jahr erreichbar, auch nachts, am Wochenende und an
+    Feiertagen. Rufen Sie unter
+    <a href={site.phoneHref}>{site.phoneDisplay}</a> an – auch dann, wenn Sie
+    noch nichts entschieden haben und erst einmal wissen möchten, wie es
+    weitergeht.
+  </p>
+  <p>
+    Die Anfahrt zu beiden Adressen finden Sie unter
+    <a href="/anfahrt/">Anfahrt und Standorte</a>, alle Kontaktwege unter
+    <a href="/kontakt/">Kontakt</a>. Wenn Sie aus dem Hinterland kommen: Wir
+    fahren auch in den <a href="/tierbestattung-odenwald/">Odenwald</a>.
+  </p>
+</ContentLayout>

@@ -1,0 +1,176 @@
+---
+import ContentLayout from '../layouts/ContentLayout.astro';
+import { site } from '../data/site';
+
+const vergleich = [
+  {
+    merkmal: 'Ascherückgabe',
+    einzel: 'ja',
+    gemeinschaft: 'nein',
+  },
+  {
+    merkmal: 'Urne',
+    einzel: 'Sie wählen sie aus',
+    gemeinschaft: 'entfällt',
+  },
+  {
+    merkmal: 'Urkunde',
+    einzel: 'ja',
+    gemeinschaft: 'nein',
+  },
+  {
+    merkmal: 'Preis ab',
+    einzel: '115 €',
+    gemeinschaft: '60 €',
+  },
+  {
+    merkmal: 'Abholung',
+    einzel: 'zu Hause, Praxis oder Klinik',
+    gemeinschaft: 'zu Hause, Praxis oder Klinik',
+  },
+];
+
+const fragen = [
+  {
+    q: 'Was ist der Unterschied zwischen Einzel- und Gemeinschaftskremierung?',
+    a: 'Bei der Einzelkremierung wird Ihr Tier einzeln eingeäschert. Sie erhalten die Asche in einer Urne Ihrer Wahl zurück, dazu eine Urkunde. Bei der Gemeinschaftskremierung erfolgt die Beisetzung gemeinschaftlich, eine Ascherückgabe ist dabei nicht möglich.',
+  },
+  {
+    q: 'Kann ich mich später noch umentscheiden?',
+    // TODO IWO: Bis zu welchem Zeitpunkt ist ein Wechsel möglich? Von Franz
+    // bestätigen lassen und diese Antwort präzisieren.
+    a: 'Sagen Sie uns möglichst früh Bescheid, wenn Sie Ihre Entscheidung ändern möchten. Rufen Sie einfach an – wir sagen Ihnen dann, ob es im konkreten Fall noch geht.',
+  },
+  {
+    q: 'Bekomme ich bei der Gemeinschaftskremierung ein Andenken?',
+    a: 'Einen Pfotenabdruck oder eine Haarlocke können wir auf Wunsch auch dann abnehmen. Wichtig ist nur, dass Sie uns zeitnah nach dem Empfang Ihres Tieres Bescheid sagen.',
+  },
+];
+
+const base = Astro.site ?? new URL('https://www.tierbestattung-memoria.de');
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  '@id': `${new URL('/einzel-oder-gemeinschaftskremierung', base).href}#faq`,
+  mainEntity: fragen.map((item) => ({
+    '@type': 'Question',
+    name: item.q,
+    acceptedAnswer: { '@type': 'Answer', text: item.a },
+  })),
+};
+---
+
+<ContentLayout
+  title="Einzel- oder Gemeinschaftskremierung? Der Unterschied"
+  description="Bei der Einzelkremierung erhalten Sie die Asche Ihres Tieres zurück, bei der Gemeinschaftskremierung nicht. Was das bedeutet und was es kostet."
+  eyebrow="Entscheidungshilfe"
+  heading="Einzelkremierung oder Gemeinschaftskremierung – was ist der Unterschied?"
+>
+  <p>
+    Der Unterschied ist einer: Bei der <strong>Einzelkremierung</strong> wird
+    Ihr Tier allein eingeäschert, und Sie bekommen die Asche zurück. Bei der
+    <strong>Gemeinschaftskremierung</strong> werden mehrere Tiere gemeinsam
+    eingeäschert, eine Ascherückgabe ist dann nicht möglich. Alles davor –
+    Abholung, Überführung, die Sorgfalt im Umgang mit Ihrem Tier – ist in beiden
+    Fällen gleich.
+  </p>
+
+  <h2>Die Einzelkremierung</h2>
+  <p>
+    Ihr Tier wird für sich eingeäschert. Sie erhalten die Asche anschließend in
+    einer Urne, die Sie selbst aussuchen, und dazu eine Urkunde über die
+    Kremierung.
+  </p>
+  <p>
+    Das ist der Weg für Sie, wenn Sie einen Ort möchten, an den Sie gehen
+    können: die Urne zu Hause, ein Platz im Garten, eine Stelle, die für Sie und
+    Ihr Tier eine Bedeutung hat. Manche Menschen brauchen das, andere nicht –
+    das lässt sich vorher schwer sagen und ist auch keine Frage von richtig oder
+    falsch.
+  </p>
+  <p>
+    Die Preise beginnen bei 115 Euro und richten sich nach dem Gewicht. In jedem
+    Preis steckt bereits eine Urnengutschrift, die beim Kauf der Urne
+    angerechnet wird.
+  </p>
+
+  <h2>Die Gemeinschaftskremierung</h2>
+  <p>
+    Mehrere Tiere werden gemeinsam eingeäschert, die Beisetzung erfolgt
+    gemeinschaftlich. Sie erhalten keine Asche und keine Urne zurück.
+  </p>
+  <p>
+    Viele Tierhalter wählen das bewusst – weil ihnen der Abschied wichtiger ist
+    als ein Gegenstand, weil sie keinen Platz für eine Urne haben oder weil sie
+    es für ihr Tier so stimmiger finden. Die Gemeinschaftskremierung beginnt bei
+    60 Euro.
+  </p>
+
+  <h2>Beides im Vergleich</h2>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">&nbsp;</th>
+          <th scope="col">Einzelkremierung</th>
+          <th scope="col">Gemeinschaftskremierung</th>
+        </tr>
+      </thead>
+      <tbody>
+        {
+          vergleich.map((z) => (
+            <tr>
+              <td>{z.merkmal}</td>
+              <td>{z.einzel}</td>
+              <td>{z.gemeinschaft}</td>
+            </tr>
+          ))
+        }
+      </tbody>
+    </table>
+  </div>
+  <p class="hinweis">
+    Die vollständigen Preistabellen nach Gewicht finden Sie auf der Seite
+    <a href="/preise/">Preise</a>.
+  </p>
+
+  <h2>Wie entscheide ich mich?</h2>
+  <p>
+    Es gibt hier keine bessere und keine schlechtere Wahl. Wer die
+    Gemeinschaftskremierung nimmt, verabschiedet sich nicht weniger. Und wer
+    eine Urne möchte, hängt nicht am Materiellen.
+  </p>
+  <p>
+    Wenn Sie unsicher sind, hilft manchmal diese Frage: Hätten Sie in einem Jahr
+    gern etwas, das Sie in die Hand nehmen können? Wenn Sie darauf spontan mit
+    Ja antworten, ist die Einzelkremierung wahrscheinlich die richtige Wahl.
+    Wenn Sie zögern, ist es die Gemeinschaftskremierung vermutlich auch.
+  </p>
+  <p>
+    Sie müssen sich am Telefon nicht festlegen. Rufen Sie an, wir besprechen es
+    in Ruhe – unter <a href={site.phoneHref}>{site.phoneDisplay}</a> sind wir
+    rund um die Uhr erreichbar.
+  </p>
+
+  <h2>Häufige Fragen</h2>
+  {
+    fragen.map((item) => (
+      <details>
+        <summary>{item.q}</summary>
+        <p>{item.a}</p>
+      </details>
+    ))
+  }
+
+  <p>
+    Wenn Sie sich für die Einzelkremierung entscheiden: Unsere Urnen – aus
+    Keramik, Holz, Naturstein und Messing – finden Sie mit allen Größen und
+    Preisen unter <a href="/tierurnen-andenken/">Tierurnen &amp; Andenken</a>.
+  </p>
+
+  <script
+    type="application/ld+json"
+    is:inline
+    set:html={JSON.stringify(faqSchema)}
+  />
+</ContentLayout>

@@ -1,0 +1,124 @@
+---
+import ContentLayout from '../layouts/ContentLayout.astro';
+import { site } from '../data/site';
+---
+
+<ContentLayout
+  title="Tier nachts gestorben – was jetzt zu tun ist"
+  description="Ihr Tier ist nachts oder am Wochenende gestorben? Wir sind 365 Tage im Jahr erreichbar. So gehen Sie in den nächsten Stunden vor."
+  eyebrow="Wenn es nachts passiert"
+  heading="Ihr Tier ist nachts gestorben – was Sie jetzt tun können"
+  showCta={false}
+>
+  <p>
+    Sie müssen jetzt nichts sofort entscheiden und nichts allein regeln. Rufen
+    Sie an, auch mitten in der Nacht:
+  </p>
+
+  <p class="sofort">
+    <a href={site.phoneHref}>{site.phoneDisplay}</a>
+  </p>
+
+  <p>
+    Wir sind rund um die Uhr erreichbar, an 365 Tagen im Jahr. Am Telefon
+    besprechen wir mit Ihnen, was in den nächsten Stunden zu tun ist, und wann
+    wir zu Ihnen kommen können. Sie müssen dafür nichts vorbereitet haben.
+  </p>
+
+  <h2>Bis wir da sind</h2>
+  <p>
+    Was Sie bis dahin tun sollten, hängt von Ihrem Tier und von Ihrer Situation
+    ab. Sagen Sie uns am Telefon, wo Ihr Tier gerade ist – wir sagen Ihnen dann,
+    worauf Sie bis zu unserem Eintreffen achten sollten.
+  </p>
+  {/* TODO IWO: Fachliche Angaben von Franz einholen – was Tierhalter bis zur
+      Abholung konkret tun sollten (Lagerung, Umgang, Zeitfenster). Bewusst
+      nicht selbst formuliert: Falsche Hinweise wären hier schädlicher als gar
+      keine. Sobald der Text von Franz da ist, ersetzt er diesen Absatz. */}
+  <p>
+    Wenn Ihr Tier in einer Tierklinik oder Tierarztpraxis gestorben ist, können
+    Sie uns ebenfalls anrufen. Wir holen es dort ab, Sie müssen es nicht selbst
+    abholen oder transportieren.
+  </p>
+
+  <h2>Was Sie jetzt nicht tun müssen</h2>
+  <p>
+    Sie müssen Ihr Tier nirgendwohin bringen. Sie müssen heute Nacht nicht
+    entscheiden, ob es einzeln oder gemeinschaftlich kremiert werden soll. Sie
+    müssen keine Urne aussuchen und keine Unterlagen heraussuchen. Und Sie
+    müssen niemanden sonst anrufen – wir übernehmen die Überführung.
+  </p>
+
+  <h2>Wir kommen auch nachts</h2>
+  <p>
+    Ein Tier sucht sich den Zeitpunkt nicht aus. Deshalb fahren wir auch nachts,
+    am Wochenende und an Feiertagen – Sie müssen nicht bis zum Morgen warten,
+    wenn Ihnen das Warten schwerfällt.
+  </p>
+  <p>
+    Für diese Zeiten berechnen wir einen Zuschlag, und wir sagen ihn Ihnen
+    lieber hier als später: <strong>29 Euro</strong> montags bis freitags
+    zwischen 18:00 und 20:00 Uhr sowie samstags zwischen 14:00 und 18:00 Uhr,
+    <strong>49 Euro</strong> montags bis freitags nach 20:00 Uhr, samstags nach
+    18:00 Uhr und sonntags.
+  </p>
+
+  <h2>Wie es danach weitergeht</h2>
+  <p>
+    Wir holen Ihr Tier bei Ihnen ab und überführen es. Wenn Sie sich vorher noch
+    in Ruhe verabschieden möchten, nehmen wir uns die Zeit dafür.
+  </p>
+  <p>
+    Danach entscheiden Sie, ob Ihr Tier einzeln oder gemeinschaftlich kremiert
+    werden soll. Bei der Einzelkremierung erhalten Sie die Asche in einer Urne
+    Ihrer Wahl zurück, bei der Gemeinschaftskremierung nicht. Das müssen Sie
+    nicht heute Nacht klären – die Unterschiede können Sie in Ruhe nachlesen,
+    wenn es Ihnen danach ist:
+    <a href="/einzel-oder-gemeinschaftskremierung/">
+      Einzel- oder Gemeinschaftskremierung
+    </a>.
+  </p>
+  <p>
+    Auf Wunsch nehmen wir einen Pfotenabdruck ab oder sichern eine Locke. Sagen
+    Sie uns das bitte zeitnah, später lässt es sich nicht nachholen.
+  </p>
+
+  <h2>Wenn Sie erst einmal nur reden möchten</h2>
+  <p>
+    Auch dafür können Sie anrufen. Sie müssen nicht wissen, was Sie wollen, und
+    Sie müssen am Telefon nichts buchen. {site.owners[0]} und {site.owners[1]}
+    führen Memoria als Familienunternehmen und gehen selbst ans Telefon.
+  </p>
+
+  <p class="sofort">
+    <a href={site.phoneHref}>{site.phoneDisplay}</a>
+  </p>
+  <p class="sofort-note">Rund um die Uhr, an 365 Tagen im Jahr.</p>
+</ContentLayout>
+
+<style>
+  /* Die Telefonnummer soll auf dieser Seite sofort ins Auge fallen – oben im
+     ersten Bildschirm und noch einmal am Ende. */
+  .sofort {
+    margin: 0 0 10px;
+  }
+  .sofort :global(a) {
+    display: inline-block;
+    font-family: var(--font-serif);
+    font-weight: 300;
+    font-size: clamp(36px, 6vw, 60px);
+    line-height: 1.05;
+    color: var(--heading-dark);
+    font-variant-numeric: tabular-nums;
+    border-bottom: 1px solid var(--chevron);
+    text-decoration: none;
+  }
+  .sofort :global(a:hover) {
+    color: var(--text-link-hover);
+  }
+  .sofort-note {
+    margin: 0 0 16px;
+    font-size: 15px;
+    color: var(--muted-3);
+  }
+</style>

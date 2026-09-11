@@ -1,0 +1,83 @@
+---
+import ContentLayout from '../layouts/ContentLayout.astro';
+import { site } from '../data/site';
+---
+
+<ContentLayout
+  title="Tierbestattung Odenwald – Abholung in der ganzen Region"
+  description="Tierkremierung im Odenwald: Wir holen Ihr Tier zu Hause oder in der Tierarztpraxis ab – in Michelstadt, Erbach, Reichelsheim und Umgebung. Rund um die Uhr."
+  eyebrow="Odenwald"
+  heading="Tierbestattung im Odenwald"
+  lead="Der Odenwald besteht aus vielen kleinen Orten mit weiten Wegen dazwischen. Genau deshalb fahren wir zu Ihnen."
+>
+  <p>
+    Wenn ein Tier stirbt, ist die letzte Frage, mit der man sich beschäftigen
+    möchte, die nach der Entfernung. Im Odenwald ist sie trotzdem oft die
+    erste: Das nächste Krematorium liegt selten um die Ecke, und niemand möchte
+    sein Tier auf dem Rücksitz durch halbe Landkreise fahren.
+  </p>
+  <p>
+    Diesen Weg nehmen wir Ihnen ab. Ein Anruf unter
+    <a href={site.phoneHref}>{site.phoneDisplay}</a> genügt, und wir holen Ihr
+    Tier bei Ihnen ab – zu Hause, in der Tierarztpraxis oder in der Tierklinik.
+  </p>
+
+  <h2>Wo wir im Odenwald unterwegs sind</h2>
+  <p>
+    Wir fahren in den gesamten Odenwald, unter anderem nach Michelstadt, Erbach,
+    Reichelsheim, Lindenfels und Beerfelden – und ebenso in die kleineren
+    Ortsteile dazwischen, die auf keiner Liste stehen. Wenn Sie unsicher sind,
+    ob wir zu Ihnen kommen: Rufen Sie an, wir sagen es Ihnen sofort.
+  </p>
+  {/* TODO IWO: Gibt es im Odenwald eine Entfernungsgrenze oder Fahrtkosten ab
+      einer bestimmten Strecke? Falls ja, gehört das genau hier hin. */}
+
+  <h2>Sie müssen nicht sofort entscheiden</h2>
+  <p>
+    Am Telefon klären wir zuerst das Praktische: wo Ihr Tier gerade ist, wann
+    wir kommen können. Ob die Kremierung einzeln oder gemeinschaftlich
+    stattfinden soll und welche Urne es werden soll, können Sie auch später
+    sagen. Die Unterschiede haben wir auf einer eigenen Seite
+    gegenübergestellt:
+    <a href="/einzel-oder-gemeinschaftskremierung/">
+      Einzel- oder Gemeinschaftskremierung
+    </a>.
+  </p>
+
+  <h2>Was wir am Telefon von Ihnen brauchen</h2>
+  <p>
+    Es hilft uns, wenn Sie uns sagen können, wo Ihr Tier gerade ist – zu Hause,
+    in der Praxis oder in der Klinik –, um welches Tier es sich handelt und
+    ungefähr, wie schwer es ist. Danach richtet sich der Preis. Mehr müssen Sie
+    nicht vorbereiten.
+  </p>
+  <p>
+    Wenn Sie den genauen Anfahrtsweg nicht beschreiben können, ist das kein
+    Problem. Gerade in den Ortsteilen und Weilern des Odenwalds hilft uns die
+    Adresse mit Hausnummer meist mehr als jede Wegbeschreibung.
+  </p>
+
+  <h2>Was es kostet</h2>
+  <p>
+    Die Einzelkremierung mit Ascherückgabe beginnt bei 115 Euro, die
+    Gemeinschaftskremierung bei 60 Euro; der Preis richtet sich nach dem Gewicht
+    Ihres Tieres. Enthalten sind Urkunde, Überführung, Energie- und CO₂-Zuschlag
+    sowie die Mehrwertsteuer. Die vollständigen Tabellen stehen auf der Seite
+    <a href="/preise/">Preise</a>.
+  </p>
+
+  <h2>Auch nachts und am Wochenende</h2>
+  <p>
+    Wir sind an 365 Tagen im Jahr rund um die Uhr erreichbar. Gerade wenn der
+    Weg weiter ist, ist das wichtig: Sie müssen nicht bis zum nächsten Morgen
+    warten und sich in der Zwischenzeit selbst behelfen. Für Abholungen
+    außerhalb der regulären Zeiten kommt ein Zuschlag hinzu, den wir Ihnen am
+    Telefon nennen.
+  </p>
+  <p>
+    Unser Sitz ist in Laudenbach an der Bergstraße, die Abholadresse in
+    Einhausen – beide finden Sie unter
+    <a href="/anfahrt/">Anfahrt und Standorte</a>. Was wir im Einzelnen
+    übernehmen, steht unter <a href="/leistungen/">Unsere Leistungen</a>.
+  </p>
+</ContentLayout>

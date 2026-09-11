@@ -1,0 +1,98 @@
+---
+import ContentLayout from '../layouts/ContentLayout.astro';
+import { site } from '../data/site';
+---
+
+<ContentLayout
+  title="Tierkrematorium Laudenbach – Memoria Tierbestattung"
+  description="Ihr Tierkrematorium in Laudenbach an der Bergstraße. Einzelkremierung mit Ascherückgabe, Abholung rund um die Uhr, persönlich betreut."
+  eyebrow="Laudenbach"
+  heading="Tierkrematorium in Laudenbach"
+  lead="Wir sind von hier. Wenn Sie in Laudenbach anrufen, sprechen Sie mit jemandem aus dem Ort."
+>
+  <p>
+    Memoria hat seinen Sitz in der <strong>Konrad-Zuse-Str. 3, 69514
+    Laudenbach</strong>. Wir sind ein kleines Familienunternehmen –
+    {site.owners[0]} und {site.owners[1]} führen es gemeinsam, nehmen Ihren
+    Anruf selbst entgegen und begleiten jeden Abschied persönlich.
+  </p>
+
+  <h2>Was wir hier anbieten</h2>
+  <p>
+    Wir kremieren Ihr Tier auf zwei Wegen. Bei der
+    <strong>Einzelkremierung</strong> wird Ihr Tier allein eingeäschert, Sie
+    erhalten die Asche in einer Urne Ihrer Wahl zurück und dazu eine Urkunde.
+    Bei der <strong>Gemeinschaftskremierung</strong> erfolgt die Beisetzung
+    gemeinschaftlich, eine Ascherückgabe ist dabei nicht möglich.
+  </p>
+  <p>
+    Beides gilt für Hunde, Katzen, Kaninchen, Vögel und Kleintiere. Auch Pferde
+    und andere große Tiere kremieren wir; den Ablauf stimmen wir dabei im
+    Einzelfall ab. Die Einzelkremierung beginnt bei 115 Euro, die
+    Gemeinschaftskremierung bei 60 Euro – alle Beträge stehen vollständig auf
+    der Seite <a href="/preise/">Preise</a>.
+  </p>
+  <p>
+    Zur Kremierung gehören auf Wunsch ein Pfotenabdruck oder eine Haarlocke.
+    Die Urne wählen Sie in Ruhe aus unserem
+    <a href="/tierurnen-andenken/">Katalog</a> – von Keramik über Holz und
+    Naturstein bis Messing.
+  </p>
+
+  <h2>Für welche Tiere</h2>
+  <p>
+    Wir kremieren Hunde und Katzen in allen Größen, außerdem Kaninchen,
+    Meerschweinchen und andere Kleintiere sowie Vögel. Für die Preisstaffel
+    zählt das Gewicht: Sie reicht von Vögeln und Kleintieren bis zu Hunden über
+    60 Kilogramm.
+  </p>
+  <p>
+    Pferde und andere große Tiere kremieren wir ebenfalls. Weil Abholung und
+    Ablauf dabei anders aussehen, besprechen wir das im Einzelfall direkt am
+    Telefon – dort nennen wir Ihnen auch den Preis.
+  </p>
+
+  <h2>Abholung in Laudenbach und Umgebung</h2>
+  <p>
+    Sie müssen Ihr Tier nicht zu uns bringen. Wir holen es bei Ihnen zu Hause
+    ab, in der Tierarztpraxis oder in der Tierklinik. Ein Anruf unter
+    <a href={site.phoneHref}>{site.phoneDisplay}</a> genügt.
+  </p>
+  <p>
+    Wir sind rund um die Uhr erreichbar, an 365 Tagen im Jahr – auch nachts, am
+    Wochenende und an Feiertagen. Für Abholungen außerhalb der regulären Zeiten
+    kommt ein Zuschlag hinzu, den wir Ihnen vorher nennen.
+  </p>
+  {/* TODO IWO: Wie schnell ist in Laudenbach und direkter Umgebung jemand vor Ort?
+      Ohne belastbare Angabe von Franz steht hier bewusst keine Zeit. */}
+
+  <h2>Anfahrt und Kontakt</h2>
+  <p>
+    Laudenbach liegt an der Bergstraße, zwischen Hemsbach und Heppenheim. Neben
+    dem Sitz in Laudenbach haben wir eine Abholadresse in der Carl-Benz-Str. 1
+    in 64683 Einhausen. Beide Adressen mit Kartenlinks finden Sie unter
+    <a href="/anfahrt/">Anfahrt und Standorte</a>.
+  </p>
+  <p>
+    Erreichbar sind wir telefonisch unter
+    <a href={site.phoneHref}>{site.phoneDisplay}</a> oder per E-Mail an
+    <a href={`mailto:${site.email}`}>{site.email}</a>. Alle Kontaktwege stehen
+    auf der Seite <a href="/kontakt/">Kontakt</a>.
+  </p>
+
+  <h2>Was Tierhalter über uns sagen</h2>
+  <p>
+    Memoria hat <strong>4,9 von 5 Sternen aus 186 Google-Bewertungen</strong>.
+  </p>
+  {/* TODO IWO: Zwei bis drei echte Google-Bewertungen im Wortlaut liefern
+      (Text + Vorname oder Initialen). Erst wenn die hier sichtbar stehen,
+      darf aggregateRating in die strukturierten Daten – siehe Bericht. */}
+
+  <h2>Wenn Sie nicht weiterwissen</h2>
+  <p>
+    Rufen Sie an, auch wenn Sie noch gar nichts entschieden haben. Wir
+    besprechen in Ruhe, was möglich ist, und Sie müssen sich am Telefon zu
+    nichts festlegen. Was wir im Einzelnen übernehmen, steht unter
+    <a href="/leistungen/">Unsere Leistungen</a>.
+  </p>
+</ContentLayout>
