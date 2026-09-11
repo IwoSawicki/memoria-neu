@@ -28,6 +28,21 @@ function resetScrollOnLoad() {
   window.scrollTo({ top: 0, left: 0, behavior: 'instant' as ScrollBehavior });
 }
 
+/* --- Direktlink auf eine FAQ-Frage ----------------------------------- */
+// Erlaubt Links wie /#faq-grosse-tiere. Der Browser springt zwar von selbst
+// zum Anker, das <details> bliebe aber zu – deshalb hier öffnen und danach
+// erneut scrollen, weil sich die Höhe durch das Aufklappen ändert.
+function openTargetedFaq() {
+  const hash = window.location.hash.slice(1);
+  if (!hash) return;
+  const el = document.getElementById(hash);
+  if (!(el instanceof HTMLDetailsElement)) return;
+  el.open = true;
+  requestAnimationFrame(() => {
+    el.scrollIntoView({ block: 'start', behavior: 'instant' as ScrollBehavior });
+  });
+}
+
 /* --- Reveal-on-Scroll ------------------------------------------------ */
 function setupReveal() {
   document.documentElement.classList.remove('om-nojs');
@@ -277,6 +292,7 @@ function setupYear() {
 /* --- Init ------------------------------------------------------------ */
 ready(() => {
   resetScrollOnLoad();
+  openTargetedFaq();
   setupReveal();
   setupMenu();
   setupQuotes();

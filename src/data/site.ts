@@ -165,34 +165,42 @@ export const urnenMaterialien = [
 // FAQ (Startseite) – dient auch als strukturierte Daten für Google.
 export const faq = [
   {
+    id: 'faq-abholung',
     q: 'Wie schnell können Sie mein Tier abholen?',
     a: 'Wir sind rund um die Uhr für Sie erreichbar und holen an 365 Tagen im Jahr ab – auch am Wochenende. Ein Anruf unter 06201 7303041 genügt, alles Weitere besprechen wir in Ruhe mit Ihnen.',
   },
   {
+    id: 'faq-unterschied',
     q: 'Was ist der Unterschied zwischen Einzel- und Gemeinschaftskremierung?',
     a: 'Bei der Einzelkremierung wird Ihr Tier einzeln eingeäschert. Sie erhalten die Asche in einer Urne Ihrer Wahl zurück, dazu eine Urkunde. Bei der Gemeinschaftskremierung erfolgt die Beisetzung gemeinschaftlich, eine Ascherückgabe ist dabei nicht möglich.',
   },
   {
+    id: 'faq-kosten',
     q: 'Was kostet eine Tierkremierung?',
     a: 'Die Einzelkremierung mit Ascherückgabe beginnt bei 115 € für Vögel und Kleintiere, die Gemeinschaftskremierung bei 60 €. Der Preis richtet sich nach dem Gewicht des Tieres. Alle Preise verstehen sich inklusive Urkunde, Überführung, Energie- und CO₂-Zuschlag sowie 19 % MwSt. Für Serviceleistungen außerhalb der regulären Zeiten kommt ein Zuschlag hinzu.',
   },
   {
+    id: 'faq-tierklinik',
     q: 'Holen Sie mein Tier auch in der Tierklinik ab?',
     a: 'Ja. Wir kommen zu Ihnen nach Hause oder in die Tierarztpraxis bzw. Tierklinik und überführen Ihr Tier behutsam.',
   },
   {
+    id: 'faq-grosse-tiere',
     q: 'Kremieren Sie auch Pferde und große Tiere?',
     a: 'Ja, auch Pferde und große Tiere werden bei uns kremiert. Die Preise für die Pferdekremierung nennen wir Ihnen gern persönlich am Telefon.',
   },
   {
+    id: 'faq-urnengroesse',
     q: 'Welche Urnengröße brauche ich?',
     a: 'Die passende Größe richtet sich nach dem Gewicht Ihres Tieres – bis 10 kg genügen zum Beispiel 0,5 Liter, bis 20 kg 1 Liter. Die Urne darf gern größer sein, sollte vom Fassungsvolumen aber nicht kleiner ausfallen. Die vollständige Tabelle und unsere gesamte Auswahl finden Sie auf der Seite Tierurnen & Andenken.',
   },
   {
+    id: 'faq-pfotenabdruck',
     q: 'Kann ich einen Pfotenabdruck oder eine Locke bekommen?',
     a: 'Ja, auf Wunsch nehmen wir einen Pfotenabdruck ab oder sichern eine Locke. Sagen Sie uns am besten zeitnah nach dem Empfang Ihres Tieres Bescheid, damit wir es rechtzeitig berücksichtigen können.',
   },
   {
+    id: 'faq-ueber-uns',
     q: 'Wer steht hinter Memoria?',
     a: 'Memoria ist ein kleines Familienunternehmen aus Laudenbach. Sarina Göck-König und Dr. Klaus Göck führen es gemeinsam, nehmen Ihren Anruf persönlich entgegen und begleiten jeden Abschied selbst.',
   },

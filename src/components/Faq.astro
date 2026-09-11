@@ -14,7 +14,7 @@ import { faq } from '../data/site';
     <div class="items">
       {
         faq.map((item, i) => (
-          <details class="item" name="faq" open={i === 0}>
+          <details class="item" id={item.id} name="faq" open={i === 0}>
             <summary>
               <span>{item.q}</span>
               <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
