@@ -1,0 +1,230 @@
+---
+import ContentLayout from '../layouts/ContentLayout.astro';
+import { site, priceTables, priceSurcharges } from '../data/site';
+
+const [einzel, gemeinschaft] = priceTables;
+
+// Häufige Fragen zu den Kosten – dienen zugleich als FAQPage für Google.
+const kostenFaq = [
+  {
+    q: 'Was kostet eine Tierkremierung?',
+    a: 'Die Einzelkremierung mit Ascherückgabe beginnt bei 115 € für Vögel und Kleintiere, die Gemeinschaftskremierung bei 60 €. Der Preis richtet sich nach dem Gewicht des Tieres. Alle Preise verstehen sich inklusive Urkunde, Überführung, Energie- und CO₂-Zuschlag sowie 19 % MwSt.',
+  },
+  {
+    q: 'Kostet die Abholung extra?',
+    // TODO IWO: Betrag oder Regel für die Abholung klären (Pauschale? Ab welcher
+    // Entfernung? Im Preis enthalten?) und diese Antwort ersetzen.
+    a: 'Die Abholung ist nicht im Grundpreis enthalten. Was sie in Ihrem Fall kostet, sagen wir Ihnen am Telefon – dafür genügt uns Ihr Wohnort.',
+  },
+  {
+    q: 'Wann und wie bezahle ich?',
+    // TODO IWO: Zahlungszeitpunkt und Zahlungsarten von Franz bestätigen lassen.
+    a: 'Das besprechen wir persönlich mit Ihnen. Sie müssen im Moment des Abschieds nichts vorbereiten oder mitbringen.',
+  },
+  {
+    q: 'Wie lange dauert es, bis ich die Asche zurückbekomme?',
+    // TODO IWO: Realistische Dauer von Franz erfragen und hier eintragen.
+    a: 'Die Dauer hängt vom Ablauf und von Ihrer Urnenauswahl ab. Wir sagen Ihnen beim ersten Gespräch, wann Sie mit der Urne rechnen können, und melden uns, sobald sie bereitsteht.',
+  },
+  {
+    q: 'Was kostet eine Urne zusätzlich?',
+    a: 'Das hängt von Material und Größe ab. Alle Urnen mit Preisen finden Sie in unserem Katalog auf der Seite Tierurnen & Andenken. Die in der Einzelkremierung enthaltene Urnengutschrift wird beim Kauf angerechnet.',
+  },
+  {
+    q: 'Welche Urnengröße brauche ich?',
+    a: 'Die passende Größe richtet sich nach dem Gewicht Ihres Tieres – bis 10 kg genügen zum Beispiel 0,5 Liter, bis 20 kg 1 Liter. Die Urne darf gern größer sein, sollte vom Fassungsvolumen aber nicht kleiner ausfallen.',
+  },
+];
+
+const base = Astro.site ?? new URL('https://www.tierbestattung-memoria.de');
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  '@id': `${new URL('/preise', base).href}#faq`,
+  mainEntity: kostenFaq.map((item) => ({
+    '@type': 'Question',
+    name: item.q,
+    acceptedAnswer: { '@type': 'Answer', text: item.a },
+  })),
+};
+---
+
+<ContentLayout
+  title="Was kostet die Einäscherung? Alle Preise im Überblick"
+  description="Einzelkremierung ab 115 €, Gemeinschaftskremierung ab 60 €. Alle Preise nach Gewicht aufgelistet – inklusive Urkunde und Überführung."
+  eyebrow="Preise"
+  heading="Was kostet es, ein Tier einäschern zu lassen?"
+>
+  <p>
+    Eine Einzelkremierung mit Ascherückgabe kostet bei uns zwischen
+    <strong>115 und 430 Euro</strong>, je nach Gewicht Ihres Tieres. Eine
+    Gemeinschaftskremierung beginnt bei <strong>60 Euro</strong>. Beides ist
+    unten vollständig aufgelistet.
+  </p>
+  <p>
+    Wir legen alle Preise offen, damit Sie nicht danach fragen müssen. Was
+    enthalten ist und was zusätzlich anfällt, steht ebenfalls auf dieser Seite.
+  </p>
+
+  <h2>Einzelkremierung – Ihr Tier wird allein eingeäschert</h2>
+  <p>
+    Bei der Einzelkremierung wird Ihr Tier einzeln eingeäschert. Sie erhalten
+    die Asche in einer Urne Ihrer Wahl zurück, dazu eine Urkunde. Dieser Weg
+    kommt für Sie infrage, wenn Sie Ihr Tier bei sich behalten, es im eigenen
+    Garten beisetzen oder die Urne an einem Ort aufstellen möchten, der Ihnen
+    etwas bedeutet.
+  </p>
+  <p>
+    In jedem Preis ist bereits eine <strong>Urnengutschrift</strong> enthalten.
+    Dieser Betrag wird beim Kauf einer Urne angerechnet – er ist also kein
+    Aufschlag, sondern ein Guthaben, das Sie für die Urne einsetzen können.
+  </p>
+
+  <div class="table-wrap">
+    <table>
+      <caption>{einzel.title}</caption>
+      <thead>
+        <tr>
+          <th scope="col">Tier</th>
+          <th scope="col">Preis</th>
+        </tr>
+      </thead>
+      <tbody>
+        {
+          einzel.rows.map((row) => (
+            <tr>
+              <td>
+                {row.label}
+                {row.note && <><br /><span class="klein">{row.note}</span></>}
+              </td>
+              <td>{row.price}</td>
+            </tr>
+          ))
+        }
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Gemeinschaftskremierung – ein Abschied ohne Ascherückgabe</h2>
+  <p>
+    Bei der Gemeinschaftskremierung werden mehrere Tiere gemeinsam eingeäschert.
+    Eine Ascherückgabe ist dabei nicht möglich. Viele Tierhalter wählen diesen
+    Weg, weil sie den Abschied nicht an einem Gegenstand festmachen möchten oder
+    weil er zu ihrer Wohnsituation passt.
+  </p>
+  <p>
+    Der Ablauf ist derselbe: Wir holen Ihr Tier ab und behandeln es mit
+    derselben Sorgfalt. Es ist kein geringerer Abschied, sondern ein anderer.
+  </p>
+
+  <div class="table-wrap">
+    <table>
+      <caption>{gemeinschaft.title}</caption>
+      <thead>
+        <tr>
+          <th scope="col">Tier</th>
+          <th scope="col">Preis</th>
+        </tr>
+      </thead>
+      <tbody>
+        {
+          gemeinschaft.rows.map((row) => (
+            <tr>
+              <td>{row.label}</td>
+              <td>{row.price}</td>
+            </tr>
+          ))
+        }
+      </tbody>
+    </table>
+  </div>
+
+  <p>
+    Welcher Weg der richtige ist, lässt sich nicht allgemein beantworten. Wenn
+    Sie noch unsicher sind, haben wir die Unterschiede auf einer eigenen Seite
+    gegenübergestellt:
+    <a href="/einzel-oder-gemeinschaftskremierung/">
+      Einzel- oder Gemeinschaftskremierung
+    </a>.
+  </p>
+
+  <h2>Was ist im Preis enthalten?</h2>
+  <p>In allen oben genannten Preisen sind bereits enthalten:</p>
+  <ul>
+    <li>die Urkunde</li>
+    <li>die Überführung</li>
+    <li>Energie- und CO₂-Zuschlag</li>
+    <li>19 % Mehrwertsteuer</li>
+  </ul>
+  <p>
+    Nicht enthalten sind: <strong>Abholung, Zustellung, Urne, Schmuck und
+    Andenken</strong>. Das sind die Punkte, die von Ihren Wünschen abhängen –
+    deshalb stehen sie nicht pauschal im Grundpreis. Fragen Sie uns danach, wir
+    nennen Ihnen die Kosten vorab.
+  </p>
+
+  <h2>Abholung außerhalb der regulären Zeiten</h2>
+  <p>
+    Ein Tier sucht sich den Zeitpunkt nicht aus. Deshalb kommen wir auch nachts,
+    am Wochenende und an Feiertagen. Für diese Zeiten berechnen wir einen
+    Zuschlag:
+  </p>
+
+  <div class="table-wrap">
+    <table>
+      <caption>Serviceleistungen außerhalb der regulären Zeiten</caption>
+      <tbody>
+        {
+          priceSurcharges.map((s) => (
+            <tr>
+              <td>{s.zeit}</td>
+              <td>{s.zuschlag}</td>
+            </tr>
+          ))
+        }
+      </tbody>
+    </table>
+  </div>
+
+  <p class="hinweis">
+    Preise für die Pferdekremierung und andere große Tiere nennen wir Ihnen gern
+    persönlich am Telefon.
+  </p>
+
+  <h2>Häufige Fragen zu den Kosten</h2>
+  {
+    kostenFaq.map((item) => (
+      <details>
+        <summary>{item.q}</summary>
+        <p>{item.a}</p>
+      </details>
+    ))
+  }
+
+  <h2>Sie sind unsicher, was auf Sie zukommt?</h2>
+  <p>
+    Rufen Sie an. Wir rechnen Ihnen in Ruhe durch, was der Abschied für Ihr Tier
+    kosten wird – ohne dass Sie sich zu etwas entscheiden müssen. Unter
+    <a href={site.phoneHref}>{site.phoneDisplay}</a> erreichen Sie uns rund um
+    die Uhr.
+  </p>
+  <p>
+    Mehr dazu, was wir genau übernehmen, finden Sie unter
+    <a href="/leistungen/">Unsere Leistungen</a>. Die Auswahl an Urnen zeigt
+    Ihnen unser <a href="/tierurnen-andenken/">Katalog</a>.
+  </p>
+
+  <script
+    type="application/ld+json"
+    is:inline
+    set:html={JSON.stringify(faqSchema)}
+  />
+</ContentLayout>
+
+<style>
+  /* Unterzeile für die Urnengutschrift in der Preistabelle. */
+  .klein {
+    font-size: 13px;
+    color: var(--muted-3);
+  }
+</style>
