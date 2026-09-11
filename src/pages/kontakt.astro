@@ -1,0 +1,194 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Kontakt from '../components/Kontakt.astro';
+import { site } from '../data/site';
+---
+
+<BaseLayout
+  title="Kontakt – rund um die Uhr erreichbar"
+  description="Wir sind 365 Tage im Jahr für Sie da, auch nachts und am Wochenende. Rufen Sie an: 06201 7303041."
+  solidHeader={true}
+>
+  <main>
+    <section class="intro">
+      <div class="inner">
+        <p class="eyebrow">Kontakt</p>
+        <h1>So erreichen Sie uns</h1>
+        <p class="lead">
+          Rufen Sie einfach an. Sie müssen sich vorher nichts zurechtlegen – wir
+          fragen nach, was wir wissen müssen.
+        </p>
+
+        <a class="phone" href={site.phoneHref}>{site.phoneDisplay}</a>
+        <p class="availability">
+          Rund um die Uhr erreichbar, an 365 Tagen im Jahr. Auch nachts, am
+          Wochenende und an Feiertagen.
+        </p>
+
+        <div class="details">
+          <div class="block">
+            <h2>E-Mail</h2>
+            <p>
+              <a href={`mailto:${site.email}`}>{site.email}</a>
+            </p>
+            <p class="small">
+              Wenn Ihnen ein Anruf gerade zu viel ist, schreiben Sie uns. Wir
+              melden uns zurück, so schnell es geht.
+            </p>
+          </div>
+
+          <div class="block">
+            <h2>Sitz</h2>
+            <address>
+              Tierbestattung Memoria<br />
+              Konrad-Zuse-Str. 3<br />
+              69514 Laudenbach
+            </address>
+          </div>
+
+          <div class="block">
+            <h2>Abholadresse</h2>
+            <address>
+              Carl-Benz-Str. 1<br />
+              64683 Einhausen
+            </address>
+            <p class="small">
+              <a href="/anfahrt/">Anfahrt und Standorte ansehen</a>
+            </p>
+          </div>
+        </div>
+
+        <h2 class="wide">Wir kommen zu Ihnen</h2>
+        <p class="area">
+          Wir holen nicht nur in Laudenbach ab. Unser Gebiet reicht von der
+          Bergstraße über den Odenwald bis in den Rhein-Neckar-Raum, das
+          südliche Hessen und Rheinhessen – unter anderem nach Weinheim,
+          Bensheim, Heppenheim, Viernheim, Mannheim, Heidelberg, Worms,
+          Ludwigshafen, Darmstadt und Michelstadt. Wenn Sie unsicher sind, ob
+          wir zu Ihnen fahren: Rufen Sie an, wir sagen es Ihnen sofort.
+        </p>
+        {/* TODO IWO: Gibt es einen maximalen Radius oder Fahrtkosten ab einer bestimmten Entfernung? */}
+      </div>
+    </section>
+
+    <Kontakt />
+  </main>
+</BaseLayout>
+
+<style>
+  .intro {
+    background: var(--bg-page);
+  }
+  .inner {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: clamp(48px, 7vw, 96px) clamp(20px, 4vw, 42px)
+      clamp(48px, 6vw, 80px);
+  }
+
+  .eyebrow {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--muted-3);
+    margin: 0 0 16px;
+  }
+
+  h1 {
+    font-family: var(--font-serif);
+    font-weight: 300;
+    font-size: clamp(34px, 5vw, 60px);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--heading-dark);
+    margin: 0 0 20px;
+    text-wrap: balance;
+  }
+
+  .lead {
+    font-family: var(--font-serif);
+    font-size: clamp(19px, 1.8vw, 23px);
+    line-height: 1.55;
+    color: var(--about-lead);
+    margin: 0 0 32px;
+    max-width: 44ch;
+    text-wrap: pretty;
+  }
+
+  .phone {
+    display: inline-block;
+    font-family: var(--font-serif);
+    font-weight: 300;
+    font-size: clamp(36px, 6vw, 64px);
+    line-height: 1.05;
+    color: var(--heading-dark);
+    font-variant-numeric: tabular-nums;
+    border-bottom: 1px solid var(--chevron);
+    margin: 0 0 14px;
+  }
+  .phone:hover {
+    color: var(--text-link-hover);
+  }
+
+  .availability {
+    margin: 0 0 clamp(36px, 4.5vw, 56px);
+    color: var(--muted-2);
+    line-height: 1.75;
+    max-width: 46ch;
+  }
+
+  .details {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: clamp(22px, 3vw, 38px);
+    padding-top: clamp(28px, 3.4vw, 40px);
+    border-top: 1px solid var(--rule-price);
+  }
+
+  h2 {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted-3);
+    margin: 0 0 10px;
+  }
+  /* Die Überschrift des Einzugsgebiets steht für sich, nicht in der Spalte. */
+  h2.wide {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: clamp(24px, 3vw, 32px);
+    letter-spacing: normal;
+    text-transform: none;
+    color: var(--heading-dark);
+    margin: clamp(44px, 5vw, 64px) 0 14px;
+  }
+
+  .block p,
+  .block address {
+    margin: 0 0 8px;
+    font-style: normal;
+    color: var(--muted-2);
+    line-height: 1.75;
+  }
+  .block a {
+    color: var(--heading-dark);
+    text-decoration: underline;
+    overflow-wrap: anywhere;
+  }
+  .block a:hover {
+    color: var(--text-link-hover);
+  }
+  .small {
+    font-size: 14px;
+    color: var(--muted-3);
+  }
+
+  .area {
+    margin: 0;
+    color: var(--muted-2);
+    line-height: 1.75;
+    max-width: 62ch;
+  }
+</style>
