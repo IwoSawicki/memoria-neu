@@ -71,6 +71,7 @@ export const footerNav = [
 export const footerRegionNav = [
   { label: 'Tierkrematorium Laudenbach', href: '/tierkrematorium-laudenbach/' },
   { label: 'Tierbestattung Bergstraße', href: '/tierbestattung-bergstrasse/' },
+  { label: 'Tierbestattung Weinheim', href: '/tierbestattung-weinheim/' },
   { label: 'Tierbestattung Odenwald', href: '/tierbestattung-odenwald/' },
   {
     label: 'Einzel- oder Gemeinschaftskremierung',

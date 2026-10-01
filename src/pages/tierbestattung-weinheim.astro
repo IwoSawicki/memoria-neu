@@ -1,0 +1,83 @@
+---
+import ContentLayout from '../layouts/ContentLayout.astro';
+import { site } from '../data/site';
+---
+
+<ContentLayout
+  title="Tierbestattung Weinheim – Tierkrematorium nebenan"
+  description="Tierkremierung für Weinheim: Unser Krematorium liegt wenige Kilometer nördlich, in Laudenbach. Abholung zu Hause oder in der Tierarztpraxis, rund um die Uhr."
+  eyebrow="Weinheim"
+  heading="Tierbestattung in Weinheim"
+  lead="Für Weinheim sind wir kein auswärtiger Dienstleister, sondern der Nachbarort."
+>
+  <p>
+    Unser Krematorium steht in der Konrad-Zuse-Str. 3 in Laudenbach – wenige
+    Kilometer nördlich von Weinheim, auf derselben Seite der Bergstraße. Wenn
+    Sie uns anrufen, ist der Weg zu Ihnen kurz.
+  </p>
+
+  <h2>Was das praktisch bedeutet</h2>
+  <p>
+    Sie müssen Ihr Tier nicht transportieren. Wir kommen zu Ihnen nach Hause
+    oder holen es in Ihrer Tierarztpraxis beziehungsweise Tierklinik ab – auch
+    dann, wenn Sie selbst gerade nicht dort sein können oder möchten.
+  </p>
+  <p>
+    Weil die Strecke kurz ist, lassen sich Termine flexibel abstimmen. Sagen Sie
+    uns am Telefon, wann es Ihnen passt, statt sich nach uns zu richten.
+  </p>
+  {/* TODO IWO: Mit Franz klären, ob für Weinheim eine konkrete Zusage zur
+      Abholzeit möglich ist (z. B. "in der Regel innerhalb von X Stunden").
+      Ohne belastbare Angabe steht hier bewusst keine Zeit. */}
+
+  <h2>Wo in Weinheim wir abholen</h2>
+  <p>
+    Wir fahren in die Weinheimer Kernstadt ebenso wie in die Ortsteile – unter
+    anderem Lützelsachsen, Hohensachsen, Sulzbach und Oberflockenbach. Auch die
+    angrenzenden Gemeinden Hemsbach, Laudenbach und Birkenau gehören zu unserem
+    täglichen Gebiet.
+  </p>
+
+  <h2>Einzeln oder gemeinschaftlich</h2>
+  <p>
+    Sie haben die Wahl zwischen zwei Wegen. Entscheidend ist die Frage, ob Sie
+    die Asche Ihres Tieres zurückbekommen möchten: Bei der
+    <strong>Einzelkremierung</strong> ist das so, bei der
+    <strong>Gemeinschaftskremierung</strong> nicht. Zur Einzelkremierung gehören
+    außerdem eine Urkunde und eine Urne, die Sie selbst aussuchen.
+  </p>
+  <p>
+    Die Einzelkremierung beginnt bei 115 Euro, die Gemeinschaftskremierung bei
+    60 Euro; der Preis richtet sich nach dem Gewicht. Alle Beträge – auch
+    aufgeschlüsselt nach Hund, Katze und Kleintier – stehen auf der Seite
+    <a href="/preise/">Preise</a>. Wenn Sie zwischen beiden Wegen schwanken,
+    hilft Ihnen die Gegenüberstellung unter
+    <a href="/einzel-oder-gemeinschaftskremierung/">
+      Einzel- oder Gemeinschaftskremierung
+    </a>.
+  </p>
+
+  <h2>Auch außerhalb der Sprechzeiten</h2>
+  <p>
+    Wir sind an 365 Tagen im Jahr rund um die Uhr erreichbar. Wenn Ihr Tier
+    abends, nachts oder am Wochenende stirbt, rufen Sie trotzdem an – dafür
+    berechnen wir einen Zuschlag von 29 beziehungsweise 49 Euro, den wir Ihnen
+    vorher nennen. Was in den ersten Stunden zu tun ist, steht unter
+    <a href="/tier-nachts-gestorben/">Ihr Tier ist nachts gestorben</a>.
+  </p>
+
+  <h2>Wer wir sind</h2>
+  <p>
+    {site.owners[0]} und {site.owners[1]} führen Memoria als
+    Familienunternehmen. Sie nehmen den Anruf selbst entgegen und begleiten den
+    Abschied persönlich – bei einer Fahrt nach Weinheim stehen also dieselben
+    Menschen vor der Tür, mit denen Sie telefoniert haben.
+  </p>
+  <p>
+    Rufen Sie an unter <a href={site.phoneHref}>{site.phoneDisplay}</a>, auch
+    wenn Sie nur eine Frage haben. Unsere Adressen und die Anfahrt finden Sie
+    unter <a href="/anfahrt/">Anfahrt und Standorte</a>; einen Überblick über
+    die ganze Region gibt die Seite
+    <a href="/tierbestattung-bergstrasse/">Tierbestattung an der Bergstraße</a>.
+  </p>
+</ContentLayout>
