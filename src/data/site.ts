@@ -34,6 +34,15 @@ export const site = {
   // Analytics und kein Cookie-Banner. Sobald eine ID eingetragen ist, erscheint
   // der Cookie-Hinweis und GA wird NUR nach Einwilligung geladen.
   googleAnalyticsId: 'G-08LQ8WK59V',
+  // Google-Bewertungen. Die Werte stammen vom Kunden und stehen sichtbar auf
+  // der Seite – nur dann darf dafür auch aggregateRating ausgezeichnet werden.
+  // TODO IWO: Link zum Google-Profil eintragen (Google Maps -> Teilen ->
+  // Link kopieren). Bis dahin wird kein Link ausgegeben.
+  googleRating: {
+    wert: 4.9,
+    anzahl: 186,
+    profilUrl: '',
+  },
   seo: {
     title:
       'Tierbestattung Memoria – Einzelkremierung mit Ascherückgabe in Laudenbach',
@@ -131,6 +140,16 @@ export const ablaufSteps = [
     text: 'Bei der Einzelkremierung erhalten Sie die Asche Ihres Tieres in einer Urne Ihrer Wahl zurück.',
   },
 ];
+
+// Echte Google-Bewertungen im Wortlaut. Leer lassen, solange keine vorliegen –
+// die Komponente zeigt dann nur die Gesamtbewertung, statt etwas zu erfinden.
+// TODO IWO: Von Franz 4–6 echte Bewertungen besorgen (Text + Vorname oder
+// Initialen + Monat). Danach hier eintragen; die Seite macht den Rest.
+export const googleReviews: {
+  text: string;
+  autor: string;
+  datum?: string;
+}[] = [];
 
 // Testimonials (Zitat-Slider).
 export const quotes = [
