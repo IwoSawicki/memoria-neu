@@ -177,6 +177,12 @@ export const urnenMaterialien = [
   'Messing-Herz & Messing-Rainbow',
 ];
 
+// TODO IWO: Search Console zeigt "tierfriedhof" (31 Impr., Pos 4,1) und
+// "tierfriedhof in der nähe" (19 Impr., Pos 2,58) – beides ohne Klicks. Bietet
+// Memoria eine Beisetzung bzw. einen Tierfriedhof an, oder ausschließlich
+// Kremierung? Bei Franz klären; danach eine ehrliche FAQ-Antwort ergänzen
+// (auch ein klares "nein, wir kremieren nur" beantwortet die Suchanfrage).
+
 // FAQ (Startseite) – dient auch als strukturierte Daten für Google.
 export const faq = [
   {
