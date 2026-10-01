@@ -1,0 +1,85 @@
+---
+import ContentLayout from '../layouts/ContentLayout.astro';
+import { site } from '../data/site';
+
+const mapsEinhausen =
+  'https://www.google.com/maps/search/?api=1&query=Carl-Benz-Str.+1%2C+64683+Einhausen';
+---
+
+<ContentLayout
+  title="Tierbestattung Einhausen – unsere Abholadresse"
+  description="In Einhausen liegt unsere Abholadresse: Carl-Benz-Str. 1. Tierkremierung mit und ohne Ascherückgabe, Abholung rund um die Uhr an 365 Tagen im Jahr."
+  eyebrow="Einhausen"
+  heading="Tierbestattung in Einhausen"
+  lead="In Einhausen hat Memoria seine Abholadresse. Näher dran sind wir nirgends."
+>
+  <p>
+    Unsere Abholadresse ist die <strong>Carl-Benz-Str. 1 in 64683
+    Einhausen</strong>. Der Firmensitz liegt in Laudenbach, wenige Kilometer
+    südlich auf der anderen Seite der Landesgrenze. Für Einhausen und die
+    umliegenden Orte bedeutet das sehr kurze Wege.
+  </p>
+  <p>
+    <a href={mapsEinhausen} rel="noopener">Route nach Einhausen planen</a>
+  </p>
+
+  <h2>Sie müssen nichts hinbringen</h2>
+  <p>
+    Auch wenn unsere Adresse um die Ecke liegt: Sie sollen Ihr Tier nicht selbst
+    transportieren. Wir kommen zu Ihnen – nach Hause, in die Tierarztpraxis oder
+    in die Tierklinik. Ein Anruf unter
+    <a href={site.phoneHref}>{site.phoneDisplay}</a> genügt, den Rest
+    besprechen wir am Telefon.
+  </p>
+  {/* TODO IWO: Mit Franz klären, ob Tierhalter in Einhausen etwas persönlich
+      vorbeibringen oder die Urne dort abholen können. Siehe auch denselben
+      offenen Punkt auf /anfahrt. */}
+
+  <h2>Was Sie entscheiden müssen</h2>
+  <p>
+    Nur eines: ob Sie die Asche zurückbekommen möchten. Bei der
+    <strong>Einzelkremierung</strong> wird Ihr Tier für sich eingeäschert, Sie
+    erhalten die Asche in einer Urne Ihrer Wahl und eine Urkunde dazu. Bei der
+    <strong>Gemeinschaftskremierung</strong> entfällt die Rückgabe.
+  </p>
+  <p>
+    Alles andere – Urne, Pfotenabdruck, Haarlocke – können Sie in Ruhe später
+    sagen. Die Unterschiede stehen ausführlich unter
+    <a href="/einzel-oder-gemeinschaftskremierung/">
+      Einzel- oder Gemeinschaftskremierung
+    </a>.
+  </p>
+
+  <h2>Was es kostet</h2>
+  <p>
+    Die Einzelkremierung beginnt bei 115 Euro, die Gemeinschaftskremierung bei
+    60 Euro. Der genaue Betrag hängt vom Gewicht ab; die vollständigen Tabellen
+    und die Preise je Tierart finden Sie unter
+    <a href="/preise/">Preise</a>. Enthalten sind Urkunde, Überführung,
+    Energie- und CO₂-Zuschlag sowie die Mehrwertsteuer.
+  </p>
+
+  <h2>Abends, nachts und am Wochenende</h2>
+  <p>
+    Wir nehmen Anrufe an 365 Tagen im Jahr rund um die Uhr entgegen. Für
+    Abholungen außerhalb der regulären Zeiten kommen 29 beziehungsweise 49 Euro
+    hinzu, je nach Uhrzeit – wir nennen den Betrag vorher und nicht erst auf der
+    Rechnung. Wenn es nachts passiert ist, hilft Ihnen die Seite
+    <a href="/tier-nachts-gestorben/">Ihr Tier ist nachts gestorben</a> durch
+    die ersten Stunden.
+  </p>
+
+  <h2>Wer Sie am Telefon hat</h2>
+  <p>
+    {site.owners[0]} und {site.owners[1]} führen Memoria als
+    Familienunternehmen und gehen selbst ans Telefon. Bei Google hat Memoria
+    <strong>{site.googleRating.wert.toLocaleString('de-DE', { minimumFractionDigits: 1 })} von
+    5 Sternen aus {site.googleRating.anzahl} Bewertungen</strong>.
+  </p>
+  <p>
+    Rufen Sie an, auch wenn Sie noch nichts entschieden haben. Beide Adressen
+    stehen unter <a href="/anfahrt/">Anfahrt und Standorte</a>; welche Orte wir
+    sonst noch anfahren, zeigt die Seite
+    <a href="/tierbestattung-bergstrasse/">Tierbestattung an der Bergstraße</a>.
+  </p>
+</ContentLayout>
