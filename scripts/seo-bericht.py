@@ -86,9 +86,9 @@ s.append(Paragraph(
     'Verglichen wird September mit August. Quelle ist die Google Search Console, '
     'also Googles eigene Messung.', P))
 s.append(Spacer(1, 7))
-k = Table([[kpi('387', 'Besucher über Google', '274 im August · +41 %'),
-            kpi('4.954', 'Anzeigen in der Suche', '3.119 im August · +59 %'),
-            kpi('17', 'Seiten bei Google', '9 im August · fast verdoppelt')]],
+k = Table([[kpi('387', 'Besucher über Google', '274 im August'),
+            kpi('4.954', 'Anzeigen in der Suche', '3.119 im August'),
+            kpi('17', 'Seiten bei Google', '9 im August')]],
           colWidths=[55*mm, 55*mm, 55*mm])
 k.setStyle(TableStyle([('VALIGN', (0,0), (-1,-1), 'TOP'),
                        ('LEFTPADDING', (0,0), (-1,-1), 0),
@@ -96,11 +96,19 @@ k.setStyle(TableStyle([('VALIGN', (0,0), (-1,-1), 'TOP'),
 s.append(k)
 s.append(Spacer(1, 11))
 s.append(Paragraph(
-    '<b>Kurz gesagt:</b> Deutlich mehr Menschen finden Memoria über Google, und die '
-    'Website ist mit deutlich mehr Seiten in der Suche vertreten. Die durchschnittliche '
-    'Platzierung blieb mit Position 10,3 stabil – das ist bei so vielen neuen Seiten ein '
-    'gutes Zeichen, denn neue Seiten starten immer weit hinten und ziehen den Schnitt '
-    'zunächst nach unten.', P))
+    '<b>Wie viel davon ist auf unsere Arbeit zurückzuführen?</b> Ehrlicherweise '
+    'nur ein Teil, und das lässt sich beziffern. Die neuen Seiten sind erst am '
+    '11. September online gegangen – also für 19 der 30 Tage. In dieser Zeit haben '
+    'sie <b>3.257 Anzeigen und 38 Besucher</b> erzeugt. Der Zuwachs insgesamt '
+    'beträgt aber 113 Besucher. Das heißt: Rund ein Drittel des Zuwachses kommt '
+    'nachweislich von den neuen Seiten, zwei Drittel kommen von der Startseite '
+    'und aus Suchen nach dem Namen „Memoria" – und die hängen eher an Ihrem Ruf '
+    'und an Empfehlungen als an unserer Arbeit.', P))
+s.append(Paragraph(
+    '<b>Der Vergleichsmonat ist außerdem unsauber.</b> Die neue Website ist am '
+    '24. August live gegangen; bis dahin lief die alte. Ein Teil der Verbesserung '
+    'geht also auf den Relaunch selbst zurück, nicht auf die Arbeit des '
+    'vergangenen Monats.', P))
 
 s.extend([
     Paragraph('Was im September umgesetzt wurde', H2),
@@ -112,10 +120,13 @@ s.extend([
         '<b>Vier alte Seitenadressen zurückgeholt.</b> Preise, Leistungen, Kontakt und Anfahrt '
         'waren bei Google seit Jahren bekannt, führten aber nur noch auf die Startseite. '
         'Sie sind jetzt wieder eigene Seiten mit ausführlichem Inhalt.',
-        '<b>Sechs neue Seiten erstellt:</b> Tierkrematorium Laudenbach, Tierbestattung '
-        'Bergstraße, Tierbestattung Odenwald, Tierbestattung Weinheim, ein Vergleich '
-        '„Einzel- oder Gemeinschaftskremierung" sowie eine Seite für den Fall, dass ein '
+        '<b>Sieben neue Seiten erstellt:</b> Tierkrematorium Laudenbach sowie '
+        'Tierbestattung Bergstraße, Odenwald, Weinheim und Einhausen, dazu ein Vergleich '
+        '„Einzel- oder Gemeinschaftskremierung" und eine Seite für den Fall, dass ein '
         'Tier nachts stirbt.',
+        '<b>Ihre Google-Bewertungen sichtbar gemacht.</b> 4,9 Sterne aus 186 Bewertungen '
+        'stehen jetzt direkt im ersten Bildschirm und in einem eigenen Abschnitt. Sobald '
+        'Sie uns einzelne Bewertungen im Wortlaut schicken, laufen diese dort mit.',
         '<b>Das Einzugsgebiet sichtbar gemacht.</b> Bisher stand nirgends auf der Website, '
         'wohin Memoria fährt. Jetzt steht es auf der Startseite und auf der Kontaktseite.',
         '<b>Preise nach Tierart beantwortet.</b> Viele Menschen suchen nach „was kostet '
@@ -142,37 +153,66 @@ s.extend([
 ])
 
 s.extend([
+    Paragraph('Womit zu rechnen ist', H2),
+    Paragraph(
+        'Wir halten es für wichtig, das vorab zu sagen: <b>Die Zahlen können im Oktober '
+        'auch wieder schlechter aussehen.</b> Dafür gibt es drei nachvollziehbare Gründe.', P),
+    *liste([
+        '<b>Nach einem Website-Umzug schwanken die Werte monatelang.</b> Google sortiert '
+        'eine Website nach einem Relaunch neu ein. Schwankungen in beide Richtungen sind '
+        'über drei bis sechs Monate normal und kein Alarmzeichen.',
+        '<b>Alte und neue Seitenadressen laufen noch parallel.</b> Google kennt im Moment '
+        'beide Varianten und verteilt die Bewertung auf zwei Adressen. Bis das '
+        'zusammengeführt ist, sieht die durchschnittliche Platzierung schlechter aus, '
+        'als sie ist.',
+        '<b>Neue Seiten starten weit hinten.</b> Jede der sieben neuen Seiten beginnt auf '
+        'einer schlechten Position und arbeitet sich über Wochen nach vorn. Solange das '
+        'läuft, drücken sie den Durchschnitt.',
+    ]),
+    Paragraph(
+        '<b>Unser Vorschlag für die Bewertung:</b> nicht Monat für Monat vergleichen, sondern '
+        'nach drei Monaten – und dabei gezielt auf die Besucher schauen, die <i>nicht</i> nach '
+        '„Memoria" gesucht haben. Das ist die Zahl, die unsere Arbeit tatsächlich abbildet. '
+        'Aktuell sind das 60 von rund 400 Besuchern.', P),
+])
+
+s.extend([
     Paragraph('Was als Nächstes ansteht', H2),
     *liste([
-        '<b>Google-Unternehmensprofil.</b> Für die Kartenergebnisse ist das der größte Hebel '
-        'überhaupt – oft wichtiger als alles auf der Website. Öffnungszeiten, Fotos, '
-        'Leistungen und der Link zur neuen Website sollten dort vollständig gepflegt sein.',
-        '<b>Bewertungen sichtbar machen.</b> Memoria hat 4,9 Sterne aus 186 Google-Bewertungen. '
-        'Auf der Website steht davon bisher nichts. Zwei bis drei echte Bewertungen im Wortlaut '
-        'würden sowohl Besuchern als auch Google helfen.',
-        '<b>Weitere Orte.</b> Für Weinheim gibt es seit heute eine eigene Seite. Mannheim, '
-        'Heidelberg und Bensheim folgen, sobald sich zeigt, wonach dort tatsächlich gesucht wird.',
+        '<b>Einzelne Bewertungen einbauen.</b> Die Gesamtnote steht jetzt auf der Website. '
+        'Was fehlt, sind vier bis sechs Bewertungen im Wortlaut – die wirken erfahrungsgemäß '
+        'deutlich stärker als eine Zahl allein.',
+        '<b>Die Kostenseite beobachten.</b> Rund um Preise gab es im September 417 Anzeigen '
+        'und keinen einzigen Besucher. Wir haben nachgebessert; ob es wirkt, zeigt sich im '
+        'Oktober.',
+        '<b>Weitere Orte mit Augenmaß.</b> Für Weinheim und Einhausen gibt es jetzt eigene '
+        'Seiten. Mannheim, Heidelberg und Worms sind in den Zahlen bisher sehr klein – wir '
+        'bauen dort erst Seiten, wenn sich zeigt, dass es sich lohnt.',
         '<b>Pferdekremierung klären.</b> Es wird danach gesucht, aber es gibt bewusst noch keine '
         'Seite dazu – erst muss feststehen, was genau angeboten wird.',
     ]),
 ])
 
-s.extend([
-    Paragraph('Wobei wir Ihre Hilfe brauchen', H2),
-    Paragraph('Für die folgenden Punkte fehlen uns verlässliche Angaben. Wir schreiben bewusst '
-              'nichts, was wir nicht sicher wissen:', P),
+s.append(KeepTogether([
+    Paragraph('Themen für unseren Termin', H2),
+    Paragraph('Wir gehen den Bericht in den nächsten Tagen gemeinsam durch. Für die folgenden '
+              'Punkte brauchen wir Angaben von Ihnen – wir schreiben bewusst nichts auf die '
+              'Website, was wir nicht sicher wissen. Am Telefon ist das in zehn Minuten '
+              'geklärt:', P),
     *liste([
         'Kostet die Abholung extra – und wenn ja, wie viel?',
         'Wann und wie wird bezahlt?',
         'Wie lange dauert es ungefähr, bis die Urne zurück ist?',
         'Was sollten Tierhalter tun, bis jemand vor Ort ist? (Fachliche Angabe)',
         'Bietet Memoria auch eine Beisetzung oder einen Tierfriedhof an, oder ausschließlich '
-        'die Kremierung?',
+        'die Kremierung? (Danach wird häufig gesucht.)',
+        'Vier bis sechs Google-Bewertungen, die wir im Wortlaut zeigen dürfen.',
     ]),
     Spacer(1, 9),
-    Paragraph('Jede dieser Antworten lässt sich sofort in eine Seite einbauen und beantwortet '
-              'eine Frage, die Menschen bei Google tatsächlich stellen.', FUSS),
-])
+    Paragraph('Jede dieser Antworten lässt sich sofort einbauen und beantwortet eine Frage, '
+              'die Menschen bei Google tatsächlich stellen. Wir melden uns mit '
+              'Terminvorschlägen bei Ihnen.', FUSS),
+]))
 
 doc.build(s)
 print('PDF erstellt')
