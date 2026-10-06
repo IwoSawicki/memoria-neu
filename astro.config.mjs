@@ -14,6 +14,10 @@ export default defineConfig({
   site: SITE,
   integrations: [
     sitemap({
+      // Der Ratgeber ist noch im Aufbau und nirgends verlinkt – bis zum Start
+      // gehoert er weder in die Sitemap noch in den Index (siehe noindex in
+      // src/pages/ratgeber/). Zum Freischalten diese Zeile entfernen.
+      filter: (seite) => !seite.includes('/ratgeber'),
       // lastmod signalisiert Google, wann zuletzt etwas geaendert wurde.
       // Build-Zeitpunkt ist hier die ehrlichste verfuegbare Angabe: Ein Deploy
       // findet nur statt, wenn sich tatsaechlich etwas geaendert hat.

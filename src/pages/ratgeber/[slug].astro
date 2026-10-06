@@ -1,0 +1,39 @@
+---
+import LandingLayout from '../../layouts/LandingLayout.astro';
+import { getCollection, type CollectionEntry } from 'astro:content';
+
+export async function getStaticPaths() {
+  const beitraege = await getCollection('ratgeber');
+  return beitraege
+    .filter((b) => b.data.veroeffentlicht)
+    .map((beitrag) => ({ params: { slug: beitrag.slug }, props: { beitrag } }));
+}
+
+interface Props {
+  beitrag: CollectionEntry<'ratgeber'>;
+}
+const { beitrag } = Astro.props;
+const { Content } = await beitrag.render();
+const d = beitrag.data;
+---
+
+<LandingLayout
+  title={d.seoTitel ?? d.titel}
+  description={d.beschreibung}
+  eyebrow="Ratgeber"
+  heading={d.titel}
+  lead={d.lead}
+  heroImg={d.bild}
+  noindex={true}
+>
+  <Content />
+
+  <p class="zurueck"><a href="/ratgeber/">← Alle Ratgeber-Beiträge</a></p>
+</LandingLayout>
+
+<style is:global>
+  .lp-inner .zurueck {
+    margin-top: clamp(40px, 5vw, 60px);
+    font-size: 16px;
+  }
+</style>

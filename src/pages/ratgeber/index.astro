@@ -1,0 +1,111 @@
+---
+import LandingLayout from '../../layouts/LandingLayout.astro';
+import { getCollection } from 'astro:content';
+
+// Nur veröffentlichte Beiträge, neueste zuerst.
+const beitraege = (await getCollection('ratgeber'))
+  .filter((b) => b.data.veroeffentlicht)
+  .sort((a, b) => b.data.datum.valueOf() - a.data.datum.valueOf());
+
+const datum = (d: Date) =>
+  d.toLocaleDateString('de-DE', { day: 'numeric', month: 'long', year: 'numeric' });
+---
+
+<LandingLayout
+  title="Ratgeber – Tierbestattung Memoria"
+  description="Antworten auf die Fragen, die sich beim Abschied von einem Tier stellen: Ablauf, Kosten, Urnen und was in den ersten Stunden wichtig ist."
+  eyebrow="Ratgeber"
+  heading="Ratgeber"
+  lead="Antworten auf die Fragen, die sich stellen, wenn ein Tier stirbt – in Ruhe aufgeschrieben."
+  noindex={true}
+>
+  {
+    beitraege.length === 0 ? (
+      <>
+        <h2>Hier entsteht gerade etwas</h2>
+        <p>
+          Wir sammeln die Fragen, die uns am Telefon am häufigsten gestellt
+          werden, und beantworten sie hier nach und nach ausführlich. Die ersten
+          Beiträge erscheinen in Kürze.
+        </p>
+        <p class="hinweis">
+          Sie haben eine Frage, die hier stehen sollte? Rufen Sie an – wir
+          beantworten sie Ihnen sofort und nehmen sie in den Ratgeber auf.
+        </p>
+      </>
+    ) : (
+      <ul class="liste">
+        {beitraege.map((b) => (
+          <li>
+            <a href={`/ratgeber/${b.slug}/`}>
+              <p class="liste-datum">{datum(b.data.datum)}</p>
+              <h2 class="liste-titel">{b.data.titel}</h2>
+              <p class="liste-lead">{b.data.lead}</p>
+              <span class="liste-mehr">Weiterlesen</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    )
+  }
+</LandingLayout>
+
+<style is:global>
+  /* Beitragsliste. Global, weil der Inhalt über den Slot kommt. */
+  .lp-inner ul.liste {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    max-width: none;
+    display: grid;
+    gap: clamp(16px, 2vw, 24px);
+  }
+  .lp-inner ul.liste > li {
+    padding: 0;
+    margin: 0;
+  }
+  .lp-inner ul.liste > li::before {
+    content: none;
+  }
+  .lp-inner ul.liste a {
+    display: block;
+    background: var(--bg-card);
+    border-radius: 18px;
+    padding: clamp(24px, 3vw, 34px);
+    text-decoration: none;
+    transition: transform 0.25s ease;
+  }
+  .lp-inner ul.liste a:hover {
+    transform: translateY(-2px);
+  }
+  .lp-inner .liste-datum {
+    margin: 0 0 8px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted-3);
+  }
+  .lp-inner .liste-titel {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: clamp(21px, 2.4vw, 27px);
+    line-height: 1.25;
+    color: var(--heading-dark);
+    margin: 0 0 10px;
+  }
+  .lp-inner .liste-lead {
+    margin: 0 0 14px;
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--muted-2);
+    max-width: 60ch;
+  }
+  .lp-inner .liste-mehr {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--heading-dark);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+</style>

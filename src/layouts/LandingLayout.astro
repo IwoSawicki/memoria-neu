@@ -1,8 +1,7 @@
 ---
-// Layout für die Landingpages (Orte und Themen). Anders als ContentLayout ist
-// das keine reine Textspalte, sondern eine Seite mit Hero, Vertrauenszeile,
-// gegliederten Abschnitten und Abschluss – aufgebaut wie die Startseite und
-// mit denselben Design-Tokens.
+// Layout für die Landingpages (Orte und Themen): Hero mit Bild, Vertrauenszeile,
+// gegliederte Inhaltsfläche und Abschlusskarte – aufgebaut wie die Startseite
+// und mit denselben Design-Tokens. Die Rechtsseiten nutzen LegalLayout.
 import BaseLayout from './BaseLayout.astro';
 import Header from '../components/Header.astro';
 import { site, trustPoints } from '../data/site';
@@ -16,6 +15,8 @@ interface Props {
   /** Hero-Bild. Standard ist das Waldpanorama – unterscheidet sich von der Startseite. */
   heroImg?: 'wald' | 'hund' | 'kind';
   heroAlt?: string;
+  /** Seite von der Indexierung ausnehmen (z. B. der noch unfertige Ratgeber). */
+  noindex?: boolean;
 }
 const {
   title,
@@ -25,6 +26,7 @@ const {
   lead,
   heroImg = 'wald',
   heroAlt = '',
+  noindex = false,
 } = Astro.props;
 
 const bilder = {
@@ -51,7 +53,7 @@ const bewertung = site.googleRating.wert.toLocaleString('de-DE', {
 });
 ---
 
-<BaseLayout title={title} description={description}>
+<BaseLayout title={title} description={description} noindex={noindex}>
   <section class="lp-hero">
     <img
       class="lp-hero-img"
