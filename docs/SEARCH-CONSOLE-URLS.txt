@@ -1,0 +1,40 @@
+SEARCH CONSOLE - URLs zur Indexierung anstossen
+Stand: 06.10.2026
+
+SITEMAP (einmal einreichen unter Indexierung -> Sitemaps):
+https://www.tierbestattung-memoria.de/sitemap-index.xml
+
+Hinweis: Den alten Eintrag "sitemap.xml" von 2022 loeschen - der stammt
+noch von Wix. Falls "sitemap-0.xml" eingetragen ist, kann der bleiben.
+
+
+ANSTOSSEN (URL-Pruefung -> Indexierung beantragen)
+Das Tageskontingent liegt bei etwa 10 URLs. Deshalb in dieser Reihenfolge.
+
+--- Prioritaet 1: zurueckgeholte Adressen (ranken bereits, schnellste Wirkung)
+https://www.tierbestattung-memoria.de/preise/
+https://www.tierbestattung-memoria.de/leistungen/
+https://www.tierbestattung-memoria.de/kontakt/
+https://www.tierbestattung-memoria.de/anfahrt/
+
+--- Prioritaet 2: neue Seiten mit dem meisten Potenzial
+https://www.tierbestattung-memoria.de/tierkrematorium-laudenbach/
+https://www.tierbestattung-memoria.de/tierbestattung-einhausen/
+https://www.tierbestattung-memoria.de/tierbestattung-weinheim/
+
+--- Prioritaet 3: Rest (morgen, falls Kontingent aufgebraucht)
+https://www.tierbestattung-memoria.de/tierbestattung-bergstrasse/
+https://www.tierbestattung-memoria.de/tierbestattung-odenwald/
+https://www.tierbestattung-memoria.de/einzel-oder-gemeinschaftskremierung/
+https://www.tierbestattung-memoria.de/tier-nachts-gestorben/
+
+--- Prioritaet 4: nur bei Aenderungen noetig
+https://www.tierbestattung-memoria.de/
+https://www.tierbestattung-memoria.de/tierurnen-andenken/
+https://www.tierbestattung-memoria.de/impressum/
+https://www.tierbestattung-memoria.de/datenschutz/
+
+
+WICHTIG: Immer die Form MIT Schraegstrich am Ende verwenden.
+Ohne Schraegstrich leitet der Server weiter, und Google meldet dann
+"Seite mit Weiterleitung" statt die Seite zu indexieren.
