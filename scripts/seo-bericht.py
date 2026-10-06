@@ -47,7 +47,7 @@ def seite(canvas, doc):
     canvas.rect(0, A4[1] - 7*mm, A4[0], 7*mm, stroke=0, fill=1)
     canvas.setFont('Helvetica', 7.5)
     canvas.setFillColor(MUTED)
-    canvas.drawString(20*mm, 11*mm, 'Tierbestattung Memoria · SEO-Bericht September 2026')
+    canvas.drawString(20*mm, 11*mm, 'Tierbestattung Memoria · SEO-Bericht September 2026 · Stand 06.10.')
     canvas.drawRightString(A4[0] - 20*mm, 11*mm, 'Seite %d' % doc.page)
     canvas.setStrokeColor(LINIE)
     canvas.setLineWidth(0.5)
@@ -77,17 +77,44 @@ rahmen = Frame(doc.leftMargin, doc.bottomMargin, doc.width, doc.height, id='n',
                leftPadding=0, rightPadding=0, topPadding=0, bottomPadding=0)
 doc.addPageTemplates([PageTemplate(id='A', frames=[rahmen], onPage=seite)])
 
+def rang(zeilen):
+    daten = [[Paragraph('<b>Seite</b>', KPIV), Paragraph('<b>Position</b>', KPIV)]]
+    for name, pos in zeilen:
+        daten.append([Paragraph(name, P2), Paragraph(pos, P2)])
+    t = Table(daten, colWidths=[120*mm, 35*mm])
+    t.setStyle(TableStyle([
+        ('BACKGROUND', (0, 0), (-1, 0), KARTE),
+        ('LINEBELOW', (0, 0), (-1, -2), 0.5, LINIE),
+        ('LEFTPADDING', (0, 0), (-1, -1), 8), ('RIGHTPADDING', (0, 0), (-1, -1), 8),
+        ('TOPPADDING', (0, 0), (-1, -1), 5), ('BOTTOMPADDING', (0, 0), (-1, -1), 5),
+        ('VALIGN', (0, 0), (-1, -1), 'MIDDLE'),
+    ]))
+    return t
+
+P2 = stil('P2', fontSize=9.5, leading=13, spaceAfter=0)
+rangliste = rang([
+    ('Kontakt', '3,8'),
+    ('Anfahrt und Standorte', '4,4'),
+    ('Tierkrematorium Laudenbach', '5,8'),
+    ('Unsere Leistungen', '6,8'),
+    ('Tierbestattung Bergstraße', '7,2'),
+    ('Tier nachts gestorben', '7,9'),
+    ('Tierbestattung Odenwald', '8,6'),
+    ('Einzel- oder Gemeinschaftskremierung', '10,1'),
+    ('Preise', '11,1'),
+])
+
 s = []
 s.append(Paragraph('SEO-Bericht September 2026', H1))
-s.append(Paragraph('Tierbestattung Memoria · erstellt am 1. Oktober 2026 von Stolz Marketing', SUB))
+s.append(Paragraph('Tierbestattung Memoria · Stand 6. Oktober 2026 · Stolz Marketing', SUB))
 
 s.append(Paragraph('Die Zahlen auf einen Blick', H2))
 s.append(Paragraph(
     'Verglichen wird September mit August. Quelle ist die Google Search Console, '
     'also Googles eigene Messung.', P))
 s.append(Spacer(1, 7))
-k = Table([[kpi('387', 'Besucher über Google', '274 im August'),
-            kpi('4.954', 'Anzeigen in der Suche', '3.119 im August'),
+k = Table([[kpi('420', 'Besucher über Google', '274 im August'),
+            kpi('5.284', 'Anzeigen in der Suche', '3.119 im August'),
             kpi('17', 'Seiten bei Google', '9 im August')]],
           colWidths=[55*mm, 55*mm, 55*mm])
 k.setStyle(TableStyle([('VALIGN', (0,0), (-1,-1), 'TOP'),
@@ -99,8 +126,8 @@ s.append(Paragraph(
     '<b>Wie viel davon ist auf unsere Arbeit zurückzuführen?</b> Ehrlicherweise '
     'nur ein Teil, und das lässt sich beziffern. Die neuen Seiten sind erst am '
     '11. September online gegangen – also für 19 der 30 Tage. In dieser Zeit haben '
-    'sie <b>3.257 Anzeigen und 38 Besucher</b> erzeugt. Der Zuwachs insgesamt '
-    'beträgt aber 113 Besucher. Das heißt: Rund ein Drittel des Zuwachses kommt '
+    'sie <b>4.229 Anzeigen und 48 Besucher</b> erzeugt. Der Zuwachs insgesamt '
+    'beträgt aber 146 Besucher. Das heißt: Rund ein Drittel des Zuwachses kommt '
     'nachweislich von den neuen Seiten, zwei Drittel kommen von der Startseite '
     'und aus Suchen nach dem Namen „Memoria" – und die hängen eher an Ihrem Ruf '
     'und an Empfehlungen als an unserer Arbeit.', P))
@@ -109,6 +136,30 @@ s.append(Paragraph(
     '24. August live gegangen; bis dahin lief die alte. Ein Teil der Verbesserung '
     'geht also auf den Relaunch selbst zurück, nicht auf die Arbeit des '
     'vergangenen Monats.', P))
+
+s.extend([
+    Paragraph('Wo die neuen Seiten inzwischen stehen', H2),
+    Paragraph(
+        'Das ist die eigentlich gute Nachricht: <b>Alle neun Seiten, die am '
+        '11. September online gegangen sind, werden inzwischen von Google '
+        'angezeigt</b> – und fast alle haben sich seitdem weiter nach vorn '
+        'gearbeitet. Position 1 bis 10 entspricht der ersten Seite der '
+        'Google-Ergebnisse.', P),
+    Spacer(1, 4),
+    rangliste,
+    Spacer(1, 10),
+    Paragraph(
+        'Zwei weitere Seiten – Weinheim und Einhausen – sind erst am 1. Oktober '
+        'dazugekommen und tauchen deshalb noch nicht auf. Sie wurden bei Google '
+        'zur Aufnahme angemeldet.', P),
+    Paragraph(
+        '<b>Ein technisches Problem hat sich dabei von selbst erledigt.</b> Nach '
+        'dem Umbau kannte Google für einige Seiten zwei Adressen gleichzeitig und '
+        'verteilte die Bewertung auf beide. Inzwischen sind die alten Adressen '
+        'eingefroren – sie bekommen keine neuen Anzeigen mehr, während die neuen '
+        'weiter zulegen. Google hat die Seiten also zusammengeführt, wie es sein '
+        'soll.', P),
+])
 
 s.extend([
     Paragraph('Was im September umgesetzt wurde', H2),
@@ -161,10 +212,10 @@ s.extend([
         '<b>Nach einem Website-Umzug schwanken die Werte monatelang.</b> Google sortiert '
         'eine Website nach einem Relaunch neu ein. Schwankungen in beide Richtungen sind '
         'über drei bis sechs Monate normal und kein Alarmzeichen.',
-        '<b>Alte und neue Seitenadressen laufen noch parallel.</b> Google kennt im Moment '
-        'beide Varianten und verteilt die Bewertung auf zwei Adressen. Bis das '
-        'zusammengeführt ist, sieht die durchschnittliche Platzierung schlechter aus, '
-        'als sie ist.',
+        '<b>Die Durchschnittsposition täuscht nach unten.</b> Sie mischt alle Seiten '
+        'zusammen. Eine neue Seite auf Position 30 zieht den Schnitt stärker nach unten, '
+        'als eine Seite auf Position 4 ihn hebt – obwohl insgesamt mehr Menschen auf der '
+        'ersten Ergebnisseite landen.',
         '<b>Neue Seiten starten weit hinten.</b> Jede der sieben neuen Seiten beginnt auf '
         'einer schlechten Position und arbeitet sich über Wochen nach vorn. Solange das '
         'läuft, drücken sie den Durchschnitt.',
@@ -173,7 +224,7 @@ s.extend([
         '<b>Unser Vorschlag für die Bewertung:</b> nicht Monat für Monat vergleichen, sondern '
         'nach drei Monaten – und dabei gezielt auf die Besucher schauen, die <i>nicht</i> nach '
         '„Memoria" gesucht haben. Das ist die Zahl, die unsere Arbeit tatsächlich abbildet. '
-        'Aktuell sind das 60 von rund 400 Besuchern.', P),
+        'Aktuell sind das rund 60 von gut 400 Besuchern.', P),
 ])
 
 s.extend([
