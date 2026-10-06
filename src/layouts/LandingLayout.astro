@@ -1,0 +1,461 @@
+---
+// Layout für die Landingpages (Orte und Themen). Anders als ContentLayout ist
+// das keine reine Textspalte, sondern eine Seite mit Hero, Vertrauenszeile,
+// gegliederten Abschnitten und Abschluss – aufgebaut wie die Startseite und
+// mit denselben Design-Tokens.
+import BaseLayout from './BaseLayout.astro';
+import Header from '../components/Header.astro';
+import { site, trustPoints } from '../data/site';
+
+interface Props {
+  title: string;
+  description: string;
+  eyebrow: string;
+  heading: string;
+  lead: string;
+  /** Hero-Bild. Standard ist das Waldpanorama – unterscheidet sich von der Startseite. */
+  heroImg?: 'wald' | 'hund' | 'kind';
+  heroAlt?: string;
+}
+const {
+  title,
+  description,
+  eyebrow,
+  heading,
+  lead,
+  heroImg = 'wald',
+  heroAlt = '',
+} = Astro.props;
+
+const bilder = {
+  wald: {
+    src: '/images/contact-1800.webp',
+    srcset: '/images/contact-1200.webp 1200w, /images/contact-1800.webp 1800w',
+    alt: 'Sonnenlicht fällt durch einen ruhigen Nadelwald',
+  },
+  hund: {
+    src: '/images/hero-1553.webp',
+    srcset:
+      '/images/hero-800.webp 800w, /images/hero-1200.webp 1200w, /images/hero-1553.webp 1553w',
+    alt: 'Frau geht mit ihrem Hund durch einen sonnigen Wald',
+  },
+  kind: {
+    src: '/images/about-994.webp',
+    srcset: '/images/about-500.webp 500w, /images/about-994.webp 994w',
+    alt: 'Kind streichelt einen liegenden Hund im Wald',
+  },
+};
+const bild = bilder[heroImg];
+const bewertung = site.googleRating.wert.toLocaleString('de-DE', {
+  minimumFractionDigits: 1,
+});
+---
+
+<BaseLayout title={title} description={description}>
+  <section class="lp-hero">
+    <img
+      class="lp-hero-img"
+      src={bild.src}
+      srcset={bild.srcset}
+      sizes="100vw"
+      alt={heroAlt || bild.alt}
+      fetchpriority="high"
+      decoding="async"
+    />
+    <div class="lp-hero-overlay"></div>
+
+    <Header variant="overlay" />
+
+    <div class="lp-hero-center" data-reveal>
+      <p class="lp-eyebrow">{eyebrow}</p>
+      <h1>{heading}</h1>
+      <p class="lp-lead">{lead}</p>
+      <div class="lp-actions">
+        <a class="lp-cta" href={site.phoneHref}>
+          Jetzt anrufen · {site.phoneDisplay}
+        </a>
+        <a class="lp-cta-ghost" href="/preise/">Preise ansehen</a>
+      </div>
+    </div>
+
+    <div class="lp-trust">
+      {
+        trustPoints.map((punkt) => (
+          <span class="lp-trust-item">
+            <svg width="20" height="20" viewBox="0 0 22 22" fill="none" aria-hidden="true">
+              <circle cx="11" cy="11" r="9.2" stroke="#cfe36b" stroke-width="1.6" />
+              <path
+                d="M6.8 11.4l2.8 2.8 5.6-6"
+                stroke="#cfe36b"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+            {punkt}
+          </span>
+        ))
+      }
+      <span class="lp-trust-item lp-bewertung">
+        <span class="lp-sterne" aria-hidden="true">
+          {[0, 1, 2, 3, 4].map(() => (
+            <svg viewBox="0 0 20 20" width="14" height="14">
+              <path
+                fill="#f5b400"
+                d="M10 1.6l2.47 5.01 5.53.8-4 3.9.94 5.5L10 14.21l-4.94 2.6.94-5.5-4-3.9 5.53-.8L10 1.6z"
+              />
+            </svg>
+          ))}
+        </span>
+        <strong>{bewertung}</strong>&nbsp;aus&nbsp;{site.googleRating.anzahl}&nbsp;Bewertungen
+      </span>
+    </div>
+  </section>
+
+  <main class="lp-main">
+    <div class="lp-inner">
+      <slot />
+
+      <aside class="lp-cta-karte">
+        <p class="lp-cta-label">Noch Fragen?</p>
+        <p class="lp-cta-text">
+          Rufen Sie an – auch wenn Sie noch nichts entschieden haben. Wir gehen
+          in Ruhe durch, was auf Sie zukommt.
+        </p>
+        <div class="lp-cta-zeile">
+          <a class="lp-cta-tel" href={site.phoneHref}>{site.phoneDisplay}</a>
+          <span class="lp-cta-zeit">rund um die Uhr · 365 Tage im Jahr</span>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+</BaseLayout>
+
+<style>
+  /* Hero ---------------------------------------------------------------- */
+  .lp-hero {
+    position: relative;
+    min-height: 62svh;
+    background: var(--bg-hero);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  .lp-hero-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 50%;
+  }
+  .lp-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      180deg,
+      rgba(20, 26, 14, 0.62) 0%,
+      rgba(20, 26, 14, 0.46) 45%,
+      rgba(20, 26, 14, 0.72) 100%
+    );
+  }
+
+  .lp-hero-center {
+    position: relative;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: clamp(48px, 7vw, 92px) clamp(20px, 4vw, 42px) clamp(28px, 3vw, 40px);
+  }
+
+  .lp-eyebrow {
+    font-size: clamp(12px, 1.05vw, 14px);
+    font-weight: 600;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0 clamp(14px, 1.6vw, 20px);
+  }
+
+  h1 {
+    font-family: var(--font-serif);
+    font-weight: 300;
+    font-size: clamp(34px, 4.8vw, 62px);
+    line-height: 1.06;
+    letter-spacing: -0.02em;
+    color: #ffffff;
+    margin: 0 0 clamp(16px, 1.8vw, 24px);
+    max-width: 18ch;
+    text-wrap: balance;
+  }
+
+  .lp-lead {
+    font-size: clamp(16px, 1.35vw, 19px);
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.92);
+    margin: 0 0 clamp(26px, 3vw, 36px);
+    max-width: 52ch;
+    text-wrap: pretty;
+  }
+
+  .lp-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+  }
+  .lp-cta,
+  .lp-cta-ghost {
+    display: inline-flex;
+    align-items: center;
+    border-radius: 999px;
+    padding: 16px 32px;
+    font-size: 16px;
+    font-weight: 600;
+    min-height: 54px;
+    font-variant-numeric: tabular-nums;
+  }
+  .lp-cta {
+    background: var(--accent);
+    color: var(--btn-text);
+  }
+  .lp-cta:hover {
+    background: var(--accent-hover);
+    color: var(--btn-text);
+  }
+  .lp-cta-ghost {
+    border: 1.5px solid rgba(247, 249, 238, 0.55);
+    color: #ffffff;
+  }
+  .lp-cta-ghost:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  /* Vertrauenszeile ------------------------------------------------------ */
+  .lp-trust {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 10px clamp(22px, 3vw, 44px);
+    padding: 0 clamp(20px, 4vw, 42px) clamp(40px, 5vw, 60px);
+  }
+  .lp-trust-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 15px;
+    color: #ffffff;
+  }
+  .lp-sterne {
+    display: flex;
+    gap: 2px;
+    line-height: 0;
+  }
+  .lp-bewertung strong {
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+  }
+
+  @media (max-width: 760px) {
+    .lp-trust {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+
+  /* Inhalt --------------------------------------------------------------- */
+  .lp-main {
+    background: var(--bg-page);
+    border-radius: clamp(20px, 2.6vw, 34px) clamp(20px, 2.6vw, 34px) 0 0;
+    margin-top: clamp(-34px, -2.6vw, -20px);
+    position: relative;
+    z-index: 2;
+  }
+  .lp-inner {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: clamp(52px, 7vw, 96px) clamp(20px, 4vw, 42px)
+      clamp(64px, 8vw, 110px);
+  }
+
+  /* Abschluss ------------------------------------------------------------ */
+  .lp-cta-karte {
+    margin-top: clamp(52px, 6vw, 76px);
+    background: var(--bg-card);
+    border-radius: 18px;
+    padding: clamp(28px, 3.4vw, 40px);
+  }
+  .lp-cta-label {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--muted-3);
+    margin: 0 0 12px;
+  }
+  .lp-cta-text {
+    margin: 0 0 20px;
+    font-size: 17px;
+    line-height: 1.7;
+    color: var(--muted-2);
+    max-width: 48ch;
+  }
+  .lp-cta-zeile {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 6px 18px;
+  }
+  .lp-cta-tel {
+    font-family: var(--font-serif);
+    font-weight: 300;
+    font-size: clamp(32px, 4.6vw, 48px);
+    line-height: 1.05;
+    color: var(--heading-dark);
+    font-variant-numeric: tabular-nums;
+    border-bottom: 1px solid var(--chevron);
+  }
+  .lp-cta-tel:hover {
+    color: var(--text-link-hover);
+  }
+  .lp-cta-zeit {
+    font-size: 15px;
+    color: var(--muted-3);
+  }
+
+</style>
+
+<style is:global>
+  /* Fließtext der Landingpages. Global, weil der Inhalt per <slot> kommt. */
+  .lp-inner > h2 {
+    font-family: var(--font-serif);
+    font-weight: 300;
+    font-size: clamp(27px, 3.4vw, 40px);
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    color: var(--heading-dark);
+    margin: clamp(48px, 5.5vw, 72px) 0 16px;
+    text-wrap: pretty;
+  }
+  .lp-inner > h2:first-child {
+    margin-top: 0;
+  }
+  .lp-inner > h3 {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: clamp(19px, 2vw, 23px);
+    color: var(--heading-dark);
+    margin: 32px 0 8px;
+  }
+  .lp-inner > p {
+    font-size: 17px;
+    line-height: 1.75;
+    color: var(--muted-2);
+    margin: 0 0 18px;
+    max-width: 68ch;
+    text-wrap: pretty;
+  }
+  /* Der erste Absatz nach einer h2 trägt die Antwort – etwas größer. */
+  .lp-inner > h2 + p {
+    font-size: 18px;
+    color: var(--muted-1);
+  }
+  .lp-inner > ul {
+    margin: 0 0 20px;
+    padding: 0;
+    list-style: none;
+    max-width: 68ch;
+  }
+  .lp-inner > ul > li {
+    position: relative;
+    padding-left: 28px;
+    margin: 0 0 11px;
+    font-size: 17px;
+    line-height: 1.65;
+    color: var(--muted-2);
+  }
+  /* Häkchen statt Punkt – passt zur Vertrauenszeile im Hero. */
+  .lp-inner > ul > li::before {
+    content: '';
+    position: absolute;
+    left: 2px;
+    top: 0.55em;
+    width: 11px;
+    height: 6px;
+    border-left: 2px solid var(--chevron);
+    border-bottom: 2px solid var(--chevron);
+    transform: rotate(-45deg);
+  }
+  .lp-inner strong {
+    color: var(--heading-dark);
+    font-weight: 600;
+  }
+  .lp-inner a {
+    color: var(--heading-dark);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .lp-inner a:hover {
+    color: var(--text-link-hover);
+  }
+
+  /* Hervorgehobener Hinweis */
+  .lp-inner .hinweis {
+    background: var(--bg-card);
+    border-radius: 14px;
+    padding: 18px 22px;
+    margin: 0 0 20px;
+    font-size: 16px;
+    line-height: 1.65;
+    color: var(--muted-2);
+    max-width: 68ch;
+  }
+
+  /* Tabellen */
+  .lp-inner .table-wrap {
+    overflow-x: auto;
+    margin: 0 0 22px;
+    background: var(--bg-card);
+    border-radius: 18px;
+    padding: clamp(20px, 2.6vw, 30px);
+  }
+  .lp-inner table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 16px;
+  }
+  .lp-inner th {
+    text-align: left;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--muted-3);
+    padding: 0 0 10px;
+    border-bottom: 1px solid var(--rule-price);
+  }
+  .lp-inner th:not(:first-child),
+  .lp-inner td:not(:first-child) {
+    text-align: right;
+  }
+  .lp-inner td {
+    color: var(--muted-1);
+    padding: 12px 0;
+    border-bottom: 1px solid var(--rule-price);
+  }
+  .lp-inner tr:last-child td {
+    border-bottom: none;
+  }
+  .lp-inner td:not(:first-child) {
+    color: var(--heading-dark);
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+</style>

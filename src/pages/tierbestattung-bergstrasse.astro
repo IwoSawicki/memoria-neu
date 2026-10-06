@@ -1,58 +1,101 @@
 ---
-import ContentLayout from '../layouts/ContentLayout.astro';
+import LandingLayout from '../layouts/LandingLayout.astro';
 import { site } from '../data/site';
 ---
 
-<ContentLayout
+<LandingLayout
   title="Tierbestattung Bergstraße – Tierkrematorium vor Ort"
   description="Unser Tierkrematorium liegt selbst an der Bergstraße. Abholung in Bensheim, Heppenheim, Lorsch und Umgebung – rund um die Uhr, an 365 Tagen im Jahr."
   eyebrow="Bergstraße"
   heading="Tierbestattung an der Bergstraße"
-  lead="Beide unserer Adressen liegen an der Bergstraße. Wir fahren hier keine Strecke, die wir nicht ohnehin kennen."
+  lead="Beide unserer Adressen liegen hier. Wir fahren keine Strecke, die wir nicht ohnehin kennen."
 >
+  <h2>Wir sind von hier</h2>
   <p>
     Memoria ist kein überregionaler Anbieter, der die Bergstraße mitbedient.
-    Wir sitzen selbst hier: der Betrieb in der Konrad-Zuse-Str. 3 in
-    <strong>69514 Laudenbach</strong>, die Abholadresse in der Carl-Benz-Str. 1
-    in <strong>64683 Einhausen</strong>. Beide Orte liegen an der Bergstraße,
-    nur auf verschiedenen Seiten der Landesgrenze.
+    Wir sitzen selbst hier:
+  </p>
+  <ul>
+    <li><strong>Betrieb:</strong> Konrad-Zuse-Str. 3, 69514 Laudenbach</li>
+    <li><strong>Abholadresse:</strong> Carl-Benz-Str. 1, 64683 Einhausen</li>
+  </ul>
+  <p>
+    Beide Orte liegen an der Bergstraße, nur auf verschiedenen Seiten der
+    Landesgrenze. Die Anfahrt zu beiden finden Sie unter
+    <a href="/anfahrt/">Anfahrt und Standorte</a>.
   </p>
 
   <h2>Wo wir abholen</h2>
   <p>
-    Wir holen an der gesamten Bergstraße ab – in Bensheim, Heppenheim,
-    Zwingenberg, Lorsch, Einhausen und Viernheim, ebenso in Weinheim, Hemsbach
-    und den umliegenden Gemeinden. Sie müssen Ihr Tier nirgendwohin bringen: Wir
-    kommen zu Ihnen nach Hause, in die Tierarztpraxis oder in die Tierklinik.
+    Sie müssen Ihr Tier nirgendwohin bringen. Wir kommen zu Ihnen nach Hause,
+    in die Tierarztpraxis oder in die Tierklinik – unter anderem in:
+  </p>
+  <ul>
+    <li>Bensheim, Heppenheim, Zwingenberg</li>
+    <li>Lorsch, Einhausen, Lampertheim</li>
+    <li>Viernheim, Weinheim, Hemsbach</li>
+    <li>und den umliegenden Gemeinden</li>
+  </ul>
+  <p>
+    Für <a href="/tierbestattung-weinheim/">Weinheim</a> und
+    <a href="/tierbestattung-einhausen/">Einhausen</a> haben wir eigene Seiten
+    mit den Details. Wenn Sie aus dem Hinterland kommen: Wir fahren auch in den
+    <a href="/tierbestattung-odenwald/">Odenwald</a>.
   </p>
 
   <h2>Einzeln oder gemeinschaftlich</h2>
+  <p>Die einzige Entscheidung, die Sie treffen müssen.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">&nbsp;</th>
+          <th scope="col">Einzeln</th>
+          <th scope="col">Gemeinschaftlich</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Asche zurück</td><td>ja</td><td>nein</td></tr>
+        <tr><td>Urne</td><td>Sie wählen sie</td><td>entfällt</td></tr>
+        <tr><td>Urkunde</td><td>ja</td><td>nein</td></tr>
+        <tr><td>Preis ab</td><td>115 €</td><td>60 €</td></tr>
+      </tbody>
+    </table>
+  </div>
+
   <p>
-    Bei der Einzelkremierung wird Ihr Tier allein eingeäschert. Sie bekommen die
-    Asche in einer Urne Ihrer Wahl zurück, dazu eine Urkunde. Bei der
-    Gemeinschaftskremierung findet die Beisetzung gemeinsam statt, ohne
-    Ascherückgabe.
-  </p>
-  <p>
-    Beide Wege sind in Ordnung, und keiner ist der bessere. Wenn Sie noch
-    unschlüssig sind, hilft Ihnen vielleicht unsere Gegenüberstellung:
+    Beide Wege sind in Ordnung, und keiner ist der bessere. Ausführlich
+    gegenübergestellt haben wir das unter
     <a href="/einzel-oder-gemeinschaftskremierung/">
-      Einzel- oder Gemeinschaftskremierung
-    </a>. Die Preise – ab 115 Euro einzeln, ab 60 Euro gemeinschaftlich – stehen
-    vollständig auf der Seite <a href="/preise/">Preise</a>.
+      Einzel- oder Gemeinschaftskremierung</a>; alle Preise nach Gewicht stehen
+    auf der Seite <a href="/preise/">Preise</a>.
   </p>
 
   <h2>Wenn es abends oder am Wochenende passiert</h2>
   <p>
     Wir fahren auch außerhalb der regulären Zeiten. Was das kostet, sagen wir
-    vorab und nicht erst auf der Rechnung: <strong>29 Euro</strong> zusätzlich
-    montags bis freitags zwischen 18:00 und 20:00 Uhr sowie samstags zwischen
-    14:00 und 18:00 Uhr, <strong>49 Euro</strong> montags bis freitags nach
-    20:00 Uhr, samstags nach 18:00 Uhr und sonntags.
+    vorab und nicht erst auf der Rechnung:
   </p>
-  <p>
-    Wenn Ihr Tier nachts gestorben ist und Sie gerade nicht wissen, was zu tun
-    ist, haben wir das hier Schritt für Schritt aufgeschrieben:
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Zeitraum</th>
+          <th scope="col">Zuschlag</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Mo–Fr 18–20 Uhr, Sa 14–18 Uhr</td><td>+ 29 €</td></tr>
+        <tr><td>Mo–Fr ab 20 Uhr, Sa ab 18 Uhr, sonntags</td><td>+ 49 €</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p class="hinweis">
+    Ihr Tier ist nachts gestorben und Sie wissen nicht, was jetzt zu tun ist?
+    Das haben wir hier Schritt für Schritt aufgeschrieben:
     <a href="/tier-nachts-gestorben/">Ihr Tier ist nachts gestorben</a>.
   </p>
 
@@ -61,21 +104,6 @@ import { site } from '../data/site';
     {site.owners[0]} und {site.owners[1]} führen Memoria gemeinsam. Sie nehmen
     Ihren Anruf entgegen, kommen selbst zu Ihnen und begleiten den Abschied
     persönlich. Sie sprechen also nicht mit einer Zentrale, sondern mit den
-    Menschen, die anschließend auch bei Ihnen vor der Tür stehen.
+    Menschen, die anschließend bei Ihnen vor der Tür stehen.
   </p>
-
-  <h2>Rund um die Uhr erreichbar</h2>
-  <p>
-    Wir sind an 365 Tagen im Jahr erreichbar, auch nachts, am Wochenende und an
-    Feiertagen. Rufen Sie unter
-    <a href={site.phoneHref}>{site.phoneDisplay}</a> an – auch dann, wenn Sie
-    noch nichts entschieden haben und erst einmal wissen möchten, wie es
-    weitergeht.
-  </p>
-  <p>
-    Die Anfahrt zu beiden Adressen finden Sie unter
-    <a href="/anfahrt/">Anfahrt und Standorte</a>, alle Kontaktwege unter
-    <a href="/kontakt/">Kontakt</a>. Wenn Sie aus dem Hinterland kommen: Wir
-    fahren auch in den <a href="/tierbestattung-odenwald/">Odenwald</a>.
-  </p>
-</ContentLayout>
+</LandingLayout>

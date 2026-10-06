@@ -57,9 +57,14 @@ export const site = {
 // Navigation im Header. „Ablauf" ist bewusst nicht enthalten, damit die Leiste
 // schlank bleibt – der Abschnitt ist weiterhin über den Footer erreichbar.
 export const nav = [
-  { label: 'Leistungen', href: '#leistungen' },
-  { label: 'Preise', href: '#preise' },
+  // Leistungen und Preise zeigen auf die Unterseiten – dort steht deutlich
+  // mehr als im jeweiligen Abschnitt der Startseite.
+  { label: 'Leistungen', href: '/leistungen/' },
+  { label: 'Preise', href: '/preise/' },
   { label: 'Tierurnen', href: '/tierurnen-andenken/' },
+  // "Über uns" hat keine eigene Seite, "Kontakt" bleibt bewusst ein Sprung:
+  // das Formular steht direkt auf der Startseite, ein Seitenwechsel wäre
+  // hier nur ein zusätzlicher Schritt vor dem Absenden.
   { label: 'Über uns', href: '#ueber-uns' },
   { label: 'Kontakt', href: '#kontakt' },
 ];

@@ -1,69 +1,81 @@
 ---
-import ContentLayout from '../layouts/ContentLayout.astro';
+import LandingLayout from '../layouts/LandingLayout.astro';
 import { site } from '../data/site';
 ---
 
-<ContentLayout
+<LandingLayout
   title="Tierbestattung Weinheim – Tierkrematorium nebenan"
   description="Tierkremierung für Weinheim: Unser Krematorium liegt wenige Kilometer nördlich, in Laudenbach. Abholung zu Hause oder in der Tierarztpraxis, rund um die Uhr."
   eyebrow="Weinheim"
   heading="Tierbestattung in Weinheim"
   lead="Für Weinheim sind wir kein auswärtiger Dienstleister, sondern der Nachbarort."
 >
+  <h2>Kurze Wege</h2>
   <p>
     Unser Krematorium steht in der Konrad-Zuse-Str. 3 in Laudenbach – wenige
     Kilometer nördlich von Weinheim, auf derselben Seite der Bergstraße. Wenn
-    Sie uns anrufen, ist der Weg zu Ihnen kurz.
+    Sie anrufen, ist der Weg zu Ihnen kurz.
   </p>
-
-  <h2>Was das praktisch bedeutet</h2>
-  <p>
-    Sie müssen Ihr Tier nicht transportieren. Wir kommen zu Ihnen nach Hause
-    oder holen es in Ihrer Tierarztpraxis beziehungsweise Tierklinik ab – auch
-    dann, wenn Sie selbst gerade nicht dort sein können oder möchten.
-  </p>
-  <p>
-    Weil die Strecke kurz ist, lassen sich Termine flexibel abstimmen. Sagen Sie
-    uns am Telefon, wann es Ihnen passt, statt sich nach uns zu richten.
-  </p>
+  <p>Das heißt praktisch:</p>
+  <ul>
+    <li>Sie müssen Ihr Tier nicht transportieren</li>
+    <li>Wir kommen nach Hause, in die Praxis oder in die Klinik</li>
+    <li>Auch dann, wenn Sie selbst gerade nicht dort sein können</li>
+    <li>Termine lassen sich flexibel abstimmen, weil die Strecke kurz ist</li>
+  </ul>
   {/* TODO IWO: Mit Franz klären, ob für Weinheim eine konkrete Zusage zur
       Abholzeit möglich ist (z. B. "in der Regel innerhalb von X Stunden").
       Ohne belastbare Angabe steht hier bewusst keine Zeit. */}
 
   <h2>Wo in Weinheim wir abholen</h2>
-  <p>
-    Wir fahren in die Weinheimer Kernstadt ebenso wie in die Ortsteile – unter
-    anderem Lützelsachsen, Hohensachsen, Sulzbach und Oberflockenbach. Auch die
-    angrenzenden Gemeinden Hemsbach, Laudenbach und Birkenau gehören zu unserem
-    täglichen Gebiet.
-  </p>
+  <p>In der Kernstadt ebenso wie in den Ortsteilen:</p>
+  <ul>
+    <li>Lützelsachsen und Hohensachsen</li>
+    <li>Sulzbach und Oberflockenbach</li>
+    <li>Hemsbach, Laudenbach und Birkenau</li>
+  </ul>
 
   <h2>Einzeln oder gemeinschaftlich</h2>
   <p>
     Sie haben die Wahl zwischen zwei Wegen. Entscheidend ist die Frage, ob Sie
-    die Asche Ihres Tieres zurückbekommen möchten: Bei der
-    <strong>Einzelkremierung</strong> ist das so, bei der
-    <strong>Gemeinschaftskremierung</strong> nicht. Zur Einzelkremierung gehören
-    außerdem eine Urkunde und eine Urne, die Sie selbst aussuchen.
+    die Asche Ihres Tieres zurückbekommen möchten.
   </p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">&nbsp;</th>
+          <th scope="col">Einzeln</th>
+          <th scope="col">Gemeinschaftlich</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Asche zurück</td><td>ja</td><td>nein</td></tr>
+        <tr><td>Urne</td><td>Sie wählen sie</td><td>entfällt</td></tr>
+        <tr><td>Urkunde</td><td>ja</td><td>nein</td></tr>
+        <tr><td>Preis ab</td><td>115 €</td><td>60 €</td></tr>
+      </tbody>
+    </table>
+  </div>
+
   <p>
-    Die Einzelkremierung beginnt bei 115 Euro, die Gemeinschaftskremierung bei
-    60 Euro; der Preis richtet sich nach dem Gewicht. Alle Beträge – auch
-    aufgeschlüsselt nach Hund, Katze und Kleintier – stehen auf der Seite
-    <a href="/preise/">Preise</a>. Wenn Sie zwischen beiden Wegen schwanken,
-    hilft Ihnen die Gegenüberstellung unter
+    Alle Beträge – auch nach Hund, Katze und Kleintier aufgeschlüsselt – stehen
+    auf der Seite <a href="/preise/">Preise</a>. Wenn Sie schwanken, hilft die
+    Gegenüberstellung unter
     <a href="/einzel-oder-gemeinschaftskremierung/">
-      Einzel- oder Gemeinschaftskremierung
-    </a>.
+      Einzel- oder Gemeinschaftskremierung</a>.
   </p>
 
   <h2>Auch außerhalb der Sprechzeiten</h2>
   <p>
-    Wir sind an 365 Tagen im Jahr rund um die Uhr erreichbar. Wenn Ihr Tier
-    abends, nachts oder am Wochenende stirbt, rufen Sie trotzdem an – dafür
-    berechnen wir einen Zuschlag von 29 beziehungsweise 49 Euro, den wir Ihnen
-    vorher nennen. Was in den ersten Stunden zu tun ist, steht unter
-    <a href="/tier-nachts-gestorben/">Ihr Tier ist nachts gestorben</a>.
+    Wir sind an 365 Tagen im Jahr rund um die Uhr erreichbar. Für Abholungen
+    außerhalb der regulären Zeiten kommt ein Zuschlag von 29 beziehungsweise
+    49 Euro hinzu, den wir Ihnen vorher nennen.
+  </p>
+  <p class="hinweis">
+    Ihr Tier ist nachts gestorben? Was in den ersten Stunden zu tun ist, steht
+    unter <a href="/tier-nachts-gestorben/">Ihr Tier ist nachts gestorben</a>.
   </p>
 
   <h2>Wer wir sind</h2>
@@ -74,10 +86,9 @@ import { site } from '../data/site';
     Menschen vor der Tür, mit denen Sie telefoniert haben.
   </p>
   <p>
-    Rufen Sie an unter <a href={site.phoneHref}>{site.phoneDisplay}</a>, auch
-    wenn Sie nur eine Frage haben. Unsere Adressen und die Anfahrt finden Sie
-    unter <a href="/anfahrt/">Anfahrt und Standorte</a>; einen Überblick über
-    die ganze Region gibt die Seite
+    Unsere Adressen und die Anfahrt finden Sie unter
+    <a href="/anfahrt/">Anfahrt und Standorte</a>, einen Überblick über die
+    Region gibt
     <a href="/tierbestattung-bergstrasse/">Tierbestattung an der Bergstraße</a>.
   </p>
-</ContentLayout>
+</LandingLayout>
