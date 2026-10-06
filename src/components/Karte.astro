@@ -1,0 +1,159 @@
+---
+// Google-Maps-Karte mit Klick-Freigabe.
+//
+// Ein direkt eingebettetes iframe würde schon beim Seitenaufruf Daten an
+// Google senden – das wäre einwilligungspflichtig. Deshalb liegt zunächst nur
+// eine Vorschau da; die Karte lädt erst, wenn jemand sie anfordert. Die
+// Entscheidung wird lokal gemerkt, damit man nicht auf jeder Seite neu klickt.
+interface Props {
+  /** Adresse, die in der Karte gezeigt wird. */
+  adresse: string;
+  /** Überschrift über der Karte. */
+  titel: string;
+}
+const { adresse, titel } = Astro.props;
+const embedUrl = `https://www.google.com/maps?q=${encodeURIComponent(adresse)}&z=15&output=embed`;
+const linkUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(adresse)}`;
+---
+
+<figure class="karte" data-karte data-src={embedUrl}>
+  <div class="platzhalter" data-platzhalter>
+    <svg viewBox="0 0 24 24" width="30" height="30" fill="none" aria-hidden="true">
+      <path
+        d="M12 21s7-6.2 7-11a7 7 0 1 0-14 0c0 4.8 7 11 7 11z"
+        stroke="currentColor"
+        stroke-width="1.5"
+        stroke-linejoin="round"></path>
+      <circle cx="12" cy="10" r="2.6" stroke="currentColor" stroke-width="1.5"></circle>
+    </svg>
+    <p class="titel">{titel}</p>
+    <p class="adresse">{adresse}</p>
+    <button type="button" data-kartebtn>Karte laden</button>
+    <p class="hinweis">
+      Beim Laden werden Daten an Google übertragen. Mehr dazu in der
+      <a href="/datenschutz/">Datenschutzerklärung</a>.
+    </p>
+  </div>
+  <figcaption>
+    <a href={linkUrl} rel="noopener">Route planen</a>
+  </figcaption>
+</figure>
+
+<style>
+  .karte {
+    margin: 0 0 22px;
+    background: var(--bg-card);
+    border-radius: 18px;
+    overflow: hidden;
+  }
+
+  .platzhalter {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: clamp(32px, 4.5vw, 54px) clamp(20px, 3vw, 32px);
+    color: var(--muted-3);
+  }
+
+  .titel {
+    margin: 14px 0 4px;
+    font-family: var(--font-serif);
+    font-size: 21px;
+    color: var(--heading-dark);
+  }
+  .adresse {
+    margin: 0 0 20px;
+    font-size: 16px;
+    color: var(--muted-2);
+  }
+
+  button {
+    background: var(--accent);
+    color: var(--btn-text);
+    border: none;
+    border-radius: 999px;
+    padding: 13px 28px;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 600;
+    min-height: 48px;
+    cursor: pointer;
+  }
+  button:hover {
+    background: var(--accent-hover);
+  }
+
+  .hinweis {
+    margin: 14px 0 0;
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--muted-3);
+    max-width: 42ch;
+  }
+  .hinweis a {
+    color: var(--muted-3);
+    text-decoration: underline;
+  }
+
+  figcaption {
+    padding: 0 clamp(20px, 3vw, 32px) clamp(20px, 3vw, 26px);
+    text-align: center;
+    font-size: 15px;
+  }
+  figcaption a {
+    color: var(--heading-dark);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  /* Wenn die Karte geladen ist, füllt das iframe die Fläche. */
+  .karte :global(iframe) {
+    display: block;
+    width: 100%;
+    height: clamp(280px, 42vw, 420px);
+    border: 0;
+  }
+</style>
+
+<script>
+  const KEY = 'memoria-karte-ok';
+
+  const laden = (el: HTMLElement) => {
+    const platz = el.querySelector<HTMLElement>('[data-platzhalter]');
+    if (!platz || el.dataset.geladen === '1') return;
+    el.dataset.geladen = '1';
+    const frame = document.createElement('iframe');
+    frame.src = el.dataset.src || '';
+    frame.loading = 'lazy';
+    frame.referrerPolicy = 'no-referrer-when-downgrade';
+    frame.title = 'Karte';
+    frame.setAttribute('allowfullscreen', '');
+    platz.replaceWith(frame);
+  };
+
+  document.querySelectorAll<HTMLElement>('[data-karte]').forEach((el) => {
+    // Schon einmal zugestimmt? Dann direkt laden.
+    let ok = false;
+    try {
+      ok = localStorage.getItem(KEY) === 'ja';
+    } catch {
+      /* Speicher gesperrt – dann bleibt die Vorschau stehen. */
+    }
+    if (ok) {
+      laden(el);
+      return;
+    }
+    el.querySelector('[data-kartebtn]')?.addEventListener('click', () => {
+      try {
+        localStorage.setItem(KEY, 'ja');
+      } catch {
+        /* egal, die Karte lädt trotzdem für diesen Aufruf */
+      }
+      // Alle Karten auf der Seite freigeben, nicht nur die angeklickte.
+      document
+        .querySelectorAll<HTMLElement>('[data-karte]')
+        .forEach((k) => laden(k));
+    });
+  });
+</script>
