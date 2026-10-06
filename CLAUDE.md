@@ -178,9 +178,14 @@ Nav-Reihenfolge (Anker): Ablauf · Leistungen · Über uns · Kontakt · Preise.
   - Eyebrow: „Freundliche Worte von Tierhaltern", 13px/600, `letter-spacing:0.28em`, uppercase, `rgba(207,227,107,0.85)`.
   - Prev/Next-Buttons: `46x46px`, `border-radius:999px; border:1px solid rgba(238,243,224,0.35)`, Pfeil-SVG, Hover `#cfe36b`.
   - Zitattext (Fraunces 300, `clamp(24px,3.2vw,42px)`, `#f7f9ee`, `max-width:22ch`) + Autor (15px, `rgba(238,243,224,0.6)`).
-  - **Verhalten:** 3 Zitate, Auto-Rotation alle **8s**, Fade (`opacity` transition `0.9s`, Swap nach `500ms`).
+  - **Verhalten:** Auto-Rotation alle **8s**, Fade (`opacity` transition `0.9s`, Swap nach `500ms`).
+  - **Stand Oktober 2026:** Die drei Zitate aus dem Design-Export („M. K.", „A. B.",
+    „S. R.") waren **erfundene Platzhalter** und sind entfernt. Der Slider zieht
+    jetzt aus `googleReviews` in `src/data/site.ts` und zeigt Google-Logo,
+    Sterne und die Gesamtbewertung. Ist die Liste leer, rendert er **nichts** –
+    es werden keine Kundenstimmen erfunden.
 
-  Zitate:
+  Zitate aus dem Design-Export (historisch, **nicht mehr im Einsatz**):
   1. „„Wir haben nachts angerufen und sofort einen ruhigen Menschen am Telefon gehabt. Das hat uns sehr geholfen."" — **M. K.**
   2. „„Unser Hund wurde mit einer Achtsamkeit abgeholt, die wir nicht erwartet hatten. Danke dafür."" — **A. B.**
   3. „„Alles wurde uns in Ruhe erklärt, nichts musste schnell entschieden werden. Die Urne ist wunderschön."" — **S. R.**

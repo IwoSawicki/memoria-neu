@@ -157,22 +157,6 @@ export const googleReviews: {
   datum?: string;
 }[] = [];
 
-// Testimonials (Zitat-Slider).
-export const quotes = [
-  {
-    text: '„Wir haben nachts angerufen und sofort einen ruhigen Menschen am Telefon gehabt. Das hat uns sehr geholfen.“',
-    author: 'M. K.',
-  },
-  {
-    text: '„Unser Hund wurde mit einer Achtsamkeit abgeholt, die wir nicht erwartet hatten. Danke dafür.“',
-    author: 'A. B.',
-  },
-  {
-    text: '„Alles wurde uns in Ruhe erklärt, nichts musste schnell entschieden werden. Die Urne ist wunderschön.“',
-    author: 'S. R.',
-  },
-];
-
 // Urnen-Galerie (Fotos aus dem Katalog) – 4 Modelle als kleiner Einblick.
 export const urnenGalerie = [
   { img: '/images/urnen/verona-weiss.webp', name: 'Verona Weiß', material: 'Keramik samtiert' },
