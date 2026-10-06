@@ -1,85 +1,86 @@
 ---
-import ContentLayout from '../layouts/ContentLayout.astro';
+import LandingLayout from '../layouts/LandingLayout.astro';
 import { site } from '../data/site';
 ---
 
-<ContentLayout
+<LandingLayout
   title="Unsere Leistungen – Einzel- und Gemeinschaftskremierung"
   description="Einzelkremierung mit Ascherückgabe, Gemeinschaftskremierung, Abholung zu Hause oder in der Tierarztpraxis. So läuft der Abschied bei uns ab."
   eyebrow="Leistungen"
   heading="Unsere Leistungen"
   lead="Sie müssen jetzt nichts allein regeln. Wir übernehmen den Weg von der Abholung bis zur Urne."
+  heroImg="hund"
 >
-  <p>
-    Memoria ist ein kleines Familienunternehmen aus Laudenbach.
-    {site.owners[0]} und {site.owners[1]} nehmen Ihren Anruf persönlich entgegen
-    und begleiten jeden Abschied selbst. Was wir dabei übernehmen, steht auf
-    dieser Seite.
-  </p>
-
   <h2>Einzelkremierung mit Ascherückgabe</h2>
   <p>
     Ihr Tier wird einzeln eingeäschert – allein, nicht zusammen mit anderen
-    Tieren. Sie erhalten die Asche anschließend in einer Urne Ihrer Wahl zurück,
-    dazu eine Urkunde über die Kremierung.
+    Tieren. Sie erhalten zurück:
   </p>
+  <ul>
+    <li>die Asche in einer Urne Ihrer Wahl</li>
+    <li>eine Urkunde über die Kremierung</li>
+    <li>auf Wunsch einen Pfotenabdruck oder eine Haarlocke</li>
+  </ul>
   <p>
-    Dieser Weg kommt für Sie infrage, wenn Sie Ihr Tier bei sich behalten
-    möchten: als Urne zu Hause, an einem Platz im Garten oder an einem Ort, der
-    für Sie und Ihr Tier eine Bedeutung hat. Als Hundebestatter und
-    Katzenbestatter machen wir dabei keinen Unterschied – der Ablauf ist für
-    jedes Tier derselbe. Der Preis richtet sich nach dem
-    Gewicht und beginnt bei 115 Euro; in jedem Preis ist bereits eine
-    Urnengutschrift enthalten, die beim Kauf der Urne angerechnet wird. Alle
-    Beträge finden Sie auf der Seite <a href="/preise/">Preise</a>.
+    Dieser Weg passt, wenn Sie Ihr Tier bei sich behalten möchten: als Urne zu
+    Hause, an einem Platz im Garten oder an einem Ort, der für Sie und Ihr Tier
+    eine Bedeutung hat. Als Hundebestatter und Katzenbestatter machen wir dabei
+    keinen Unterschied – der Ablauf ist für jedes Tier derselbe.
+  </p>
+  <p class="hinweis">
+    <strong>Ab 115 €</strong>, je nach Gewicht. In jedem Preis steckt bereits
+    eine Urnengutschrift, die beim Kauf der Urne angerechnet wird. Alle Beträge
+    auf der Seite <a href="/preise/">Preise</a>.
   </p>
 
   <h2>Gemeinschaftskremierung</h2>
   <p>
-    Bei der Gemeinschaftskremierung werden mehrere Tiere gemeinsam eingeäschert.
-    Eine Ascherückgabe ist dabei nicht möglich – die Beisetzung erfolgt
-    gemeinschaftlich und in Ruhe.
+    Mehrere Tiere werden gemeinsam eingeäschert, die Beisetzung erfolgt
+    gemeinschaftlich. Eine Ascherückgabe ist dabei nicht möglich.
   </p>
   <p>
     Der Ablauf davor unterscheidet sich nicht: Wir holen Ihr Tier genauso ab und
-    behandeln es mit derselben Sorgfalt. Viele Tierhalter wählen diesen Weg,
-    weil sie den Abschied nicht an einem Gegenstand festmachen möchten. Die
-    Gemeinschaftskremierung beginnt bei 60 Euro. Wenn Sie zwischen beiden Wegen
-    schwanken, hilft Ihnen vielleicht unsere Gegenüberstellung:
+    behandeln es mit derselben Sorgfalt. Viele Tierhalter wählen diesen Weg
+    bewusst, weil sie den Abschied nicht an einem Gegenstand festmachen möchten.
+  </p>
+  <p class="hinweis">
+    <strong>Ab 60 €</strong>. Unschlüssig? Die Gegenüberstellung steht unter
     <a href="/einzel-oder-gemeinschaftskremierung/">
-      Einzel- oder Gemeinschaftskremierung
-    </a>.
+      Einzel- oder Gemeinschaftskremierung</a>.
   </p>
 
-  <h2>Abholung zu Hause und in der Tierarztpraxis</h2>
+  <h2>Abholung – wir kommen zu Ihnen</h2>
+  <p>Sie müssen Ihr Tier nirgendwohin bringen. Wir holen es ab:</p>
+  <ul>
+    <li>bei Ihnen zu Hause</li>
+    <li>in der Tierarztpraxis</li>
+    <li>in der Tierklinik</li>
+  </ul>
   <p>
-    Wir kommen zu Ihnen. Nach Hause, in die Tierarztpraxis oder in die
-    Tierklinik – Sie müssen Ihr Tier nirgendwohin bringen. Ein Anruf unter
-    <a href={site.phoneHref}>{site.phoneDisplay}</a> genügt, alles Weitere
-    besprechen wir in Ruhe mit Ihnen.
+    Erreichbar sind wir rund um die Uhr, an 365 Tagen im Jahr – auch nachts, am
+    Wochenende und an Feiertagen. Für Abholungen außerhalb der regulären Zeiten
+    berechnen wir einen Zuschlag, den wir Ihnen vorher nennen.
   </p>
-  <p>
-    Wir sind rund um die Uhr erreichbar und holen an 365 Tagen im Jahr ab, auch
-    nachts, am Wochenende und an Feiertagen. Für Abholungen außerhalb der
-    regulären Zeiten berechnen wir einen Zuschlag, den wir Ihnen vorher nennen.
-    Wenn Ihr Tier nachts gestorben ist und Sie nicht wissen, was jetzt zu tun
-    ist, haben wir das hier für Sie aufgeschrieben:
+  <p class="hinweis">
+    Ihr Tier ist nachts gestorben und Sie wissen nicht weiter? Das haben wir
+    hier aufgeschrieben:
     <a href="/tier-nachts-gestorben/">Ihr Tier ist nachts gestorben</a>.
   </p>
 
   <h2>Urnen und Andenken</h2>
+  <p>Sie wählen die Urne in Ruhe aus. Unser Sortiment reicht von:</p>
+  <ul>
+    <li>Keramik, samtiert und frostsicher</li>
+    <li>Holzurnen, furniert und als Einzelstücke</li>
+    <li>Natursteinurnen aus Alabaster</li>
+    <li>Kupfermotivurnen sowie Messing</li>
+  </ul>
   <p>
-    Sie wählen die Urne in Ruhe aus. Unser Sortiment reicht von samtierter und
-    frostsicherer Keramik über furnierte Holzurnen und Einzelstücke bis zu
-    Natursteinurnen aus Alabaster, Kupfermotivurnen und Messing. Dazu gibt es
-    kleine Andenken zum Aufbewahren.
-  </p>
-  <p>
-    Die passende Größe richtet sich nach dem Gewicht Ihres Tieres – bis 10 kg
-    genügen etwa 0,5 Liter, bis 20 kg ein Liter. Die Urne darf gern größer sein,
-    sollte vom Fassungsvolumen aber nicht kleiner ausfallen. Die vollständige
-    Auswahl mit allen Größen und Preisen finden Sie im Katalog auf der Seite
-    <a href="/tierurnen-andenken/">Tierurnen &amp; Andenken</a>.
+    Die passende Größe richtet sich nach dem Gewicht – bis 10 kg genügen etwa
+    0,5 Liter, bis 20 kg ein Liter. Die Urne darf gern größer sein, sollte vom
+    Fassungsvolumen aber nicht kleiner ausfallen. Die vollständige Auswahl mit
+    Größen und Preisen steht im
+    <a href="/tierurnen-andenken/">Katalog</a>.
   </p>
 
   <h2>Pfotenabdruck und Haarlocke</h2>
@@ -89,23 +90,20 @@ import { site } from '../data/site';
     die Hand nehmen kann.
   </p>
   <p class="hinweis">
-    Wichtig: Sagen Sie uns das bitte zeitnah nach dem Empfang Ihres Tieres
-    Bescheid. Später lässt es sich nicht mehr nachholen.
+    <strong>Wichtig:</strong> Sagen Sie uns das bitte zeitnah nach dem Empfang
+    Ihres Tieres Bescheid. Später lässt es sich nicht mehr nachholen.
   </p>
 
   <h2>Große Tiere</h2>
   <p>
     Auch Pferde und andere große Tiere werden bei uns kremiert. Der Ablauf und
-    die Abholung unterscheiden sich davon, was oben beschrieben ist, und wir
+    die Abholung unterscheiden sich davon, was oben beschrieben ist – wir
     stimmen beides im Einzelfall mit Ihnen ab. Die Preise nennen wir Ihnen gern
     persönlich am Telefon.
   </p>
 
-  <h2>Wie ein Abschied bei uns abläuft</h2>
-  <p>
-    Vier Schritte, mehr ist es nicht. Sie entscheiden bei jedem, wie viel Sie
-    selbst regeln möchten.
-  </p>
+  <h2>So läuft ein Abschied ab</h2>
+  <p>Vier Schritte, mehr ist es nicht.</p>
 
   <h3>1. Sie rufen an</h3>
   <p>
@@ -124,25 +122,24 @@ import { site } from '../data/site';
 
   <h3>3. Die Kremierung</h3>
   <p>
-    Die Kremierung erfolgt so, wie Sie es festgelegt haben – einzeln oder
-    gemeinschaftlich. Bei der Einzelkremierung wird Ihr Tier allein eingeäschert
-    und Sie erhalten eine Urkunde darüber.
+    So, wie Sie es festgelegt haben – einzeln oder gemeinschaftlich. Bei der
+    Einzelkremierung wird Ihr Tier allein eingeäschert und Sie erhalten eine
+    Urkunde darüber.
   </p>
 
   <h3>4. Die Urne</h3>
   <p>
-    Bei der Einzelkremierung erhalten Sie die Asche Ihres Tieres in der Urne
-    zurück, die Sie ausgewählt haben. Wir melden uns bei Ihnen, sobald sie
-    bereitsteht, und stimmen mit Ihnen ab, wie sie zu Ihnen kommt.
+    Bei der Einzelkremierung erhalten Sie die Asche in der Urne zurück, die Sie
+    ausgewählt haben. Wir melden uns, sobald sie bereitsteht, und stimmen mit
+    Ihnen ab, wie sie zu Ihnen kommt.
   </p>
 
-  <h2>Wo wir für Sie unterwegs sind</h2>
+  <h2>Wo wir unterwegs sind</h2>
   <p>
-    Unser Sitz ist in Laudenbach an der Bergstraße, unsere Abholadresse in
-    Einhausen. Wir fahren in die gesamte Region – an die
-    <a href="/tierbestattung-bergstrasse/">Bergstraße</a>, in den
+    Unser Sitz ist in Laudenbach, die Abholadresse in Einhausen. Wir fahren an
+    die <a href="/tierbestattung-bergstrasse/">Bergstraße</a>, in den
     <a href="/tierbestattung-odenwald/">Odenwald</a>, in den Rhein-Neckar-Raum
-    und das südliche Hessen. Die Adressen und die Anfahrt finden Sie unter
+    und das südliche Hessen. Adressen und Anfahrt stehen unter
     <a href="/anfahrt/">Anfahrt und Standorte</a>.
   </p>
-</ContentLayout>
+</LandingLayout>

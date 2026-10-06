@@ -1,27 +1,19 @@
 ---
-import ContentLayout from '../layouts/ContentLayout.astro';
+import LandingLayout from '../layouts/LandingLayout.astro';
 import { site } from '../data/site';
 ---
 
-<ContentLayout
+<LandingLayout
   title="Tier nachts gestorben – was jetzt zu tun ist"
   description="Ihr Tier ist nachts oder am Wochenende gestorben? Wir sind 365 Tage im Jahr erreichbar. So gehen Sie in den nächsten Stunden vor."
   eyebrow="Wenn es nachts passiert"
-  heading="Ihr Tier ist nachts gestorben – was Sie jetzt tun können"
-  showCta={false}
+  heading="Ihr Tier ist nachts gestorben"
+  lead="Sie müssen jetzt nichts sofort entscheiden und nichts allein regeln. Rufen Sie an, auch mitten in der Nacht."
 >
-  <p>
-    Sie müssen jetzt nichts sofort entscheiden und nichts allein regeln. Rufen
-    Sie an, auch mitten in der Nacht:
-  </p>
-
-  <p class="sofort">
-    <a href={site.phoneHref}>{site.phoneDisplay}</a>
-  </p>
-
+  <h2>Rufen Sie einfach an</h2>
   <p>
     Wir sind rund um die Uhr erreichbar, an 365 Tagen im Jahr. Am Telefon
-    besprechen wir mit Ihnen, was in den nächsten Stunden zu tun ist, und wann
+    besprechen wir mit Ihnen, was in den nächsten Stunden zu tun ist und wann
     wir zu Ihnen kommen können. Sie müssen dafür nichts vorbereitet haben.
   </p>
 
@@ -33,11 +25,11 @@ import { site } from '../data/site';
   </p>
   {/* TODO IWO: Fachliche Angaben von Franz einholen – was Tierhalter bis zur
       Abholung konkret tun sollten (Lagerung, Umgang, Zeitfenster). Bewusst
-      nicht selbst formuliert: Falsche Hinweise wären hier schädlicher als gar
+      nicht selbst formuliert: Falsche Hinweise waeren hier schaedlicher als gar
       keine. Sobald der Text von Franz da ist, ersetzt er diesen Absatz. */}
-  <p>
-    Wenn Ihr Tier in einer Tierklinik oder Tierarztpraxis gestorben ist, können
-    Sie uns ebenfalls anrufen. Wir holen es dort ab, Sie müssen es nicht selbst
+  <p class="hinweis">
+    Wenn Ihr Tier in einer Tierklinik oder Tierarztpraxis gestorben ist, rufen
+    Sie uns ebenfalls an. Wir holen es dort ab – Sie müssen es nicht selbst
     abholen oder transportieren.
   </p>
 
@@ -90,35 +82,4 @@ import { site } from '../data/site';
     führen Memoria als Familienunternehmen und gehen selbst ans Telefon.
   </p>
 
-  <p class="sofort">
-    <a href={site.phoneHref}>{site.phoneDisplay}</a>
-  </p>
-  <p class="sofort-note">Rund um die Uhr, an 365 Tagen im Jahr.</p>
-</ContentLayout>
-
-<style>
-  /* Die Telefonnummer soll auf dieser Seite sofort ins Auge fallen – oben im
-     ersten Bildschirm und noch einmal am Ende. */
-  .sofort {
-    margin: 0 0 10px;
-  }
-  .sofort :global(a) {
-    display: inline-block;
-    font-family: var(--font-serif);
-    font-weight: 300;
-    font-size: clamp(36px, 6vw, 60px);
-    line-height: 1.05;
-    color: var(--heading-dark);
-    font-variant-numeric: tabular-nums;
-    border-bottom: 1px solid var(--chevron);
-    text-decoration: none;
-  }
-  .sofort :global(a:hover) {
-    color: var(--text-link-hover);
-  }
-  .sofort-note {
-    margin: 0 0 16px;
-    font-size: 15px;
-    color: var(--muted-3);
-  }
-</style>
+</LandingLayout>

@@ -1,5 +1,5 @@
 ---
-import ContentLayout from '../layouts/ContentLayout.astro';
+import LandingLayout from '../layouts/LandingLayout.astro';
 import { site, priceTables, priceSurcharges } from '../data/site';
 
 const [einzel, gemeinschaft] = priceTables;
@@ -57,11 +57,13 @@ const faqSchema = {
 };
 ---
 
-<ContentLayout
+<LandingLayout
   title="Was kostet die Einäscherung? Alle Preise im Überblick"
   description="Einzelkremierung ab 115 €, Gemeinschaftskremierung ab 60 €. Alle Preise nach Gewicht aufgelistet – inklusive Urkunde und Überführung."
   eyebrow="Preise"
   heading="Was kostet es, ein Tier einäschern zu lassen?"
+  lead="Einzelkremierung ab 115 €, Gemeinschaftskremierung ab 60 €. Alles offen aufgelistet."
+  heroImg="hund"
 >
   <p>
     Eine Einzelkremierung mit Ascherückgabe kostet bei uns zwischen
@@ -304,7 +306,7 @@ const faqSchema = {
     is:inline
     set:html={JSON.stringify(faqSchema)}
   />
-</ContentLayout>
+</LandingLayout>
 
 <style>
   /* Unterzeile für die Urnengutschrift in der Preistabelle. */

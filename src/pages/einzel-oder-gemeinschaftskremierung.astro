@@ -1,5 +1,5 @@
 ---
-import ContentLayout from '../layouts/ContentLayout.astro';
+import LandingLayout from '../layouts/LandingLayout.astro';
 import { site } from '../data/site';
 
 const vergleich = [
@@ -60,11 +60,13 @@ const faqSchema = {
 };
 ---
 
-<ContentLayout
+<LandingLayout
   title="Einzel- oder Gemeinschaftskremierung? Der Unterschied"
   description="Bei der Einzelkremierung erhalten Sie die Asche Ihres Tieres zurück, bei der Gemeinschaftskremierung nicht. Was das bedeutet und was es kostet."
   eyebrow="Entscheidungshilfe"
-  heading="Einzelkremierung oder Gemeinschaftskremierung – was ist der Unterschied?"
+  heading="Einzel- oder Gemeinschaftskremierung?"
+  lead="Der Unterschied ist einer: ob Sie die Asche Ihres Tieres zurückbekommen."
+  heroImg="kind"
 >
   <p>
     Der Unterschied ist einer: Bei der <strong>Einzelkremierung</strong> wird
@@ -173,4 +175,4 @@ const faqSchema = {
     is:inline
     set:html={JSON.stringify(faqSchema)}
   />
-</ContentLayout>
+</LandingLayout>
